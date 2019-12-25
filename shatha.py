@@ -16,6 +16,7 @@ db = mysql.connector.connect(
   host='localhost',
   database='board'
 )
+
 cursor = db.cursor()
 cursor.execute('CREATE TABLE autistic (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255))')
 cursor.close()
