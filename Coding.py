@@ -148,7 +148,70 @@ def logout(frame):
     frame.destroy()
     login()
 
+Fi=Tk()
+Fi.geometry("500x600")
+Fi.title("Account Login")
+USERNAME=StringVar()
+BASWORD=StringVar()
+def Database():
+    global conn, cursor
+    conn = sqlite3.connect("Accept.db")
+    cursor = conn.cursor()
+    cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander text)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
+    conn.commit()
 
+Database()
+
+def insert_user(user_name,id,first_name,last_name,password,gander,responsible_name,Email,phone):
+    cursor.execute("INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone) VALUES(?,?,?,?,?,?,?,?,?)",(first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone))
+    conn.commit()
+
+def insert_board(name, id):
+    cursor.execute("INSERT INTO boards (name,id) VALUES(?,?)", (name, id))
+    conn.commit()
+
+def delete_user(id):
+    cursor.execute("DELETE FROM 'users' WHERE id=?",(id,))
+    conn.commit()
+def account():
+    global a
+    a=Frame(Fi)
+    def gotoLogin():
+        a.forget()
+        login()
+    Label(a,text="Choose Login Or Register", bg="blue", width="300")
+    Label(a,text="").pack()
+    Button(a,text="Login",height="2",width="30",command=gotoLogin).pack()
+    Label(a,text="").pack()
+    Button(a,text="Register",height="2",width="30",command=sign_up).pack()
+    a.pack()
+
+
+def check(lable):
+     cursor.execute("select * from 'users' where user_name=(?) and password=(?) ",(svuser.get(),svpass.get()))
+     if cursor.fetchone() is  None:
+         lable.config(text="Invalid Username or password", fg="red")
+
+
+
+def login():
+    global loginFrame
+    loginFrame=Frame(Fi)
+    a=Label(loginFrame,text='',fg='red')
+    a.grid(row=0,column=2, pady=20)
+    Label(loginFrame,text="Enter user name:").grid(row=1,column=1)
+    Entry(loginFrame,textvariable=svuser).grid(row=1,column=2)
+    Label(loginFrame, text="Enter password:").grid(row=2, column=1)
+    Entry(loginFrame, textvariable=svpass).grid(row=2,column=2)
+    Button(loginFrame, text='login',height="2",width="30",command=lambda: check(a)).grid(row=3, column=2, pady=20)
+    loginFrame.pack()
+account()
+Fi.mainloop()
+
+account()
 sign_up()
+
 frm.mainloop()
 
