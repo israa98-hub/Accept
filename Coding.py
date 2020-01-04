@@ -41,8 +41,8 @@ def Database():
     global conn, cursor
     conn = sqlite3.connect("Accept.db")
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander text)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT, massage TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT)")
     cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
     conn.commit()
 
@@ -193,6 +193,16 @@ def check(lable):
      cursor.execute("select * from 'users' where user_name=(?) and password=(?) ",(svuser.get(),svpass.get()))
      if cursor.fetchone() is  None:
          lable.config(text="Invalid Username or password", fg="red")
+         conn.commit()
+
+
+def delete_board(id):
+    cursor.execute("DELETE FROM 'boards' WHERE id=?",(id,))
+    conn.commit()
+
+def update_information_user(name,last_name,password,user_name,email,responsible_name,phone):
+    cursor.execute("UPDATE 'users' SET first_name=?,last_name=?,password=?,user_name=?,Email=?,responsible_name=?,phone=?",(name,last_name,password,user_name,email,responsible_name,phone))
+    conn.commit()
 
 
 
@@ -212,6 +222,7 @@ Fi.mainloop()
 
 account()
 sign_up()
-
 frm.mainloop()
+
+
 

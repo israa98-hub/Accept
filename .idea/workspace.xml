@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74e222a4-7de1-49f1-ae88-225cdb5d048e" name="Default Changelist" comment="basic data base">
-      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/coding.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/a.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/page1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shatha.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sigup.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/txt.txt" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/Accept.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Accept.db" beforeDir="false" afterPath="$PROJECT_DIR$/Accept.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Coding.py" beforeDir="false" afterPath="$PROJECT_DIR$/Coding.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +44,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="coding" type="PythonConfigurationType" factoryName="Python">
+    <configuration name="Coding" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Accept" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -55,7 +56,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/coding.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Coding.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -64,6 +65,11 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Coding" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
