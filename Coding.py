@@ -205,6 +205,16 @@ def update_information_user(name,last_name,password,user_name,email,responsible_
     conn.commit()
 
 
+def forget_pass(ID):
+    ans=import("what is the name of your elementary school?")
+    cursor.execute("SELECT answare FROM users WHERE id=?",(ID,))
+    r_ans=cursor.fetchall()
+    if ans==r_ans:
+        new=import("Enter new password:")
+        new1=import("Enter the password again:")
+        if new==new1:
+            cursor.execute("UPDATE users SET password=? WHERE id=?",(new,ID))
+
 
 def login():
     global loginFrame
