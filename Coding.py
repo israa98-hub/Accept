@@ -41,8 +41,8 @@ def Database():
     global conn, cursor
     conn = sqlite3.connect("Accept.db")
     cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander text)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT, massage TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT)")
     cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
     conn.commit()
 
@@ -148,7 +148,11 @@ def logout(frame):
     frame.destroy()
     login()
 
-
+Fi=Tk()
+Fi.geometry("500x600")
+Fi.title("Account Login")
+USERNAME=StringVar()
+BASWORD=StringVar()
 def Database():
     global conn, cursor
     conn = sqlite3.connect("Accept.db")
@@ -173,7 +177,7 @@ def delete_user(id):
     conn.commit()
 def account():
     global a
-    a=Frame(frm)
+    a=Frame(Fi)
     def gotoLogin():
         a.forget()
         login()
@@ -187,23 +191,24 @@ def account():
 
 def check(lable):
      cursor.execute("select * from 'users' where user_name=(?) and password=(?) ",(svuser.get(),svpass.get()))
-     print(svuser.get(),svpass.get())
-     if cursor.fetchone() is None:
+     if cursor.fetchone() is  None:
          lable.config(text="Invalid Username or password", fg="red")
+         conn.commit()
 
-def forget_pass(ID):
-    ans=import("what is the name of your elementary school?")
-    cursor.execute("SELECT answare FROM users WHERE id=?",(ID,))
-    r_ans=cursor.fetchall()
-    if ans==r_ans:
-        new=import("Enter new password:")
-        new1=import("Enter the password again:")
-        if new==new1:
-            cursor.execute("UPDATE users SET password=? WHERE id=?",(new,ID,))
+
+def delete_board(id):
+    cursor.execute("DELETE FROM 'boards' WHERE id=?",(id,))
+    conn.commit()
+
+def update_information_user(name,last_name,password,user_name,email,responsible_name,phone):
+    cursor.execute("UPDATE 'users' SET first_name=?,last_name=?,password=?,user_name=?,Email=?,responsible_name=?,phone=?",(name,last_name,password,user_name,email,responsible_name,phone))
+    conn.commit()
+
+
 
 def login():
     global loginFrame
-    loginFrame=Frame(frm)
+    loginFrame=Frame(Fi)
     a=Label(loginFrame,text='',fg='red')
     a.grid(row=0,column=2, pady=20)
     Label(loginFrame,text="Enter user name:").grid(row=1,column=1)
@@ -212,8 +217,12 @@ def login():
     Entry(loginFrame, textvariable=svpass).grid(row=2,column=2)
     Button(loginFrame, text='login',height="2",width="30",command=lambda: check(a)).grid(row=3, column=2, pady=20)
     loginFrame.pack()
+#account()
+Fi.mainloop()
 
 account()
-
+sign_up()
 frm.mainloop()
+
+
 
