@@ -3,6 +3,9 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import sqlite3
+from tkinter import *
+from tkinter import filedialog
+import sqlite3
 import datetime
 
 
@@ -37,12 +40,13 @@ svgender = StringVar()
 svrname = StringVar()
 svmail = StringVar()
 svphone = StringVar()
+svprofile=StringVar()
 def Database():
     global conn, cursor
     conn = sqlite3.connect("Accept.db")
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT, massage TEXT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT,profile BLOB NOT NULL)")
     cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
     conn.commit()
 
@@ -87,6 +91,9 @@ def create():
     elif svphone.get().strip() == '':
         messagebox.showinfo('', 'The number phone of the responsible is Empty!')
         txtphone.focus()
+    elif svprofile.get().strip()=='':
+        messagebox.showinfo('', 'The profile is Empty!')
+
     else:
         insert_user(svuser.get(),svId.get(),svfname.get(),svlname.get(),svpass.get(),svgender.get(),svrname.get(),svmail.get(),svphone.get())
         svId.set('')
@@ -95,12 +102,13 @@ def create():
         svgender.set('')
         svrname.set('')
         svmail.set('')
+        svprofile.set('')
         frame.destroy()
         login()
 
 
 def sign_up():
-    global frame, txtuser, txtid, txtfname, txtlname, txtpass, txtgender, txtrname, txtmail, txtphone
+    global frame, txtuser, txtid, txtfname, txtlname, txtpass, txtgender, txtrname, txtmail, txtphone,txtprofile
     frame = Frame(frm, bg=bg)
     # Label(frame, text='User Data', bg='navy', fg='lightblue', font=fnt).pack(pady=pad)
 
@@ -113,7 +121,8 @@ def sign_up():
     Label(frame, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
     Label(frame, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
     Label(frame, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
-
+    #Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
+    #Label(top, image=im).pack()
     txtuser = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svuser)
     txtid = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svId)
     txtfname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svfname)
@@ -123,6 +132,7 @@ def sign_up():
     txtrname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svrname)
     txtmail = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail)
     txtphone = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone)
+    txtprofile=Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile)
     btns = ttk.Style()
     btns.configure('TButton', font=fnt, pady=pad, padding=pad)
     ttk.Button(frame, text='Create user file Now', command=create).grid(row=9, column=1, pady=pad)
@@ -137,6 +147,7 @@ def sign_up():
     txtrname.grid(row=6, column=1, pady=pad)
     txtmail.grid(row=7, column=1, pady=pad)
     txtphone.grid(row=8, column=1, pady=pad)
+    txtprofile.grid(row=9,column=1,pady=pad)
 
     frame.pack(pady=pad)
 
@@ -153,7 +164,7 @@ def Database():
     conn = sqlite3.connect("Accept.db")
     cursor = conn.cursor()
     cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander text)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander text,profile BLOB)")
     cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
     conn.commit()
 
@@ -186,6 +197,7 @@ def account():
     def gotoLogin():
         a.forget()
         login()
+        main_page()
     Label(a,text="Choose Login Or Register", bg="blue", width="300")
     Label(a,text="").pack()
     Button(a,text="Login",height="2",width="30",command=gotoLogin).pack()
@@ -213,8 +225,53 @@ def login():
     Entry(loginFrame, textvariable=svpass).grid(row=2,column=2)
     Button(loginFrame, text='login',height="2",width="30",command=lambda: check(a)).grid(row=3, column=2, pady=20)
     loginFrame.pack()
+<<<<<<< HEAD
+
+
+
+# كود الصورر
+
+'''top=Tk()
+top.geometry('1000x600')
+image=filedialog.askopenfilename(filetypes=[("Image File",'.png')])
+#print(image.split('/')[-1::][0])
+conn = sqlite3.connect("Accept.db")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS pic (name TEXT)")
+cursor.execute("INSERT INTO pic (name)VALUES (?)",(image.split('/')[-1::][0],))
+conn.commit()
+im=PhotoImage(file=image)
+top.mainloop()'''
+=======
+>>>>>>> f6276ef1b32f148412718f5262ebf3cb265dccd0
 
 account()
 frm.mainloop()
 
 
+<<<<<<< HEAD
+
+def main_page():
+    frm = tk.Tk()
+    fnt = ('tahoma', 16)
+    bg = '#ffffff'
+    bgtxt = '#00ff00'
+    fg = '#000000'
+    fw = 700
+    fh = 600
+    x = (frm.winfo_screenwidth() - fw) / 2
+    y = (frm.winfo_screenheight() - fh) / 2 - 50
+    frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+    frm.title('Users')
+    frm.config(bg=bg)
+    B = tk.Button(frm, text="Board", bg="white", height="6", width="30", font="40").grid(row=0, column=1, pady=20)
+    # B.pack()
+    C = tk.Button(frm, text=" NEW Board", bg="white", height="6", width="30", font="30").grid(row=2, column=1, pady=20)
+    # C.pack()
+    A = tk.Button(frm, text="Setting", bg="white", height="6", width="30", font="30").grid(row=4, column=1, pady=20)
+    # A.pack()
+    frm.mainloop()
+
+
+=======
+>>>>>>> f6276ef1b32f148412718f5262ebf3cb265dccd0
