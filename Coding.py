@@ -9,7 +9,7 @@ import sqlite3
 import datetime
 
 
-def login():
+'''def login():
     global loginframe
     loginframe = Frame(frm)
     Label(loginframe, text='xxx', fg="red").pack()
@@ -17,11 +17,11 @@ def login():
 
 
 frm = tk.Tk()
-fnt = ('tahoma', 16)
-bg = '#ffffff'
-bgtxt = '#00ff00'
-fg = '#000000'
-fw = 700
+fnt = ('tahoma', 12)
+bg = 'white'
+bgtxt = 'white'
+fg = 'black'
+fw = 650
 fh = 600
 x = (frm.winfo_screenwidth() - fw) / 2
 y = (frm.winfo_screenheight() - fh) / 2 - 50
@@ -135,7 +135,8 @@ def sign_up():
     txtprofile=Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile)
     btns = ttk.Style()
     btns.configure('TButton', font=fnt, pady=pad, padding=pad)
-    ttk.Button(frame, text='Create user file Now', command=create).grid(row=9, column=1, pady=pad)
+    ttk.Button(frame, text='Create', command=create).grid(row=11, column=3, pady=pad)
+    ttk.Button(frame, text='Back').grid(row=11, column=0, pady=8)
     # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
 
     txtuser.grid(row=0, column=1, pady=pad)
@@ -197,12 +198,16 @@ def account():
     def gotoLogin():
         a.forget()
         login()
+<<<<<<< HEAD
+        #main_page()
+=======
         main_page()
+>>>>>>> 0b47f88d7b5f316293ecc7a2c2edf4d39b75d358
     Label(a,text="Choose Login Or Register", bg="blue", width="300")
     Label(a,text="").pack()
-    Button(a,text="Login",height="2",width="30",command=gotoLogin).pack()
+    Button(a,text="Log in",height="2",width="30",command=gotoLogin).pack()
     Label(a,text="").pack()
-    Button(a,text="Register",height="2",width="30",command=sign_up).pack()
+    Button(a,text="Create a new account?",height="2",width="30",command=sign_up).pack()
     a.pack()
 
 
@@ -216,14 +221,35 @@ def check(lable):
 
 def login():
     global loginFrame
+
+    def main_page():
+        frm = tk.Tk()
+        fnt = ('tahoma', 16)
+        bg = '#ffffff'
+        bgtxt = '#00ff00'
+        fg = '#000000'
+        fw = 700
+        fh = 600
+        x = (frm.winfo_screenwidth() - fw) /2
+        y = (frm.winfo_screenheight() - fh) / 2 - 50
+        frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+        frm.title('Users')
+        frm.config(bg=bg)
+        B = tk.Button(frm, text="Board", bg="white", height="6", width="30", font="40").grid(row=0, column=1, pady=20)
+        # B.pack()
+        C = tk.Button(frm, text=" NEW Board", bg="white", height="6", width="30", font="30").grid(row=2, column=1,pady=20)
+        # C.pack()
+        A = tk.Button(frm, text="Setting", bg="white", height="6", width="30", font="30").grid(row=4, column=1, pady=20)
+        # A.pack()
+        frm.mainloop()
+
     loginFrame=Frame(frm)
-    a=Label(loginFrame,text='',fg='red')
-    a.grid(row=0,column=2, pady=20)
-    Label(loginFrame,text="Enter user name:").grid(row=1,column=1)
-    Entry(loginFrame,textvariable=svuser).grid(row=1,column=2)
-    Label(loginFrame, text="Enter password:").grid(row=2, column=1)
-    Entry(loginFrame, textvariable=svpass).grid(row=2,column=2)
-    Button(loginFrame, text='login',height="2",width="30",command=lambda: check(a)).grid(row=3, column=2, pady=20)
+    Label(loginFrame,text='',fg='red').grid(row=0,column=2, pady=20)
+    Label(loginFrame,text="Enter user name:").grid(row=3,column=1)
+    Entry(loginFrame,textvariable=svuser).grid(row=3,column=2)
+    Label(loginFrame, text="Enter password:").grid(row=4, column=1)
+    Entry(loginFrame, textvariable=svpass).grid(row=4,column=2)
+    Button(loginFrame, text='log in',height="2",width="10").grid(row=7,column=5,pady=10)
     loginFrame.pack()
 <<<<<<< HEAD
 
@@ -245,8 +271,127 @@ top.mainloop()'''
 =======
 >>>>>>> f6276ef1b32f148412718f5262ebf3cb265dccd0
 
+
+
+# كود الصورر
+
+top=Tk()
+top.geometry('1000x600')
+image=filedialog.askopenfilename(filetypes=[("Image File",'.png')])
+#print(image.split('/')[-1::][0])
+conn = sqlite3.connect("Accept.db")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS pic (name TEXT)")
+cursor.execute("INSERT INTO pic (name)VALUES (?)",(image.split('/')[-1::][0],))
+conn.commit()
+im=PhotoImage(file=image)
+top.mainloop()
+
+
 account()
-frm.mainloop()
+frm.mainloop()'''
+
+def page5():
+    frm = tk.Tk()
+    window = tk.Toplevel(frm)
+    fnt = ('tahoma', 30)
+    fw = 900
+    fh = 800
+    x = (frm.winfo_screenwidth() - fw) / 2
+    y = (frm.winfo_screenheight() - fh) / 2 - 50
+    frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+    frm.title('Users')
+    frm.config(bg="white")
+
+    Button(frm, text="Setting", bg="white", height="6", width="30", font="50").grid(row=6,column=1,padx=300,pady=20)
+    Button(frm, text="Create a new board!", bg="white", height="6", width="30", font="50").grid(row=4,column=1,padx=300,pady=20)
+    Button(frm, text="An existing boards", bg="white", height="6", width="30", font="50").grid(row=2,column=1,padx=200,pady=20)
+    Button(frm, text="Profile", bg="white", height="6", width="15", font="50").grid(row=0,column=1,padx=200,pady=80)
+    Button(frm, text="<- Back", bg="white", height="6", width="15", font="50").grid(row=10,column=1,padx=30,pady=80)
+
+
+
+
+def page8():
+    frm = tk.Tk()
+    window = tk.Toplevel(frm)
+    fnt = ('tahoma', 30)
+    fw = 900
+    fh = 800
+    x = (frm.winfo_screenwidth() - fw) / 2
+    y = (frm.winfo_screenheight() - fh) / 2 - 50
+    frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+    frm.title('Users')
+    frm.config(bg="white")
+
+    Button(frm, text="Language", bg="white", height="6", width="30", font="").grid(row=4, column=1, padx=100,pady=20)
+    Button(frm, text="Help!", bg="white", height="6", width="30", font="50").grid(row=2, column=1, padx=100,pady=20)
+    Button(frm, text="Edit Profile", bg="white", height="6", width="30", font="50").grid(row=0, column=1,padx=100, pady=20)
+    Button(frm, text="<- Back", bg="white", height="3", width="10", font="10").grid(row=10, column=0, padx=5, pady=80)
+
+def page9():
+    frame = tk.Tk()
+    window = tk.Toplevel(frame)
+    fnt = ('tahoma', 15)
+    bg = "white"
+    bgtxt = "white"
+    fg = "black"
+    fw = 900
+    fh = 800
+    x = (frame.winfo_screenwidth() - fw) / 2
+    y = (frame.winfo_screenheight() - fh) / 2 - 50
+    frame.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+    frame.title('Update')
+    svuser = StringVar()
+    svId = StringVar()
+    svfname = StringVar()
+    svlname = StringVar()
+    svpass = StringVar()
+    svgender = StringVar()
+    svrname = StringVar()
+    svmail = StringVar()
+    svphone = StringVar()
+    svprofile = StringVar()
+    frame.config(bg="white")
+    Label(frame, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0,pady=20)
+    Label(frame, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,pady=20)
+    Label(frame, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=5, column=0,pady=20)
+    Label(frame, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0,pady=20)
+    Label(frame, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0,pady=20)
+    Label(frame, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=11, column=0,pady=20)
+    Label(frame, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=13, column=0,pady=20)
+    # Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
+    # Label(top, image=im).pack()
+    txtuser = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svuser).grid(row=0,column=2)
+    txtfname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svfname).grid(row=3,column=2)
+    txtlname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svlname).grid(row=5,column=2)
+    txtpass = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svpass).grid(row=7,column=2)
+    txtrname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svrname).grid(row=9,column=2)
+    txtmail = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail).grid(row=11,column=2)
+    txtphone = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone).grid(row=13,column=2)
+    #txtprofile = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile).grid(row=15,column=2)
+    btns = ttk.Style()
+    Button(frame, text='<-Back',bg="white",height="3",width="10").grid(row=20, column=0, pady=20,padx=10)
+
+    Button(frame, text='update',bg="white",height="1",width="5").grid(row=0, column=4, pady=20,padx=10)
+    Button(frame, text='update',bg="white",height="1",width="5").grid(row=3, column=4, pady=20,padx=10)
+    Button(frame, text='update',bg="white",height="1",width="5").grid(row=5, column=4, pady=20,padx=10)
+    Button(frame, text='update',bg="white",height="1",width="5").grid(row=7, column=4, pady=20,padx=10)
+    Button(frame, text='update',bg="white",height="1",width="5").grid(row=9, column=4, pady=20,padx=10)
+    Button(frame, text='update',bg="white",height="1",width="5").grid(row=11, column=4, pady=20,padx=10)
+    Button(frame, text='update',bg="white",height="1",width="5").grid(row=13, column=4, pady=20,padx=10)
+
+
+
+
+
+
+    frame.mainloop()
+
+
+#page5()
+#page8()
+page9()
 
 
 <<<<<<< HEAD
