@@ -6,13 +6,13 @@ import sqlite3
 from tkinter import filedialog
 import datetime
 
-
+'''
 def login():
     global loginframe
     loginframe = Frame(frm)
     Label(loginframe, text='xxx', fg="red").pack()
     loginframe.pack()
-
+'''
 
 frm = tk.Tk()
 fnt = ('tahoma', 16)
@@ -50,23 +50,23 @@ def Database():
     cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT,profile BLOB NOT NULL,answer TEXT)")
     cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
     conn.commit()
-
 Database()
 
-def forgetpass():
-    cursor.execute("SELECT answer FROM users WHERE id=?",(id,))
-    x=cursor.fetchal()
+
+
+'''
     if x==txtanswer.get():
         returnpass()
     else:
         messagebox.showinfo('', 'The answer is not right!')
         txtanswer.set('')
         txtanswer.focus()
-        
+'''
+'''     
 def insert_user(user_name,id,first_name,last_name,password,gander,responsible_name,Email,phone,answer):
     cursor.execute("INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,answer) VALUES(?,?,?,?,?,?,?,?,?,?)",(first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,answer))
     conn.commit()
-
+'''
 def insert_board(name, id):
     cursor.execute("INSERT INTO boards (name,id) VALUES(?,?)", (name, id))
     conn.commit()
@@ -189,8 +189,8 @@ def Database():
 
 Database()
 '''
-def insert_user(user_name,id,first_name,last_name,password,gander,responsible_name,Email,phone,answer):
-    cursor.execute("INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,answer) VALUES(?,?,?,?,?,?,?,?,?,?)",(first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,answer))
+def insert_user(user_name,id,first_name,last_name,password,gander,responsible_name,Email,phone,profile,answer):
+    cursor.execute("INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,profile,answer) VALUES(?,?,?,?,?,?,?,?,?,?,?)",(first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,profile,answer,))
     conn.commit()
 
 def insert_board(name, id):
@@ -213,23 +213,130 @@ def update_information_user(name,last_name,password,user_name,email,responsible_
 def account():
     global a
     a=Frame(frm)
-    def gotoLogin():
+    
+    def forget():
         a.forget()
-        login()
-        main_page()
-    Label(a,text="Choose Login Or Register", bg="blue", width="300")
-    Label(a,text="").pack()
-    Button(a,text="Login",height="2",width="30",command=gotoLogin).pack()
-    Label(a,text="").pack()
-    Button(a,text="Register",height="2",width="30",command=sign_up).pack()
-    a.pack()
+        
+           
+        def returnpass():
+            forgetframe.forget()
+            global newpassframe
+            newpassframe = Frame(frm)
+            def checkpass():
+
+                if txtnew.get()==txt2.get():
+                    newpassframe.forget()    
+                    account()
+                else:
+                    messagebox.showinfo('', 'The passwords not matched!')
+                    txtnew.focus()
+                    txt2.focus() 
+            Label(newpassframe,text='New Password',font='impact 25').pack()
+
+            frm.geometry('600x400')
+            lblnew=ttk.Label(newpassframe,text='Enter new password:')
+            txtnew=ttk.Entry(newpassframe)
+            lbl2=ttk.Label(newpassframe,text='Enter the password one more time:')
+            txt2=ttk.Entry(newpassframe)
+            change=ttk.Button(newpassframe,text='change password',command=checkpass)
+
+            lblnew.config(font=fnt)
+            txtnew.config(font=fnt)
+            lbl2.config(font=fnt)
+            txt2.config(font=fnt)
+
+            lblnew.pack()
+            txtnew.pack()
+            lbl2.pack()
+            txt2.pack()
+            change.pack()
+            newpassframe.pack()
+    
+        
+
+        def question():
+            global forgetframe
+            forgetframe = Frame(frm)
+            def forgetpass():
+        
+                cursor.execute("SELECT * FROM 'users' ")
+                rows=cursor.fetchall()
+                for i in rows:
+                    if txtid.get()==i[3] and txtanswer.get()==i[12]:
+                        returnpass()
+                        print(txtanswer.get())
+            Label(forgetframe,text='Account security',font='impact 25').pack()
+
+            lbl1=ttk.Label(forgetframe,text='your id:')
+            lbl=ttk.Label(forgetframe,text='what your primry school?')
+
+            txtanswer=ttk.Entry(forgetframe)
+            txtanswer.config(font=fnt)
+            txtid=ttk.Entry(forgetframe)
+            txtid.config(font=fnt)
+            lbl1.config(font=fnt)
+            lbl.config(font=fnt)
+    
+            ok=ttk.Button(forgetframe,text='OK',command=forgetpass)
+
+            lbl1.pack()
+            txtid.pack()
+            lbl.pack()
+            txtanswer.pack()
+            ok.pack()
+            forgetframe.pack()
+        question()
+
+ 
+    
+    def login():
+        a.forget()
+        global loginFrame
+        loginFrame=Frame(frm)
+        def check():
+            cursor.execute("select * from 'users' where user_name=(?) and password=(?) ",(txtname.get(),txtpass.get()))
+            print(txtname.get(),txtpass.get())
+            if cursor.fetchone() is None:
+                 messagebox.showinfo('', 'Invalid Username or password!')
+                 txtname.focus()
+                 txtpass.focus() 
+            else:
+                print(4)
+                
+
+        lblname=ttk.Label(loginFrame,text='Enter username:')
+        txtname=ttk.Entry(loginFrame)
+        lblpass=ttk.Label(loginFrame,text='Enter the password:')
+        txtpass=ttk.Entry(loginFrame)
+
+            
+        txtname.config(font=fnt)
+        txtpass.config(font=fnt)
+        lblname.config(font=fnt)
+        lblpass.config(font=fnt)
+    
+        login=ttk.Button(loginFrame,text='login',command=check)
+
+        lblname.pack()
+        txtname.pack()
+        lblpass.pack()
+        txtpass.pack()
+        login.pack()
+        loginFrame.pack()
+
+    def f():
+        Label(a,text="Choose Login Or Register", bg="blue", width="300")
+        Label(a,text="").pack()
+        Button(a,text="Login",height="2",width="30",command=login).pack()
+        Label(a,text="").pack()
+        Button(a,text="Register",height="2",width="30",command=sign_up).pack()
+        Button(a,text="forget",height="2",width="30",command=forget).pack()
+        Label(a,text="").pack()
+        a.pack()
+    f()
 
 
-def check(lable):
-     cursor.execute("select * from 'users' where user_name=(?) and password=(?) ",(svuser.get(),svpass.get()))
-     print(svuser.get(),svpass.get())
-     if cursor.fetchone() is None:
-         lable.config(text="Invalid Username or password", fg="red")
+
 
 
 
@@ -242,7 +349,7 @@ def login():
     Entry(loginFrame,textvariable=svuser).grid(row=1,column=2)
     Label(loginFrame, text="Enter password:").grid(row=2, column=1)
     Entry(loginFrame, textvariable=svpass).grid(row=2,column=2)
-    Button(loginFrame, text='login',height="2",width="30",command=lambda: check(a)).grid(row=3, column=2, pady=20)
+    Button(loginFrame, text='login',height="2",width="30",command=lambda: check).grid(row=3, column=2, pady=20)
     loginFrame.pack()
 #<<<<<<< HEAD
 
@@ -271,53 +378,10 @@ top.mainloop()'''
 
 #<<<<<<< HEAD
 
-def question(id):
-    frm.geometry('600x400')
-    Label(frm,text='Account security',font='impact 25').pack()
 
-    lbl=ttk.Label(frm,text='what your primry school?')
-    txtanswer=ttk.Entry(frm)
-    lbl.config(font=fnt)
 
-    ok=ttk.Button(frm,text='OK',command=forgetpass)
 
-    txtanswer.config(font=fnt)
-
-    lbl.pack()
-    txtanswer.pack()
-    ok.pack()
-
-def checkpass():
-    if txtnew.get()==txt2.get():
-        account()
-    else:
-        messagebox.showinfo('', 'The passwords not matched!')
-        txtnew.set('')
-        txt2.set('')
-        txtnew.focus()
-        txt2.focus()
-def returnpass():
-    Label(frm,text='New Password',font='impact 25').pack()
-
-    frm.geometry('600x400')
-    lblnew=ttk.Label(frm,text='Enter new password:')
-    txtnew=ttk.Entry(frm)
-    lbl2=ttk.Label(frm,text='Enter the password one more time:')
-    txt2=ttk.Entry(frm)
-    change=ttk.Button(frm,text='change password',command=checkpass)
-
-    lblnew.config(font=fnt)
-    txtnew.config(font=fnt)
-    lbl2.config(font=fnt)
-    txt2.config(font=fnt)
-
-    lblnew.pack()
-    txtnew.pack()
-    lbl2.pack()
-    txt2.pack()
-    change.pack()
-insert_user(222,222,222,222,222,222,222,222,222,222)
-#question(222)
+account()
 
 def main_page():
     frm = tk.Tk()
