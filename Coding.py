@@ -215,13 +215,12 @@ def check(lable):
          lable.config(text="Invalid Username or password", fg="red")
 
 
-def checkuser(lable):
-    cursor.execute("select * from 'users' where user_name=(?) ", (svuser.get(),))
-    page3_admin()
-    if cursor.fetchone() is None:
-        lable.config(text="Invalid Username or password", fg="red")
+def checkuser(name):
 
-
+    cursor.execute("select * from 'users' where user_name=? ", (name,))
+    if cursor.fetchone() is not None:
+        return True
+    return False
 
 def login():
     global loginFrame
@@ -466,8 +465,22 @@ def page1_admin():
     back = tk.Button(page3, text=" <- Back ", bg="white", height="3", width="10", font="100").grid(row=5, column=1,sticky=W, padx=20,pady=20)
     page3.mainloop()
 
+
+
+
+
+
 def page2_admin():
-    m.forget()
+    global r
+    def funAzr():
+        text=r.get()
+
+        if checkuser(text) == True:
+            page3_admin()
+        if checkuser(text) == False:
+            print("not found user")
+
+
     page2 = tk.Tk()
     # frm.forget()
     fnt = ('tahoma', 16)
@@ -482,9 +495,13 @@ def page2_admin():
     page2.title('add pic in new board')
     page2.config(bg=bg)
     Label(page2, text='Enter username you want to search:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1, padx=30,pady=120)
-    txtuser = Entry(page2, bg="white", fg=fg, font=fnt, textvariable=svuser).grid(row=10, column=2, padx=30,pady=120)
-    Button(page2, text=" Search", bg="white", height="1", width="8", font="15", command=checkuser).grid(row=14,column=4,sticky=W, padx=30, pady=30)
+    r=Entry(page2, bg="white", fg=fg, font=fnt,textvariable=svuser)
+    r.grid(row=10, column=2, padx=30,pady=120)
+
+
+    Button(page2, text=" Search", bg="white", height="1", width="8", font="15", command=funAzr).grid(row=14,column=4,sticky=W, padx=30, pady=30)
     page2.mainloop()
+
 
 def page3_admin():
     page = tk.Tk()
@@ -501,7 +518,7 @@ def page3_admin():
     page.title('add pic in new board')
     page.config(bg=bg)
     Button(page, text="Delete an user", bg="white", height="5", width="20", font="25",
-           command=delete_user(svuser.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
+           command=lambda :delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
     Button(page, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25").grid(row=5, column=1, sticky=W, padx=30,pady=20)
     page.mainloop()
 
@@ -523,5 +540,3 @@ page1_admin()
 #page11()
 #page7()
 #page6()'''
-
-
