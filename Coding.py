@@ -485,6 +485,7 @@ def account():
         Entry(loginFrame,textvariable=svuser).grid(row=2,column=1)
         Label(loginFrame, text="Enter password:").grid(row=3, column=1)
         Entry(loginFrame, textvariable=svpass).grid(row=4,column=1)
+
         '''
         lblname=ttk.Label(loginFrame,text='Enter username:').grid(row=1,column=2,padx=10,pady=10)
         txtname=ttk.Entry(loginFrame).grid(row=2,column=2,padx=10,pady=10)
