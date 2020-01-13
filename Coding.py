@@ -28,7 +28,7 @@ y = (frm.winfo_screenheight() - fh) / 2 - 50
 pad = 10
 
 frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-frm.title('Users')
+#frm.title('Users')
 frm.config(bg=bg)
 
 svuser = StringVar()
@@ -41,6 +41,7 @@ svrname = StringVar()
 svmail = StringVar()
 svphone = StringVar()
 svprofile=StringVar()
+svmassage=StringVar()
 def Database():
     global conn, cursor
     conn = sqlite3.connect("Accept.db")
@@ -95,20 +96,21 @@ def create():
         messagebox.showinfo('', 'The profile is Empty!')
 
     else:
-        insert_user(svuser.get(),svId.get(),svfname.get(),svlname.get(),svpass.get(),svgender.get(),svrname.get(),svmail.get(),svphone.get())
+        insert_user(svuser.get(),svId.get(),svfname.get(),svlname.get(),svpass.get(),svgender.get(),svrname.get(),svmail.get(),svphone.get(),svmassage.get())
         svId.set('')
         svfname.set('')
         svlname.set('')
         svgender.set('')
         svrname.set('')
         svmail.set('')
+        svmassage.set('')
         svprofile.set('')
         frame.destroy()
         login()
 
 
 def sign_up():
-    global frame, txtuser, txtid, txtfname, txtlname, txtpass, txtgender, txtrname, txtmail, txtphone,txtprofile
+    global frame, txtuser, txtid, txtfname, txtlname, txtpass, txtgender, txtrname, txtmail, txtphone,txtprofile,txtmassage
     frame = Frame(frm, bg=bg)
     # Label(frame, text='User Data', bg='navy', fg='lightblue', font=fnt).pack(pady=pad)
 
@@ -121,6 +123,7 @@ def sign_up():
     Label(frame, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
     Label(frame, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
     Label(frame, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
+
     #Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
     #Label(top, image=im).pack()
     txtuser = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svuser)
@@ -135,6 +138,8 @@ def sign_up():
     txtprofile=Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile)
     btns = ttk.Style()
     btns.configure('TButton', font=fnt, pady=pad, padding=pad)
+   #c = Checkbutton(frame,text="item1",variable="unchecked",onvalue="checked").grid(row=10, column=3, pady=pad)
+    #c.pack()
     ttk.Button(frame, text='Create', command=create).grid(row=11, column=3, pady=pad)
     ttk.Button(frame, text='Back').grid(row=11, column=0, pady=8)
     # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
@@ -191,6 +196,10 @@ def update_information_user(name,last_name,password,user_name,email,responsible_
     cursor.execute("UPDATE 'users' SET first_name=?,last_name=?,password=?,user_name=?,Email=?,responsible_name=?,phone=?",(name,last_name,password,user_name,email,responsible_name,phone))
     conn.commit()
 
+def update_massage(massage,username):
+    cursor.execute("UPDATE 'users' SET massage=? WHERE user_name=?",(massage,username))
+    conn.commit()
+
 
 def account():
     global a
@@ -236,7 +245,7 @@ def login():
         x = (frm.winfo_screenwidth() - fw) /2
         y = (frm.winfo_screenheight() - fh) / 2 - 50
         frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-        frm.title('Users')
+        #frm.title('Users')
         frm.config(bg=bg)
         B = tk.Button(frm, text="Board", bg="white", height="6", width="30", font="40").grid(row=0, column=1, pady=20)
         # B.pack()
@@ -269,7 +278,7 @@ def page5():
     x = (frm.winfo_screenwidth() - fw) / 2
     y = (frm.winfo_screenheight() - fh) / 2 - 50
     frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-    frm.title('Users')
+    #frm.title('Users')
     frm.config(bg="white")
 
     Button(frm, text="Setting", bg="white", height="6", width="30", font="50").grid(row=6,column=1,padx=300,pady=20)
@@ -290,11 +299,11 @@ def page8():
     x = (frm.winfo_screenwidth() - fw) / 2
     y = (frm.winfo_screenheight() - fh) / 2 - 50
     frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-    frm.title('Users')
+
     frm.config(bg="white")
 
     Button(frm, text="Language", bg="white", height="6", width="30", font="").grid(row=4, column=1, padx=100,pady=20)
-    Button(frm, text="Help!", bg="white", height="6", width="30", font="50").grid(row=2, column=1, padx=100,pady=20)
+    Button(frm, text="About!", bg="white", height="6", width="30", font="50").grid(row=2, column=1, padx=100,pady=20)
     Button(frm, text="Edit Profile", bg="white", height="6", width="30", font="50").grid(row=0, column=1,padx=100, pady=20)
     Button(frm, text="<- Back", bg="white", height="3", width="10", font="10").grid(row=10, column=0, padx=5, pady=80)
 
@@ -450,11 +459,6 @@ def page1_admin():
     fg = '#000000'
     fw = 900
     fh = 800
-    x = (frm.winfo_screenwidth() - fw) / 2
-    y = (frm.winfo_screenheight() - fh) / 2 - 50
-    frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-    frm.title('main page for admin')
-    frm.config(bg=bg)
     Button(page3, text="Search an User", bg="white", height="5", width="20", font="25",command=page2_admin).grid(row=2, column=1, sticky=W, padx=30,pady=50)
     Button(page3, text="Add a new board", bg="white", height="5", width="20", font="25").grid(row=2, column=3, sticky=W, padx=30,pady=50)
     Button(page3, text="Add a new Catigoria", bg="green", height="5", width="20", font="25").grid(row=3, column=1, sticky=W, padx=30,pady=20)
@@ -471,14 +475,18 @@ def page1_admin():
 
 
 def page2_admin():
-    global r
+    global r,m
     def funAzr():
         text=r.get()
-
         if checkuser(text) == True:
-            page3_admin()
+            #page3_admin()
+            #page4_admin()
+            page5_admin()
+
         if checkuser(text) == False:
-            print("not found user")
+            messagebox.showinfo('', 'Not found user!')
+
+
 
 
     page2 = tk.Tk()
@@ -487,12 +495,6 @@ def page2_admin():
     bg = '#ffffff'
     bgtxt = '#00ff00'
     fg = '#000000'
-    fw = 900
-    fh = 800
-    x = (page2.winfo_screenwidth() - fw) / 2
-    y = (page2.winfo_screenheight() - fh) / 2 - 50
-    page2.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-    page2.title('add pic in new board')
     page2.config(bg=bg)
     Label(page2, text='Enter username you want to search:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1, padx=30,pady=120)
     r=Entry(page2, bg="white", fg=fg, font=fnt,textvariable=svuser)
@@ -512,16 +514,44 @@ def page3_admin():
     fg = '#000000'
     fw = 900
     fh = 800
-    x = (page.winfo_screenwidth() - fw) / 2
-    y = (page.winfo_screenheight() - fh) / 2 - 50
-    page.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-    page.title('add pic in new board')
     page.config(bg=bg)
-    Button(page, text="Delete an user", bg="white", height="5", width="20", font="25",
-           command=lambda :delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
-    Button(page, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25").grid(row=5, column=1, sticky=W, padx=30,pady=20)
+    #Button(page, text="Delete an user", bg="white", height="5", width="20", font="25",command=lambda :delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
+    #Button(page, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25").grid(row=5, column=1, sticky=W, padx=30,pady=20)
+    #Button(page, text="Send A massage ", bg="white", height="5", width="20", font="25").grid(row=7, column=1, sticky=W, padx=30,pady=20)
     page.mainloop()
 
+def page4_admin():
+    page4 = tk.Tk()
+    # frm.forget()
+    fnt = ('tahoma', 16)
+    bg = '#ffffff'
+    bgtxt = '#00ff00'
+    fg = '#000000'
+    fw = 900
+    fh = 800
+    text1 = "Happy Birthday ya qalbiy :) "
+    page4.config(bg=bg)
+    Button(page4, text="Delete an user", bg="white", height="5", width="20", font="25",command=lambda :delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
+    Button(page4, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25",command=lambda :update_massage(text1,r.get())).grid(row=5, column=1, sticky=W, padx=30,pady=20)
+    Button(page4, text="Send A massage ", bg="white", height="5", width="20", font="25",command=lambda :update_massage(text1,r.get())).grid(row=7, column=1, sticky=W,padx=30, pady=20)
+
+    page4.mainloop()
+def page5_admin():
+    page5 = tk.Tk()
+    # frm.forget()
+    fnt = ('tahoma', 16)
+    bg = '#ffffff'
+    bgtxt = '#00ff00'
+    fg = '#000000'
+    page5.config(bg=bg)
+    Label(page5, text='Enter your massage thats you want to send to user ', bg=bg, fg=fg, font=fnt).grid(row=10, column=1, padx=30,pady=120)
+    m=Entry(page5, bg="white", fg=fg, font=fnt,textvariable=svmassage)
+    m.grid(row=10, column=2, padx=30,pady=120)
+    Button(page5, text="Send", bg="white", height="1", width="8", font="15", command=lambda :update_massage(m.get(),r.get())).grid(row=14,column=4,sticky=W, padx=30, pady=30)
+    #messagebox.showinfo('', 'The massage send!')
+
+
+    page5.mainloop()
 
 
 
@@ -532,11 +562,15 @@ def page3_admin():
 
 
 
-#sign_up()
-page1_admin()
+
+
+
+sign_up()
+#page1_admin()
 '''#page5()
 #page8()
 #page9()
 #page11()
 #page7()
 #page6()'''
+
