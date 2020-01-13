@@ -11,13 +11,12 @@ import sqlite3
 from tkinter import filedialog
 import datetime
 
-'''
+
 def login():
     global loginframe
     loginframe = Frame(frm)
     Label(loginframe, text='xxx', fg="red").pack()
     loginframe.pack()
-'''
 
 frm = tk.Tk()
 fnt = ('tahoma', 16)
@@ -48,15 +47,15 @@ svgender = StringVar()
 svrname = StringVar()
 svmail = StringVar()
 svphone = StringVar()
-<<<<<<< HEAD
+
 svprofile = StringVar()
 svanswer = StringVar()
 
 
-=======
+
 svprofile=StringVar()
 svmassage=StringVar()
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
+
 def Database():
     global conn, cursor
     conn = sqlite3.connect("Accept.db")
@@ -95,8 +94,7 @@ def insert_board(name, id):
 def delete_user(id):
     cursor.execute("DELETE FROM 'users' WHERE id=?", (id,))
     conn.commit()
-<<<<<<< HEAD
-=======
+
 def create():
    ''' if svuser.get().strip() == '':
         messagebox.showinfo('', 'The user name  is Empty!')
@@ -156,8 +154,6 @@ def create():
    txtphone.set('')'''
 
    frame.destroy()
-   login()
-
 
 
 def sign_up():
@@ -256,7 +252,7 @@ def pageif():
         Button(root, text='Create', command=create).grid(row=13, column=3, pady=pad)
         root.mainloop()
 
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
+
 
 
 def logout(frame):
@@ -264,7 +260,7 @@ def logout(frame):
     svuser.set('')
     svpass.set('')
     frame.destroy()
-    login()
+
 
 
 '''
@@ -292,14 +288,14 @@ def insert_board(name, id):
     cursor.execute("INSERT INTO boards (name,id) VALUES(?,?)", (name, id))
     conn.commit()
 
-<<<<<<< HEAD
+
 
 def delete_user(id):
     cursor.execute("DELETE FROM 'users' WHERE id=?", (id,))
-=======
+
 def delete_user(username):
     cursor.execute("DELETE FROM 'users' WHERE user_name=?",(username,))
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
+
     conn.commit()
 
 
@@ -319,15 +315,14 @@ def update_massage(massage,username):
     conn.commit()
 
 
-<<<<<<< HEAD
+
 photonameList = []
 photoDic = {}
 imageNameInasert = {'im1name': None, 'im2name': None, 'im3name': None, 'im4name': None}
 imageToInsert = {'im1': None, 'im2': None, 'im3': None, 'im4': None}
 
 
-=======
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
+
 def account():
     global a
     a = Frame(frm)
@@ -733,7 +728,7 @@ def account():
 
     def login():
         a.forget()
-<<<<<<< HEAD
+
         global loginFrame
         loginFrame = Frame(frm)
 
@@ -841,7 +836,7 @@ def login():
         # A.pack()
         frm.mainloop()
 
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
+
     loginFrame=Frame(frm)
     a=Label(loginFrame,text='',fg='red')
     a.grid(row=0,column=2, pady=20)
@@ -851,8 +846,6 @@ def login():
     Entry(loginFrame, textvariable=svpass).grid(row=2,column=2)
     Button(loginFrame, text='login',height="2",width="30",command=lambda: check).grid(row=3, column=2, pady=20)
     loginFrame.pack()
-<<<<<<< HEAD
-#<<<<<<< HEAD
 '''
 
 # كود الصورر
@@ -875,7 +868,7 @@ top.mainloop()'''
 
 # frm.mainloop()
 
-=======
+
 
 
 
@@ -1051,19 +1044,18 @@ def page7():
     Button(frm, text="+", bg="white", height="10", width="20", font="100").grid(row=2, column=4, sticky=W, padx=90,pady=100)
     Button(frm, text="Save", bg="white", height="3", width="10", font="100").grid(row=3, column=4, sticky=W, padx=170,pady=20)
     back = tk.Button(frm, text=" <- Back ", bg="white", height="3", width="10", font="100",command=page6).grid(row=3, column=0,sticky=W, padx=20,pady=20)
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
+
 
 # <<<<<<< HEAD
 
-<<<<<<< HEAD
-=======
+
 #page6()
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
 
 account()
 
 
 def main_page():
+    idboard=StringVar()
     frm = tk.Tk()
     fnt = ('tahoma', 16)
     bg = '#ffffff'
@@ -1074,7 +1066,7 @@ def main_page():
     x = (frm.winfo_screenwidth() - fw) / 2
     y = (frm.winfo_screenheight() - fh) / 2 - 50
     frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-<<<<<<< HEAD
+
     frm.title('Users')
     frm.config(bg=bg)
     B = tk.Button(frm, text="Board", bg="white", height="6", width="30", font="40").grid(row=0, column=1, pady=20)
@@ -1086,9 +1078,6 @@ def main_page():
     # frm.iconbitmap('icon.ico')
     frm.mainloop()
 
-
-frm.mainloop()
-=======
     frm.title('new pic ')
     Label(frm, text='name of image:', bg="white", fg=fg, font=" impact 25").grid(row=0, column=2)
     frm.config(bg=bg)
@@ -1235,4 +1224,3 @@ page8()
 #page7()
 #page6()'''
 
->>>>>>> cf400160711b0a83427ef4920ee4b064c7dcce36
