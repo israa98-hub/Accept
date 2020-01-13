@@ -65,7 +65,7 @@ def delete_user(id):
     cursor.execute("DELETE FROM 'users' WHERE id=?",(id,))
     conn.commit()
 def create():
-    if svuser.get().strip() == '':
+   ''' if svuser.get().strip() == '':
         messagebox.showinfo('', 'The user name  is Empty!')
         txtuser.focus()
     elif svId.get().strip() == '':
@@ -89,24 +89,42 @@ def create():
     elif svmail.get().strip() == '':
         messagebox.showinfo('', 'The E-mail of the responsible is Empty!')
         txtmail.focus()
-    elif svphone.get().strip() == '':
-        messagebox.showinfo('', 'The number phone of the responsible is Empty!')
+    elif svphone).get().strip() == '':
+        messagebox.showinfo('', 'The number phone of the responsible is Empty!'
         txtphone.focus()
     elif svprofile.get().strip()=='':
         messagebox.showinfo('', 'The profile is Empty!')
 
-    else:
-        insert_user(svuser.get(),svId.get(),svfname.get(),svlname.get(),svpass.get(),svgender.get(),svrname.get(),svmail.get(),svphone.get(),svmassage.get())
-        svId.set('')
-        svfname.set('')
-        svlname.set('')
-        svgender.set('')
-        svrname.set('')
-        svmail.set('')
-        svmassage.set('')
-        svprofile.set('')
-        frame.destroy()
-        login()
+    else:'''
+   #insert_user(svuser.get(), svId.get(), svfname.get(), svlname.get(), svpass.get(), svgender.get(), svrname.get(),svmail.get(), svphone.get(), svmassage.get())
+   if i.get()==0:
+       insert_user(txtuser.get(), txtid.get(), txtfname.get(), txtlname.get(), txtpass.get(), txtgender.get(),
+                   txtrname.get(), txtmail.get(), txtphone.get())
+   else:
+       messagebox.showinfo('', 'you want to agree the terms')
+
+   '''svId.set('')
+   svfname.set('')
+   svlname.set('')
+   svgender.set('')
+   svrname.set('')
+   svmail.set('')
+   svmassage.set('')
+   svprofile.set('')
+   frame.destroy()
+   txtuser.set('')
+   txtid.set('')
+   txtfname.set('')
+   txtlname.set('')
+   txtpass.set('')
+   txtgender.set('')
+   txtrname.set('')
+   txtmail.set('')
+   txtphone.set('')'''
+
+   frame.destroy()
+   login()
+
 
 
 def sign_up():
@@ -138,10 +156,10 @@ def sign_up():
     txtprofile=Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile)
     btns = ttk.Style()
     btns.configure('TButton', font=fnt, pady=pad, padding=pad)
-   #c = Checkbutton(frame,text="item1",variable="unchecked",onvalue="checked").grid(row=10, column=3, pady=pad)
-    #c.pack()
-    ttk.Button(frame, text='Create', command=create).grid(row=11, column=3, pady=pad)
-    ttk.Button(frame, text='Back').grid(row=11, column=0, pady=8)
+    #c = Checkbutton(frame, text="I accept the Terms of service ", variable="unchecked", onvalue="checked").grid(row=11, column=0, pady=pad)
+    #ttk.Button(frame, text='Create', command=create).grid(row=13, column=3, pady=pad)
+    ttk.Button(frame, text='Back').grid(row=13, column=0, pady=8)
+    ttk.Button(frame, text='Next',command=pageif).grid(row=13, column=3, pady=8)
     # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
 
     txtuser.grid(row=0, column=1, pady=pad)
@@ -156,6 +174,55 @@ def sign_up():
     txtprofile.grid(row=9,column=1,pady=pad)
 
     frame.pack(pady=pad)
+    frame.mainloop()
+i=IntVar()
+def pageif():
+    if svuser.get().strip() == '':
+        messagebox.showinfo('', 'The user name  is Empty!')
+        txtuser.focus()
+    elif svId.get().strip() == '':
+        messagebox.showinfo('', 'The number of id is Empty!')
+        txtid.focus()
+    elif svpass.get().strip() == '':
+        messagebox.showinfo('', 'The password Empty!')
+        txtpass.focus()
+    elif svfname.get().strip() == '':
+        messagebox.showinfo('', 'The first name of the autistic is Empty!')
+        txtfname.focus()
+    elif svlname.get().strip() == '':
+        messagebox.showinfo('', 'The last name of the autistic is Empty!')
+        txtlname.focus()
+    elif svgender.get() == '':
+        messagebox.showinfo('', 'the gender is Empty!')
+        txtgender.focus()
+    elif svrname.get().strip() == '':
+        messagebox.showinfo('', 'The name of the responsible is Empty!')
+        txtrname.focus()
+    elif svmail.get().strip() == '':
+        messagebox.showinfo('', 'The E-mail of the responsible is Empty!')
+        txtmail.focus()
+    elif svphone.get().strip() == '':
+        messagebox.showinfo('', 'The number phone of the responsible is Empty!')
+        txtphone.focus()
+    elif svprofile.get().strip()=='':
+        messagebox.showinfo('', 'The profile is Empty!')
+    else:
+        fnt = ('tahoma', 12)
+        bg = 'white'
+        bgtxt = 'white'
+        fg = 'black'
+        fw = 650
+        fh = 600
+        x = (frm.winfo_screenwidth() - fw) / 2
+        y = (frm.winfo_screenheight() - fh) / 2 - 50
+        frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+        root = Tk()
+        Label(root, text='hhhhhhhhhhhh', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+        c = Checkbutton(root, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
+            row=11, column=0, pady=pad)
+        Button(root, text='Create', command=create).grid(row=13, column=3, pady=pad)
+        root.mainloop()
+
 
 
 def logout(frame):
@@ -302,11 +369,40 @@ def page8():
 
     frm.config(bg="white")
 
-    Button(frm, text="Language", bg="white", height="6", width="30", font="").grid(row=4, column=1, padx=100,pady=20)
-    Button(frm, text="About!", bg="white", height="6", width="30", font="50").grid(row=2, column=1, padx=100,pady=20)
+    Button(frm, text="Language", bg="white", height="6", width="30", font="50").grid(row=4, column=1, padx=100,pady=20)
+    Button(frm, text="About!", bg="white", height="6", width="30", font="50",command=HelpFunc).grid(row=2, column=1, padx=100,pady=20)
     Button(frm, text="Edit Profile", bg="white", height="6", width="30", font="50").grid(row=0, column=1,padx=100, pady=20)
     Button(frm, text="<- Back", bg="white", height="3", width="10", font="10").grid(row=10, column=0, padx=5, pady=80)
+    frm.mainloop()
 
+def HelpFunc(texthelp):
+    frm = tk.Tk()
+    global exp
+    exp=texthelp
+
+    fnt = ('tahoma', 30)
+    fw = 900
+    fh = 800
+    x = (frm.winfo_screenwidth() - fw) / 2
+    y = (frm.winfo_screenheight() - fh) / 2 - 50
+    frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+
+    frm.config(bg="white")
+    HelpFunc2(exp)
+    frm.mainloop()
+def HelpFunc2(exp2):
+    frm = tk.Tk()
+    fnt = ('tahoma', 30)
+    fw = 900
+    fh = 800
+    x = (frm.winfo_screenwidth() - fw) / 2
+    y = (frm.winfo_screenheight() - fh) / 2 - 50
+    frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+
+    frm.config(bg="white")
+    Label(frm, text=exp2, bg=bg, fg=fg, font=fnt).grid(row=2, column=2)
+
+    frm.mainloop()
 def page9():
     frame = tk.Tk()
     window = tk.Toplevel(frame)
@@ -384,7 +480,6 @@ def page6():
     x.grid(row=2, column=2)
     # C= tk.Button(frm, text="Name of board", bg="white", height="6", width="40", font="40").grid(row = 0, column = 1, sticky = W,padx=100,pady=20)
     back = tk.Button(frm, text=" <- Back ", bg="white", height="3", width="10", font="100").grid(row=3, column=0,sticky=W, padx=10,pady=30)
-
     frm.mainloop()
 
 
@@ -430,8 +525,8 @@ def page11():
     idboard = StringVar()
     frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
     frm.title('new pic ')
-    frm.config(bg=bg)
     Label(frm, text='name of image:', bg="white", fg=fg, font=" impact 25").grid(row=0, column=2)
+    frm.config(bg=bg)
     lbl = ttk.Label(frm, text='name of the pic?')
     lbl.config(font=fnt)
     x = ttk.Entry(frm, textvariable=idboard)
@@ -459,16 +554,32 @@ def page1_admin():
     fg = '#000000'
     fw = 900
     fh = 800
+    text='an fatye,cmcmdlcmdsl'
     Button(page3, text="Search an User", bg="white", height="5", width="20", font="25",command=page2_admin).grid(row=2, column=1, sticky=W, padx=30,pady=50)
     Button(page3, text="Add a new board", bg="white", height="5", width="20", font="25").grid(row=2, column=3, sticky=W, padx=30,pady=50)
     Button(page3, text="Add a new Catigoria", bg="green", height="5", width="20", font="25").grid(row=3, column=1, sticky=W, padx=30,pady=20)
-    Button(page3, text="Update the page explain ", bg="white", height="5", width="20", font="25").grid(row=3, column=2, sticky=W, padx=30,pady=20)
+    Button(page3, text="Update the page explain ", bg="white", height="5", width="20", font="25",command=explain).grid(row=3, column=2, sticky=W, padx=30,pady=20)
     #Button(page3, text="Birthday", bg="green", height="5", width="20", font="25").grid(row=3, column=3, sticky=W, padx=30,pady=20)
     #Button(frm, text="Delete an user ", bg="green", height="5", width="20", font="25").grid(row=4, column=2, sticky=W, padx=30, pady=20)
     Button(page3, text="My design ", bg="green", height="5", width="20", font="25").grid(row=2, column=2, sticky=W, padx=30, pady=50)
     back = tk.Button(page3, text=" <- Back ", bg="white", height="3", width="10", font="100").grid(row=5, column=1,sticky=W, padx=20,pady=20)
     page3.mainloop()
+def explain():
+    explainpage= tk.Tk()
 
+    fnt = ('tahoma', 30)
+    fw = 900
+    fh = 800
+    x = (explainpage.winfo_screenwidth() - fw) / 2
+    y = (explainpage.winfo_screenheight() - fh) / 2 - 50
+    explainpage.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+
+    explainpage.config(bg="white")
+    Label(explainpage, text='enter your new explain', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+    m=Entry(explainpage, bg="white", fg=fg, font=fnt)
+    m.grid(row=10, column=2, padx=30,pady=120)
+    Button(explainpage, text="Ok", bg="green", height="5", width="20", font="25",command=lambda :HelpFunc(m.get())).grid(row=2, column=2, sticky=W,
+                                                                                         padx=30, pady=50)
 
 
 
@@ -480,8 +591,8 @@ def page2_admin():
         text=r.get()
         if checkuser(text) == True:
             #page3_admin()
-            #page4_admin()
-            page5_admin()
+            page4_admin()
+            #page5_admin()
 
         if checkuser(text) == False:
             messagebox.showinfo('', 'Not found user!')
@@ -505,21 +616,6 @@ def page2_admin():
     page2.mainloop()
 
 
-def page3_admin():
-    page = tk.Tk()
-    # frm.forget()
-    fnt = ('tahoma', 16)
-    bg = '#ffffff'
-    bgtxt = '#00ff00'
-    fg = '#000000'
-    fw = 900
-    fh = 800
-    page.config(bg=bg)
-    #Button(page, text="Delete an user", bg="white", height="5", width="20", font="25",command=lambda :delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
-    #Button(page, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25").grid(row=5, column=1, sticky=W, padx=30,pady=20)
-    #Button(page, text="Send A massage ", bg="white", height="5", width="20", font="25").grid(row=7, column=1, sticky=W, padx=30,pady=20)
-    page.mainloop()
-
 def page4_admin():
     page4 = tk.Tk()
     # frm.forget()
@@ -533,7 +629,7 @@ def page4_admin():
     page4.config(bg=bg)
     Button(page4, text="Delete an user", bg="white", height="5", width="20", font="25",command=lambda :delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
     Button(page4, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25",command=lambda :update_massage(text1,r.get())).grid(row=5, column=1, sticky=W, padx=30,pady=20)
-    Button(page4, text="Send A massage ", bg="white", height="5", width="20", font="25",command=lambda :update_massage(text1,r.get())).grid(row=7, column=1, sticky=W,padx=30, pady=20)
+    Button(page4, text="Send A massage ", bg="white", height="5", width="20", font="25",command=page5_admin).grid(row=7, column=1, sticky=W,padx=30, pady=20)
 
     page4.mainloop()
 def page5_admin():
@@ -564,11 +660,11 @@ def page5_admin():
 
 
 
-
-sign_up()
+page8()
+#sign_up()
 #page1_admin()
 '''#page5()
-#page8()
+
 #page9()
 #page11()
 #page7()
