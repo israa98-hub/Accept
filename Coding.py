@@ -155,9 +155,9 @@ def create():
    txtmail.set('')
    txtphone.set('')'''
 
-   frame.destroy()
+   #frame.destroy()
 
-
+'''
 def sign_up():
     global frame, txtuser, txtid, txtfname, txtlname, txtpass, txtgender, txtrname, txtmail, txtphone,txtprofile,txtmassage
     frame = Frame(frm, bg=bg)
@@ -206,6 +206,7 @@ def sign_up():
 
     frame.pack(pady=pad)
     frame.mainloop()
+'''
 i=IntVar()
 def pageif():
     if svuser.get().strip() == '':
@@ -238,6 +239,7 @@ def pageif():
     elif svprofile.get().strip()=='':
         messagebox.showinfo('', 'The profile is Empty!')
     else:
+        ttt = 'the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.\n• The system should be used correctly.\n• Allow managers to control my account.\n• Confirmation of saving my personal information in the system'
         fnt = ('tahoma', 12)
         bg = 'white'
         bgtxt = 'white'
@@ -248,7 +250,7 @@ def pageif():
         y = (frm.winfo_screenheight() - fh) / 2 - 50
         frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
         root = Tk()
-        Label(root, text='hhhhhhhhhhhh', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+        Label(root, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
         c = Checkbutton(root, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
             row=11, column=0, pady=pad)
         Button(root, text='Create', command=create).grid(row=13, column=3, pady=pad)
@@ -301,8 +303,8 @@ def delete_user(username):
     conn.commit()
 
 
-def delete_board(id):
-    cursor.execute("DELETE FROM 'boards' WHERE id=?", (id,))
+def delete_board(nameB):
+    cursor.execute("DELETE FROM 'boards' WHERE name=?", (nameB,))
     conn.commit()
 
 
@@ -324,10 +326,11 @@ imageNameInasert = {'im1name': None, 'im2name': None, 'im3name': None, 'im4name'
 imageToInsert = {'im1': None, 'im2': None, 'im3': None, 'im4': None}
 
 
-
+exp=0
 def account():
-    global a
-    a = Frame(frm)
+
+    global isShow
+    isShow = Frame(frm)
 
     def updatepro():
         def upusername():
@@ -360,68 +363,100 @@ def account():
             cursor.execute("UPDATE 'users' SET Email=? WHERE id=? ", (svmail.get(), id))
             conn.commit()
 
-        settingframe.forget()
-        global updateframe
-        updateframe = Frame(frm)
-        Label(updateframe, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0, pady=20)
-        Label(updateframe, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,
+        #settingframe.forget()
+        global isShow
+        isShow = Frame(frm)
+        Label(isShow, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0, pady=20)
+        Label(isShow, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,
                                                                                                  pady=20)
-        Label(updateframe, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=5, column=0,
+        Label(isShow, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=5, column=0,
                                                                                                 pady=20)
-        Label(updateframe, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0, pady=20)
-        Label(updateframe, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0, pady=20)
-        Label(updateframe, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=11, column=0,
+        Label(isShow, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0, pady=20)
+        Label(isShow, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0, pady=20)
+        Label(isShow, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=11, column=0,
                                                                                                 pady=20)
-        Label(updateframe, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=13, column=0,
+        Label(isShow, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=13, column=0,
                                                                                                       pady=20)
         # Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
         # Label(top, image=im).pack()
-        Entry(updateframe, bg=bgtxt, fg=fg, font=fnt, textvariable=svuser).grid(row=0, column=2)
-        Entry(updateframe, bg=bgtxt, fg=fg, font=fnt, textvariable=svfname).grid(row=3, column=2)
-        Entry(updateframe, bg=bgtxt, fg=fg, font=fnt, textvariable=svlname).grid(row=5, column=2)
-        Entry(updateframe, bg=bgtxt, fg=fg, font=fnt, textvariable=svpass).grid(row=7, column=2)
-        Entry(updateframe, bg=bgtxt, fg=fg, font=fnt, textvariable=svrname).grid(row=9, column=2)
-        Entry(updateframe, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail).grid(row=11, column=2)
-        Entry(updateframe, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone).grid(row=13, column=2)
+        Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svuser).grid(row=0, column=2)
+        Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svfname).grid(row=3, column=2)
+        Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svlname).grid(row=5, column=2)
+        Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svpass).grid(row=7, column=2)
+        Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svrname).grid(row=9, column=2)
+        Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail).grid(row=11, column=2)
+        Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone).grid(row=13, column=2)
         # txtprofile = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile).grid(row=15,column=2)
-        Button(updateframe, text='<-Back', bg="white", height="3", width="10").grid(row=20, column=0, pady=20, padx=10)
+        Button(isShow, text='<-Back', bg="white", height="3", width="10").grid(row=20, column=0, pady=20, padx=10)
 
-        Button(updateframe, text='update', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,
                                                                                                        pady=20, padx=10)
-        Button(updateframe, text='update', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,
                                                                                                     pady=20, padx=10)
-        Button(updateframe, text='update', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,
+        Button(isShow, text='update', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,
                                                                                                     pady=20, padx=10)
-        Button(updateframe, text='update', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,
+        Button(isShow, text='update', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,
                                                                                                    pady=20, padx=10)
-        Button(updateframe, text='update', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,
+        Button(isShow, text='update', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,
                                                                                                     pady=20, padx=10)
-        Button(updateframe, text='update', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,
                                                                                                    pady=20, padx=10)
-        Button(updateframe, text='update', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
                                                                                                     pady=20, padx=10)
 
-        updateframe.grid()
-        updateframe.mainloop()
+        isShow.grid()
+        isShow.mainloop()
 
+    def HelpFunc2():
+        global exp
+        frm = tk.Tk()
+        fnt = ('tahoma', 30)
+        fw = 900
+        fh = 800
+        x = (frm.winfo_screenwidth() - fw) / 2
+        y = (frm.winfo_screenheight() - fh) / 2 - 50
+        frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+
+        frm.config(bg="white")
+        Label(frm, text=exp, bg=bg, fg=fg, font=fnt).grid(row=2, column=2)
+
+        frm.mainloop()
+
+    def HelpFunc(texthelp):
+        global exp
+        frm = tk.Tk()
+
+        exp = texthelp
+
+        fnt = ('tahoma', 30)
+        fw = 900
+        fh = 800
+        x = (frm.winfo_screenwidth() - fw) / 2
+        y = (frm.winfo_screenheight() - fh) / 2 - 50
+        frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+        frm.config(bg="white")
+        Label(frm, text='your explain is :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0, pady=20)
+        Label(frm, text=exp, bg=bg, fg=fg, font=fnt).grid(row=5, column=0, pady=20)
+
+        frm.mainloop()
     def settingpage():
+        global mainframe
         mainframe.forget()
-        global settingframe
-        settingframe = Frame(frm)
+        isShow = Frame(frm)
 
-        Button(settingframe, text="Language", bg="white", height="6", width="30", font=fnt).grid(row=4, column=1,
+        Button(isShow, text="Language", bg="white", height="6", width="30", font=fnt).grid(row=4, column=1,
                                                                                                  padx=100, pady=20)
-        Button(settingframe, text="Help!", bg="white", height="6", width="30", font="50").grid(row=2, column=1,
+        Button(isShow, text="Help!", bg="white", height="6", width="30", font="50",command=HelpFunc2).grid(row=2, column=1,
                                                                                                padx=100, pady=20)
-        Button(settingframe, text="Edit Profile", bg="white", height="6", width="30", font="50",
+        Button(isShow, text="Edit Profile", bg="white", height="6", width="30", font="50",
                command=updatepro).grid(row=0, column=1, padx=100, pady=20)
-        Button(settingframe, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).grid(
+        Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).grid(
             row=10, column=0, padx=5, pady=80)
 
-        settingframe.pack()
+        isShow.pack()
 
     def sign_up():
-        a.forget()
+        isShow.forget()
         global frame, txtuser, txtid, txtfname, txtlname, txtpass, txtgender, txtrname, txtmail, txtphone, txtprofile, txtanswer
         frame = Frame(frm, bg=bg)
         # Label(frame, text='User Data', bg='navy', fg='lightblue', font=fnt).pack(pady=pad)
@@ -458,7 +493,8 @@ def account():
             row=10, column=0, pady=15)
         ttk.Button(frame, text='Create new account', command=create).grid(row=11, column=1, pady=pad)
         # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
-
+        ttk.Button(frame, text='Back').grid(row=13, column=0, pady=8)
+        ttk.Button(frame, text='Next', command=pageif).grid(row=13, column=3, pady=8)
         txtuser.grid(row=0, column=1, pady=pad)
         txtid.grid(row=1, column=1, pady=pad)
         txtfname.grid(row=2, column=1, pady=pad)
@@ -575,24 +611,26 @@ def account():
             imi = im
             isShow = catDic[namecat][counter]
             isShow.pack()
-
-        def creatbord():
-            global isShow
-            isShow.forget()
-
-            isShow = Frame(frm)
+        def save_B():
 
             cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
             conn.commit()
-            Button(isShow, text="+", bg="white", height="10", width="20", font="100", command=lambda: insertimag(1)).grid(
+        def creatbord():
+            global isShow
+            isShow.forget()
+            isShow = Frame(frm)
+
+            #cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
+            #conn.commit()
+            Button(isShow, text="+1", bg="white", height="10", width="20", font="100", command=lambda: insertimag(1)).grid(
                 row=1, column=1, sticky=W, padx=60, pady=20)
-            Button(isShow, text="+", bg="white", height="10", width="20", font="100", command=lambda: insertimag(2)).grid(
+            Button(isShow, text="+2", bg="white", height="10", width="20", font="100", command=lambda: insertimag(2)).grid(
                 row=1, column=4, sticky=W, padx=90, pady=20)
-            Button(isShow, text="+", bg="white", height="10", width="20", font="100", command=lambda: insertimag(3)).grid(
+            Button(isShow, text="+3", bg="white", height="10", width="20", font="100", command=lambda: insertimag(3)).grid(
                 row=2, column=1, sticky=W, padx=60, pady=50)
-            Button(isShow, text="+", bg="white", height="10", width="20", font="100", command=lambda: insertimag(4)).grid(
+            Button(isShow, text="+4", bg="white", height="10", width="20", font="100", command=lambda: insertimag(4)).grid(
                 row=2, column=4, sticky=W, padx=90, pady=100)
-            Button(isShow, text="Save", bg="white", height="3", width="10", font="100",command= lambda : mainpage()).grid(row=3, column=4,
+            Button(isShow, text="Save", bg="white", height="3", width="10", font="100",command= lambda : save_B).grid(row=3, column=4,
                                                                                                  sticky=W, padx=170,
                                                                                                  pady=20)
             back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",command=namebord).grid(row=3,
@@ -600,6 +638,9 @@ def account():
                                                                                                                 sticky=W,
                                                                                                                 padx=20,
                                                                                                                 pady=20)
+
+            cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
+            conn.commit()
             isShow.pack()
 
         def namebord():
@@ -676,14 +717,14 @@ def account():
         k=0
 
         for i in row:
-            
+
             Button(isShow, text=i[0], bg="white", height="3", width="15", font="20",command=lambda: bord(i[0])).grid(row=k, column=1, sticky=W, padx=20, pady=20)
             k+=1
             print(i[0])
 
         isShow.pack()
     def mainpage():
-        a.forget()
+
         global mainframe,isShow
         isShow.forget()
         mainframe = Frame(frm)
@@ -699,7 +740,7 @@ def account():
 
         '''
 
-        create = ttk.Button(mainframe, text='Create a new board!')
+        #create = ttk.Button(mainframe, text='Create a new board!')
         Button(mainframe, text="Setting", bg="white", font=fnt, command=settingpage).grid(row=6, column=1, padx=300,
                                                                                           pady=10)
         Button(mainframe, text="Create a new board!", bg="white", font=fnt, command=newbord).grid(row=4, column=1,
@@ -786,8 +827,124 @@ def account():
 
         question()
 
+    def checkuser(name):
+
+        cursor.execute("select * from 'users' where user_name=? ", (name,))
+        if cursor.fetchone() is not None:
+            return True
+        return False
+    def page2_admin():
+        global r, m
+
+        def funAzr():
+            text = r.get()
+            if checkuser(text) == True:
+                # page3_admin()
+                page4_admin()
+                # page5_admin()
+
+            if checkuser(text) == False:
+                messagebox.showinfo('', 'Not found user!')
+
+        page2 = tk.Tk()
+        # frm.forget()
+        fnt = ('tahoma', 16)
+        bg = '#ffffff'
+        bgtxt = '#00ff00'
+        fg = '#000000'
+        page2.config(bg=bg)
+        Label(page2, text='Enter username you want to search:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1, padx=30,
+                                                                                             pady=120)
+        r = Entry(page2, bg="white", fg=fg, font=fnt, textvariable=svuser)
+        r.grid(row=10, column=2, padx=30, pady=120)
+
+        Button(page2, text=" Search", bg="white", height="1", width="8", font="15", command=funAzr).grid(row=14,
+                                                                                                         column=4,
+                                                                                                         sticky=W,
+                                                                                                         padx=30,
+                                                                                                         pady=30)
+        page2.mainloop()
+    def page1_admin():
+        global isShow
+        isShow.forget()
+        isShow = Frame(frm)
+
+        Button(isShow, text="Search an User", bg="white", height="5", width="20", font="25", command=page2_admin).grid(
+            row=2, column=1, sticky=W, padx=30, pady=50)
+        Button(isShow, text="Add a new board", bg="white", height="5", width="20", font="25").grid(row=2, column=3,
+                                                                                                   sticky=W, padx=30,
+                                                                                                   pady=50)
+        Button(isShow, text="Add a new Catigoria", bg="green", height="5", width="20", font="25").grid(row=3, column=1,
+                                                                                                       sticky=W,
+                                                                                                       padx=30, pady=20)
+        Button(isShow, text="Update the page explain ", bg="white", height="5", width="20", font="25",
+               command=explain).grid(row=3, column=2, sticky=W, padx=30, pady=20)
+        # Button(page3, text="Birthday", bg="green", height="5", width="20", font="25").grid(row=3, column=3, sticky=W, padx=30,pady=20)
+        # Button(frm, text="Delete an user ", bg="green", height="5", width="20", font="25").grid(row=4, column=2, sticky=W, padx=30, pady=20)
+        Button(isShow, text="My design ", bg="green", height="5", width="20", font="25").grid(row=2, column=2, sticky=W,
+                                                                                              padx=30, pady=50)
+        back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100").grid(row=5, column=1,
+                                                                                                        sticky=W,
+                                                                                                        padx=20,
+                                                                                                        pady=20)
+        isShow.pack()
+
+    def explain():
+        explainpage = tk.Tk()
+
+        fnt = ('tahoma', 30)
+        fw = 900
+        fh = 800
+        x = (explainpage.winfo_screenwidth() - fw) / 2
+        y = (explainpage.winfo_screenheight() - fh) / 2 - 50
+        explainpage.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+
+        explainpage.config(bg="white")
+        Label(explainpage, text='enter your new explain', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+        m = Entry(explainpage, bg="white", fg=fg, font=fnt)
+        m.grid(row=10, column=2, padx=30, pady=120)
+        Button(explainpage, text="Ok", bg="green", height="5", width="20", font="25",
+               command=lambda: HelpFunc(m.get())).grid(row=2, column=2, sticky=W,
+                                                       padx=30, pady=50)
+
+    def page4_admin():
+        page4 = tk.Tk()
+        # frm.forget()
+        fnt = ('tahoma', 16)
+        bg = '#ffffff'
+        bgtxt = '#00ff00'
+        fg = '#000000'
+        fw = 900
+        fh = 800
+        text1 = "Happy Birthday ya qalbiy :) "
+        Button(page4, text="Delete an user", bg="white", height="5", width="20", font="25",
+               command=lambda: delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
+        Button(page4, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25",
+               command=lambda: update_massage(text1, r.get())).grid(row=5, column=1, sticky=W, padx=30, pady=20)
+        Button(page4, text="Send A massage ", bg="white", height="5", width="20", font="25", command=page5_admin).grid(
+            row=7, column=1, sticky=W, padx=30, pady=20)
+
+        page4.mainloop()
+
+    def page5_admin():
+        page5 = tk.Tk()
+        # frm.forget()
+        fnt = ('tahoma', 16)
+        bg = '#ffffff'
+        bgtxt = '#00ff00'
+        fg = '#000000'
+        page5.config(bg=bg)
+        Label(page5, text='Enter your massage thats you want to send to user ', bg=bg, fg=fg, font=fnt).grid(row=10,
+                                                                                                             column=1,
+                                                                                                             padx=30,
+                                                                                                             pady=120)
+        m = Entry(page5, bg="white", fg=fg, font=fnt, textvariable=svmassage)
+        m.grid(row=10, column=2, padx=30, pady=120)
+        Button(page5, text="Send", bg="white", height="1", width="8", font="15",
+               command=lambda: update_massage(m.get(), r.get())).grid(row=14, column=4, sticky=W, padx=30, pady=30)
+        # messagebox.showinfo('', 'The massage send!')
     def login():
-        a.forget()
+
 
         global isShow
         isShow.forget()
@@ -832,15 +989,19 @@ def account():
         isShow.pack()
 
     def f():
-        Label(a, text="Choose Login Or Register", bg="blue", width="300")
-        Label(a, text="").pack()
-        Button(a, text="Login", height="2", width="30", command=login).pack()
-        Label(a, text="").pack()
-        Button(a, text="Register", height="2", width="30", command=sign_up).pack()
-        Label(a, text="").pack()
-        a.pack()
-
+        global isShow
+        isShow=Frame(frm)
+        Label(isShow, text="Choose Login Or Register", bg="blue", width="300")
+        Label(isShow, text="").pack()
+        Button(isShow, text="Login", height="2", width="30", command=login).pack()
+        Label(isShow, text="").pack()
+        Button(isShow, text="Register", height="2", width="30", command=sign_up).pack()
+        Label(isShow, text="").pack()
+        isShow.pack()
+        isShow.mainloop()
     f()
+
+
 #cursor.execute("DELETE FROM boards WHERE name='shaa'")
 #conn.commit()
 #w = Scale(frm, from_=0, to=42)
@@ -939,7 +1100,7 @@ top.mainloop()'''
 
 #account()
 #frm.mainloop()
-
+'''
 def page5():
     frm = tk.Tk()
     window = tk.Toplevel(frm)
@@ -1006,7 +1167,9 @@ def HelpFunc2(exp2):
     frm.config(bg="white")
     Label(frm, text=exp2, bg=bg, fg=fg, font=fnt).grid(row=2, column=2)
 
+ 
     frm.mainloop()
+'''
 def page9():
     frame = tk.Tk()
     window = tk.Toplevel(frame)
@@ -1088,7 +1251,7 @@ def page6():
 
 
 
-
+'''
 def page7():
     frm = tk.Tk()
     frm.forget()
@@ -1110,13 +1273,13 @@ def page7():
     Button(frm, text="Save", bg="white", height="3", width="10", font="100").grid(row=3, column=4, sticky=W, padx=170,pady=20)
     back = tk.Button(frm, text=" <- Back ", bg="white", height="3", width="10", font="100",command=page6).grid(row=3, column=0,sticky=W, padx=20,pady=20)
 
-
+'''
 # <<<<<<< HEAD
 
 
 #page6()
 
-account()
+
 
 
 def main_page():
@@ -1182,62 +1345,14 @@ def checkuser(name):
     if cursor.fetchone() is not None:
         return True
     return False
-def page4_admin():
-    global isShow
-    isShow.forget()
-    isShow=Frame(frm)
-    text1 = "Happy Birthday ya qalbiy :) "
-    Button(isShow, text="Delete an user", bg="white", height="5", width="20", font="25",command=lambda :delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
-    Button(isShow, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25",command=lambda :update_massage(text1,r.get())).grid(row=5, column=1, sticky=W, padx=30,pady=20)
-    Button(isShow, text="Send A massage ", bg="white", height="5", width="20", font="25",command=page5_admin).grid(row=7, column=1, sticky=W,padx=30, pady=20)
 
-    isShow.mainloop()
 
 def update_massage(massage,username):
     cursor.execute("UPDATE 'users' SET massage=? WHERE user_name=?",(massage,username))
     conn.commit()
-def page2_admin():
-    global r,isShow
-    isShow.forget()
-    isShow=Frame(frm)
-    def funAzr():
-        text=r.get()
-        if checkuser(text) == True:
-            #page3_admin()
-            page4_admin()
-            #page5_admin()
-
-        if checkuser(text) == False:
-            messagebox.showinfo('', 'Not found user!')
 
 
-    Label(isShow, text='Enter username you want to search:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1, padx=30,pady=120)
-    r=Entry(isShow, bg="white", fg=fg, font=fnt,textvariable=svuser)
-    r.grid(row=10, column=2, padx=30,pady=120)
-
-
-    Button(isShow, text=" Search", bg="white", height="1", width="8", font="15", command=funAzr).grid(row=14,column=4,sticky=W, padx=30, pady=30)
-    isShow.mainloop()
-def explain():
-    explainpage= tk.Tk()
-
-    fnt = ('tahoma', 30)
-    fw = 900
-    fh = 800
-    x = (explainpage.winfo_screenwidth() - fw) / 2
-    y = (explainpage.winfo_screenheight() - fh) / 2 - 50
-    explainpage.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-
-    explainpage.config(bg="white")
-    Label(explainpage, text='enter your new explain', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-    m=Entry(explainpage, bg="white", fg=fg, font=fnt)
-    m.grid(row=10, column=2, padx=30,pady=120)
-    Button(explainpage, text="Ok", bg="green", height="5", width="20", font="25",command=lambda :HelpFunc(m.get())).grid(row=2, column=2, sticky=W,
-                                                                                         padx=30, pady=50)
-
-
-
-
+'''
 
 def page2_admin():
     global r,m
@@ -1286,7 +1401,7 @@ def page5_admin():
     #messagebox.showinfo('', 'The massage send!')
 
 
-    page5.mainloop()
+    page5.mainloop()'''
 
 
 
@@ -1295,17 +1410,5 @@ def page5_admin():
 
 
 
-
-
-
-
-page8()
-#sign_up()
-#page1_admin()
-'''#page5()
-
-#page9()
-#page11()
-#page7()
-#page6()'''
+account()
 
