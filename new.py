@@ -97,9 +97,8 @@ def create():
     else:'''
    #insert_user(svuser.get(), svId.get(), svfname.get(), svlname.get(), svpass.get(), svgender.get(), svrname.get(),svmail.get(), svphone.get(), svmassage.get())
    if i.get()==0:
-       insert_user(txtuser.get(), txtid.get(), txtfname.get(), txtlname.get(), txtpass.get(), txtgender.get(),
-                   txtrname.get(), txtmail.get(), txtphone.get())
-   else:
+       insert_user(txtuser.get(), txtid.get(), txtfname.get(), txtlname.get(), txtpass.get(), txtgender.get(),txtrname.get(), txtmail.get(), txtphone.get())
+   if i.get()==1:
        messagebox.showinfo('', 'you want to agree the terms')
 
    '''svId.set('')
@@ -122,7 +121,6 @@ def create():
    txtphone.set('')'''
 
    frame.destroy()
-   login()
 
 
 
@@ -206,6 +204,7 @@ def pageif():
     elif svprofile.get().strip()=='':
         messagebox.showinfo('', 'The profile is Empty!')
     else:
+        ttt='the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.\n• The system should be used correctly.\n• Allow managers to control my account.\n• Confirmation of saving my personal information in the system'
         fnt = ('tahoma', 12)
         bg = 'white'
         bgtxt = 'white'
@@ -216,7 +215,7 @@ def pageif():
         y = (frm.winfo_screenheight() - fh) / 2 - 50
         frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
         root = Tk()
-        Label(root, text='hhhhhhhhhhhh', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+        Label(root, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
         c = Checkbutton(root, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
             row=11, column=0, pady=pad)
         Button(root, text='Create', command=create).grid(row=13, column=3, pady=pad)
@@ -242,10 +241,10 @@ def Database():
 
 Database()
 
-def insert_user(user_name,id,first_name,last_name,password,gander,responsible_name,Email,phone):
+'''def insert_user(user_name,id,first_name,last_name,password,gander,responsible_name,Email,phone):
     cursor.execute("INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone) VALUES(?,?,?,?,?,?,?,?,?)",(first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone))
     conn.commit()
-
+'''
 def insert_board(name, id):
     cursor.execute("INSERT INTO boards (name,id) VALUES(?,?)", (name, id))
     conn.commit()
