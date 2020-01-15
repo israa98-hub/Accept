@@ -615,6 +615,7 @@ def account():
 
             cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
             conn.commit()
+            creatbord()
         def creatbord():
             global isShow
             isShow.forget()
@@ -630,7 +631,7 @@ def account():
                 row=2, column=1, sticky=W, padx=60, pady=50)
             Button(isShow, text="+4", bg="white", height="10", width="20", font="100", command=lambda: insertimag(4)).grid(
                 row=2, column=4, sticky=W, padx=90, pady=100)
-            Button(isShow, text="Save", bg="white", height="3", width="10", font="100",command= lambda : save_B).grid(row=3, column=4,
+            Button(isShow, text="Save", bg="white", height="3", width="10", font="100",command= lambda : mainpage()).grid(row=3, column=4,
                                                                                                  sticky=W, padx=170,
                                                                                                  pady=20)
             back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",command=namebord).grid(row=3,
@@ -639,8 +640,7 @@ def account():
                                                                                                                 padx=20,
                                                                                                                 pady=20)
 
-            cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
-            conn.commit()
+
             isShow.pack()
 
         def namebord():
@@ -649,7 +649,7 @@ def account():
             print(2)
             print(3)
             isShow = Frame(frm)
-            B = ttk.Button(isShow, text="Enter", command=creatbord)
+            B = ttk.Button(isShow, text="Enter", command=save_B)
             Label(isShow, text='board name:', font=fnt).pack()
             print(4)
             txtbord = ttk.Entry(isShow)
@@ -1410,5 +1410,5 @@ def page5_admin():
 
 
 
-account()
+#account()
 
