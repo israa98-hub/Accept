@@ -1,4 +1,3 @@
-
 import speech_recognition as sr
 import sounddevice as sd
 from scipy.io.wavfile import write
@@ -48,31 +47,22 @@ svrname = StringVar()
 svmail = StringVar()
 svphone = StringVar()
 
-svprofile = StringVar()
+#svprofile = StringVar()
 svanswer = StringVar()
-
-
-
-svprofile=StringVar()
 svmassage=StringVar()
 
 def Database():
     global conn, cursor
     conn = sqlite3.connect("Accept.db")
     cursor = conn.cursor()
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT, massage TEXT)")
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT,profile BLOB NOT NULL,answer TEXT)")
-    #cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT, massage TEXT)")
+    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT,answer TEXT)")
     cursor.execute('CREATE TABLE IF NOT EXISTS boards(name text,nameim1 text,sound1 blob,image1 blob,nameim2 text,sound2 blob,image2 blob,nameim3 text,sound3 blob,image3 blob,nameim4 text,sound4 blob,image4 blob) ')
     #cursor.execute('CREATE TABLE IF NOT EXISTS category(name text,c1name text,data1 blob,c2name text,data2 blob,c3name text,data3 blob,c4name text,data4 blob) ')
     conn.commit()
-
-
 Database()
-#cursor.execute("INSERT INTO admins (username,password,first_name,last_name) VALUES(?,?,?,?)", ('shatha26','saaaa','shatha','arar'))
-#conn.commit()
+cursor.execute("INSERT INTO admins (username,password,first_name,last_name) VALUES(?,?,?,?)", ('shatha26','saaaa','shatha','arar'))
+conn.commit()
 '''
     if x==txtanswer.get():
         returnpass()
@@ -81,12 +71,11 @@ Database()
         txtanswer.set('')
         txtanswer.focus()
 '''
-'''     
+'''
 def insert_user(user_name,id,first_name,last_name,password,gander,responsible_name,Email,phone,answer):
     cursor.execute("INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,answer) VALUES(?,?,?,?,?,?,?,?,?,?)",(first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,answer))
     conn.commit()
 '''
-
 
 def insert_board(name, id):
     cursor.execute("INSERT INTO boards (name,id) VALUES(?,?)", (name, id))
@@ -96,47 +85,16 @@ def insert_board(name, id):
 def delete_user(id):
     cursor.execute("DELETE FROM 'users' WHERE id=?", (id,))
     conn.commit()
-
+'''
 def create():
-   ''' if svuser.get().strip() == '':
-        messagebox.showinfo('', 'The user name  is Empty!')
-        txtuser.focus()
-    elif svId.get().strip() == '':
-        messagebox.showinfo('', 'The number of id is Empty!')
-        txtid.focus()
-    elif svpass.get().strip() == '':
-        messagebox.showinfo('', 'The password Empty!')
-        txtpass.focus()
-    elif svfname.get().strip() == '':
-        messagebox.showinfo('', 'The first name of the autistic is Empty!')
-        txtfname.focus()
-    elif svlname.get().strip() == '':
-        messagebox.showinfo('', 'The last name of the autistic is Empty!')
-        txtlname.focus()
-    elif svgender.get() == '':
-        messagebox.showinfo('', 'the gender is Empty!')
-        txtgender.focus()
-    elif svrname.get().strip() == '':
-        messagebox.showinfo('', 'The name of the responsible is Empty!')
-        txtrname.focus()
-    elif svmail.get().strip() == '':
-        messagebox.showinfo('', 'The E-mail of the responsible is Empty!')
-        txtmail.focus()
-    elif svphone).get().strip() == '':
-        messagebox.showinfo('', 'The number phone of the responsible is Empty!'
-        txtphone.focus()
-    elif svprofile.get().strip()=='':
-        messagebox.showinfo('', 'The profile is Empty!')
-
-    else:'''
-   #insert_user(svuser.get(), svId.get(), svfname.get(), svlname.get(), svpass.get(), svgender.get(), svrname.get(),svmail.get(), svphone.get(), svmassage.get())
-   if i.get()==0:
-       insert_user(txtuser.get(), txtid.get(), txtfname.get(), txtlname.get(), txtpass.get(), txtgender.get(),
-                   txtrname.get(), txtmail.get(), txtphone.get())
-   else:
-       messagebox.showinfo('', 'you want to agree the terms')
-
-   '''svId.set('')
+    global i
+    if i.get()==0:
+        insert_user(txtuser.get(), txtid.get(), txtfname.get(), txtlname.get(), txtpass.get(), txtgender.get(),txtrname.get(), txtmail.get(), txtphone.get(),txtanswer.get())
+    else:
+        messagebox.showinfo('', "you want to agree the terms")
+        
+        '''
+'''svId.set('')
    svfname.set('')
    svlname.set('')
    svgender.set('')
@@ -153,11 +111,11 @@ def create():
    txtgender.set('')
    txtrname.set('')
    txtmail.set('')
-   txtphone.set('')'''
+   txtphone.set('')
 
    #frame.destroy()
 
-'''
+
 def sign_up():
     global frame, txtuser, txtid, txtfname, txtlname, txtpass, txtgender, txtrname, txtmail, txtphone,txtprofile,txtmassage
     frame = Frame(frm, bg=bg)
@@ -208,54 +166,6 @@ def sign_up():
     frame.mainloop()
 '''
 i=IntVar()
-def pageif():
-    if svuser.get().strip() == '':
-        messagebox.showinfo('', 'The user name  is Empty!')
-        txtuser.focus()
-    elif svId.get().strip() == '':
-        messagebox.showinfo('', 'The number of id is Empty!')
-        txtid.focus()
-    elif svpass.get().strip() == '':
-        messagebox.showinfo('', 'The password Empty!')
-        txtpass.focus()
-    elif svfname.get().strip() == '':
-        messagebox.showinfo('', 'The first name of the autistic is Empty!')
-        txtfname.focus()
-    elif svlname.get().strip() == '':
-        messagebox.showinfo('', 'The last name of the autistic is Empty!')
-        txtlname.focus()
-    elif svgender.get() == '':
-        messagebox.showinfo('', 'the gender is Empty!')
-        txtgender.focus()
-    elif svrname.get().strip() == '':
-        messagebox.showinfo('', 'The name of the responsible is Empty!')
-        txtrname.focus()
-    elif svmail.get().strip() == '':
-        messagebox.showinfo('', 'The E-mail of the responsible is Empty!')
-        txtmail.focus()
-    elif svphone.get().strip() == '':
-        messagebox.showinfo('', 'The number phone of the responsible is Empty!')
-        txtphone.focus()
-    elif svprofile.get().strip()=='':
-        messagebox.showinfo('', 'The profile is Empty!')
-    else:
-        ttt = 'the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.\n• The system should be used correctly.\n• Allow managers to control my account.\n• Confirmation of saving my personal information in the system'
-        fnt = ('tahoma', 12)
-        bg = 'white'
-        bgtxt = 'white'
-        fg = 'black'
-        fw = 650
-        fh = 600
-        x = (frm.winfo_screenwidth() - fw) / 2
-        y = (frm.winfo_screenheight() - fh) / 2 - 50
-        frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
-        root = Tk()
-        Label(root, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-        c = Checkbutton(root, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
-            row=11, column=0, pady=pad)
-        Button(root, text='Create', command=create).grid(row=13, column=3, pady=pad)
-        root.mainloop()
-
 
 
 
@@ -265,26 +175,8 @@ def logout(frame):
     svpass.set('')
     frame.destroy()
 
-
-
-'''
-def Database():
-    global conn, cursor
-    conn = sqlite3.connect("Accept.db")
-    cursor = conn.cursor()
-    cursor.execute("CREATE TABLE IF NOT EXISTS admins (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, username TEXT, password TEXT, first_name TEXT,last_name TEXT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander text,profile BLOB,answer TEXT)")
-    cursor.execute("CREATE TABLE IF NOT EXISTS boards(mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT,id TEXT)")
-    conn.commit()
-Database()
-'''
-
-
-def insert_user(user_name, id, first_name, last_name, password, gander, responsible_name, Email, phone, profile,
-                answer):
-    cursor.execute(
-        "INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,profile,answer) VALUES(?,?,?,?,?,?,?,?,?,?,?)",
-        (first_name, last_name, id, responsible_name, Email, user_name, password, gander, phone, profile, answer,))
+def insert_user(user_name, id, first_name, last_name, password, gander, responsible_name, Email, phone,answer):
+    cursor.execute("INSERT INTO users (first_name,last_name,id,responsible_name,Email,user_name,password,gander,phone,answer) VALUES(?,?,?,?,?,?,?,?,?,?)",(first_name, last_name, id, responsible_name, Email, user_name, password, gander, phone,answer))
     conn.commit()
 
 
@@ -299,7 +191,6 @@ def delete_user(id):
 
 def delete_user(username):
     cursor.execute("DELETE FROM 'users' WHERE user_name=?",(username,))
-
     conn.commit()
 
 
@@ -307,12 +198,6 @@ def delete_board(nameB):
     cursor.execute("DELETE FROM 'boards' WHERE name=?", (nameB,))
     conn.commit()
 
-
-def update_information_user(name, last_name, password, user_name, email, responsible_name, phone):
-    cursor.execute(
-        "UPDATE 'users' SET first_name=?,last_name=?,password=?,user_name=?,Email=?,responsible_name=?,phone=? WHERE id=id ",
-        (name, last_name, password, user_name, email, responsible_name, phone))
-    conn.commit()
 
 def update_massage(massage,username):
     cursor.execute("UPDATE 'users' SET massage=? WHERE user_name=?",(massage,username))
@@ -388,25 +273,23 @@ def account():
         Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone).grid(row=13, column=2)
         # txtprofile = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile).grid(row=15,column=2)
         Button(isShow, text='<-Back', bg="white", height="3", width="10").grid(row=20, column=0, pady=20, padx=10)
-
-        Button(isShow, text='update', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,
-                                                                                                       pady=20, padx=10)
-        Button(isShow, text='update', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,
-                                                                                                    pady=20, padx=10)
-        Button(isShow, text='update', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,
-                                                                                                    pady=20, padx=10)
-        Button(isShow, text='update', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,
-                                                                                                   pady=20, padx=10)
-        Button(isShow, text='update', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,
-                                                                                                    pady=20, padx=10)
-        Button(isShow, text='update', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,
-                                                                                                   pady=20, padx=10)
-        Button(isShow, text='update', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
-                                                                                                    pady=20, padx=10)
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,pady=20, padx=10)
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,pady=20, padx=10)
+        Button(isShow, text='update', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,pady=20, padx=10)
+        Button(isShow, text='update', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,pady=20, padx=10)
+        Button(isShow, text='update', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,pady=20, padx=10)
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,pady=20, padx=10)
+        Button(isShow, text='update', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,pady=20, padx=10)
 
         isShow.grid()
         isShow.mainloop()
 
+    def create():
+        global i
+        if i.get() == 0:
+            insert_user(txtfname.get(),txtlname.get(), txtid.get(),txtrname.get(),txtmail.get(),txtuser.get(),  txtpass.get(), txtgender.get(),  txtphone.get(), txtanswer.get())
+        else:
+            messagebox.showinfo('', "you want to agree the terms")
     def HelpFunc2():
         global exp
         frm = tk.Tk()
@@ -439,6 +322,55 @@ def account():
         Label(frm, text=exp, bg=bg, fg=fg, font=fnt).grid(row=5, column=0, pady=20)
 
         frm.mainloop()
+
+    def pageif():
+        if svuser.get().strip() == '':
+            messagebox.showinfo('', 'The user name  is Empty!')
+            txtuser.focus()
+        elif svId.get().strip() == '':
+            messagebox.showinfo('', 'The number of id is Empty!')
+            txtid.focus()
+        elif svpass.get().strip() == '':
+            messagebox.showinfo('', 'The password Empty!')
+            txtpass.focus()
+        elif svfname.get().strip() == '':
+            messagebox.showinfo('', 'The first name of the autistic is Empty!')
+            txtfname.focus()
+        elif svlname.get().strip() == '':
+            messagebox.showinfo('', 'The last name of the autistic is Empty!')
+            txtlname.focus()
+        elif svgender.get() == '':
+            messagebox.showinfo('', 'the gender is Empty!')
+            txtgender.focus()
+        elif svrname.get().strip() == '':
+            messagebox.showinfo('', 'The name of the responsible is Empty!')
+            txtrname.focus()
+        elif svmail.get().strip() == '':
+            messagebox.showinfo('', 'The E-mail of the responsible is Empty!')
+            txtmail.focus()
+        elif svphone.get().strip() == '':
+            messagebox.showinfo('', 'The number phone of the responsible is Empty!')
+            txtphone.focus()
+        # elif svprofile.get().strip()=='':
+        # messagebox.showinfo('', 'The profile is Empty!')
+        else:
+            ttt = 'the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.\n• The system should be used correctly.\n• Allow managers to control my account.\n• Confirmation of saving my personal information in the system'
+            fnt = ('tahoma', 12)
+            bg = 'white'
+            bgtxt = 'white'
+            fg = 'black'
+            fw = 650
+            fh = 600
+            x = (frm.winfo_screenwidth() - fw) / 2
+            y = (frm.winfo_screenheight() - fh) / 2 - 50
+            frm.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+            root = Tk()
+            Label(root, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+            c = Checkbutton(root, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
+                row=11, column=0, pady=pad)
+            Button(root, text='Create', command=create).grid(row=13, column=3, pady=pad)
+            root.mainloop()
+
     def settingpage():
         global mainframe
         mainframe.forget()
@@ -448,8 +380,7 @@ def account():
                                                                                                  padx=100, pady=20)
         Button(isShow, text="Help!", bg="white", height="6", width="30", font="50",command=HelpFunc2).grid(row=2, column=1,
                                                                                                padx=100, pady=20)
-        Button(isShow, text="Edit Profile", bg="white", height="6", width="30", font="50",
-               command=updatepro).grid(row=0, column=1, padx=100, pady=20)
+        #Button(isShow, text="Edit Profile", bg="white", height="6", width="30", font="50",command=updatepro).grid(row=0, column=1, padx=100, pady=20)
         Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).grid(
             row=10, column=0, padx=5, pady=80)
 
@@ -483,15 +414,15 @@ def account():
         txtrname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svrname)
         txtmail = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail)
         txtphone = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone)
-        txtprofile = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile)
+        #txtprofile = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile)
         txtanswer = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svanswer)
 
         btns = ttk.Style()
         btns.configure('TButton', font=fnt, pady=pad, padding=pad)
-        ttk.Button(frame, text='profile pic',
-                   command=lambda: saveprofile(filedialog.askopenfilename(filetypes=[("Image File", '.png')]))).grid(
-            row=10, column=0, pady=15)
-        ttk.Button(frame, text='Create new account', command=create).grid(row=11, column=1, pady=pad)
+        #ttk.Button(frame, text='profile pic',
+                   #command=lambda: saveprofile(filedialog.askopenfilename(filetypes=[("Image File", '.png')]))).grid(
+            #row=10, column=0, pady=15)
+        #ttk.Button(frame, text='Create new account', command=create).grid(row=11, column=1, pady=pad)
         # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
         ttk.Button(frame, text='Back').grid(row=13, column=0, pady=8)
         ttk.Button(frame, text='Next', command=pageif).grid(row=13, column=3, pady=8)
@@ -514,6 +445,15 @@ def account():
         pp = a.read()
         print(5)
 
+    def convertToimage(name, imager):
+        #print(imager)
+        global imm
+        if (name != None):
+            b = open(name, 'wb')
+            b.write(imager)
+            #photonameList.append(name)
+            imm= name
+            #return ima
     def newbord():
         print(1)
         mainframe.forget()
@@ -522,25 +462,19 @@ def account():
             a = open(name, 'rb')
             #imageNameInasert[key + 'name'] = name
             #imageToInsert[key] = a.read()
-            global imm
-            imm=a.read()
+            convertToimage('x'+str(key),a.read())
 
-        def convertToimage(name, imager):
-            if (name != None):
-                b = open(name, 'wb')
-                b.write(imager)
-                photonameList.append(name)
-                photoDic[name] = PhotoImage(file=name)
+
 
         def insertimag(num):
-            def funcVoice():
+            def funcVoice(name):
 
                 fs = 44100  # Sample rate
                 seconds = 3  # Duration of recording
                 print("seeey")
                 myrecording = sd.rec(int(seconds * fs), samplerate=fs, channels=2)
                 sd.wait()  # Wait until recording is finished
-                file = "x.wav"
+                file = name
                 write(file, fs, myrecording)  # Save as WAV file
                 global vvo
                 vvo=file
@@ -582,24 +516,15 @@ def account():
             nameim.config(font=fnt)
             nameim.grid(row=1, column=2)
 
-            Button(creatimframe, text="Add voice  ", bg="white", height="5", width="10", font="20",command=funcVoice).grid(row=2,
+            Button(creatimframe, text="Add voice  ", bg="white", height="5", width="10", font="20",command=lambda: funcVoice("x"+str(num)+txtbord.get()+".wav")).grid(row=2,
                                                                                                          column=2,
                                                                                                          sticky=W,
                                                                                                          padx=90,
                                                                                                          pady=60)
 
-            Button(creatimframe, text="Add pic ", bg="white", height="5", width="10", font="20",
-                   command=lambda: convertTbinary('im1',
-                                                  filedialog.askopenfilename(filetypes=[("Image File", '.png')]))).grid(
-                row=4, column=2, sticky=W, padx=90, pady=60)
-
+            Button(creatimframe, text="Add pic ", bg="white", height="5", width="10", font="20",command=lambda: convertTbinary(num,filedialog.askopenfilename(filetypes=[("Image File", '.png')]))).grid(row=4, column=2, sticky=W, padx=90, pady=60)
             ok = tk.Button(creatimframe, text=" save ", bg="white", height="3", width="5", font="20",command=saveimb).grid(row=5, column=1, sticky=W, padx=20, pady=20)
-
-            back = tk.Button(creatimframe, text=" <- Back ", bg="white", height="3", width="5", font="20").grid(row=5,
-                                                                                                                column=0,
-                                                                                                                sticky=W,
-                                                                                                                padx=20,
-                                                                                                                pady=20)
+            back = tk.Button(creatimframe, text=" <- Back ", bg="white", height="3", width="5", font="20").grid(row=5,column=0,sticky=W,padx=20,pady=20)
             creatimframe.pack()
 
 
@@ -623,22 +548,12 @@ def account():
 
             #cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
             #conn.commit()
-            Button(isShow, text="+1", bg="white", height="10", width="20", font="100", command=lambda: insertimag(1)).grid(
-                row=1, column=1, sticky=W, padx=60, pady=20)
-            Button(isShow, text="+2", bg="white", height="10", width="20", font="100", command=lambda: insertimag(2)).grid(
-                row=1, column=4, sticky=W, padx=90, pady=20)
-            Button(isShow, text="+3", bg="white", height="10", width="20", font="100", command=lambda: insertimag(3)).grid(
-                row=2, column=1, sticky=W, padx=60, pady=50)
-            Button(isShow, text="+4", bg="white", height="10", width="20", font="100", command=lambda: insertimag(4)).grid(
-                row=2, column=4, sticky=W, padx=90, pady=100)
-            Button(isShow, text="Save", bg="white", height="3", width="10", font="100",command= lambda : mainpage()).grid(row=3, column=4,
-                                                                                                 sticky=W, padx=170,
-                                                                                                 pady=20)
-            back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",command=namebord).grid(row=3,
-                                                                                                                column=0,
-                                                                                                                sticky=W,
-                                                                                                                padx=20,
-                                                                                                                pady=20)
+            Button(isShow, text="+1", bg="white", height="10", width="20", font="100", command=lambda: insertimag(1)).grid(row=1, column=1, sticky=W, padx=60, pady=20)
+            Button(isShow, text="+2", bg="white", height="10", width="20", font="100", command=lambda: insertimag(2)).grid(row=1, column=4, sticky=W, padx=90, pady=20)
+            Button(isShow, text="+3", bg="white", height="10", width="20", font="100", command=lambda: insertimag(3)).grid(row=2, column=1, sticky=W, padx=60, pady=50)
+            Button(isShow, text="+4", bg="white", height="10", width="20", font="100", command=lambda: insertimag(4)).grid(row=2, column=4, sticky=W, padx=90, pady=100)
+            Button(isShow, text="Save", bg="white", height="3", width="10", font="100",command= lambda : mainpage()).grid(row=3, column=4,sticky=W, padx=170,pady=20)
+            back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",command=namebord).grid(row=3,column=0,sticky=W,padx=20,pady=20)
 
 
             isShow.pack()
@@ -667,11 +582,13 @@ def account():
 
         namebord()
 
-    def bord(name):
+    def bord(z):
+
+        print(z)
         def voice(num):
 
             for i in row:
-                if i[0] == name:
+                if i[0] == z:
                     if num == 1:
                         playsound(i[2])
                     elif num == 2:
@@ -684,45 +601,53 @@ def account():
         global isShow
         isShow.forget()
         isShow = Frame(frm)
-        cursor.execute("SELECT * FROM boards WHERE name=?", (name,))
+        cursor.execute("SELECT * FROM boards WHERE name=?", (z,))
         row = cursor.fetchall()
-        print(name)
+        #print(row)
+
         for i in row:
-            Button(isShow, bg="white", height="10", width="20", font="100", image=i[3],
-                   command=lambda: voice(1)).grid(
-                row=1, column=1, sticky=W, padx=60, pady=20)
-            Button(isShow, bg="white", height="10", width="20", font="100", image=i[6],
-                   command=lambda: voice(2)).grid(
-                row=1, column=4, sticky=W, padx=90, pady=20)
-            Button(isShow, bg="white", height="10", width="20", font="100", image=i[9],
-                   command=lambda: voice(3)).grid(
-                row=2, column=1, sticky=W, padx=60, pady=50)
-            Button(isShow, bg="white", height="10", width="20", font="100", image=i[12],
-                   command=lambda: voice(4)).grid(
-                row=2, column=4, sticky=W, padx=90, pady=100)
+            t=open('name1.txt','w+')
+            b1=Button(isShow, bg="white", height="10", width="20", font="100", image=convertToimage(t, i[3]),command=lambda: voice(1)).grid(row=1, column=1, sticky=W, padx=60, pady=20)
+            b2=Button(isShow, bg="white", height="10", width="20", font="100", image=convertToimage('name2.txt', i[6]),command=lambda: voice(2)).grid(row=1, column=4, sticky=W, padx=90, pady=20)
+            b3=Button(isShow, bg="white", height="10", width="20", font="100", image=convertToimage('name3.txt', i[9]),command=lambda: voice(3)).grid(row=2, column=1, sticky=W, padx=60, pady=50)
+            b4=Button(isShow, bg="white", height="10", width="20", font="100", image=convertToimage('name4.txt', i[12]),command=lambda: voice(4)).grid(row=2, column=4, sticky=W, padx=90, pady=100)
             # Button(bordframe, text="Save", bg="white", height="3", width="10", font="100").grid(row=3, column=4,sticky=W, padx=170,pady=20)
-            back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",command=lambda: allboards()).grid(row=3,
-                                                                                                               column=0,
-                                                                                                               sticky=W,
-                                                                                                               padx=20,
-                                                                                                               pady=20)
-            isShow.pack()
+            back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",command=lambda: allboards()).grid(row=3,column=0,sticky=W,padx=20,pady=20)
+            b1.image=convertToimage('name1.txt', i[3])
+            b2.image=convertToimage('name2.txt', i[6])
+            b3.image=convertToimage('name3.txt', i[9])
+            b4.image=convertToimage('name4.txt', i[12])
+        isShow.pack()
     def allboards():
         mainframe.forget()
+        global row
 
         global isShow
         isShow = Frame(frm)
+
         cursor.execute("SELECT * FROM boards")
         row = cursor.fetchall()
         k=0
 
+
         for i in row:
 
-            Button(isShow, text=i[0], bg="white", height="3", width="15", font="20",command=lambda: bord(i[0])).grid(row=k, column=1, sticky=W, padx=20, pady=20)
+            funcB((str(k)+i[0]),k)
             k+=1
-            print(i[0])
+            '''
+            b=Button(isShow, text=y, bg="white", height="3", width="15", font="20")
+            b.bind('<Button-1>', lambda event, frame=isShow, arg=y: bord(y))
+            b.grid(row=k, column=1, padx=30, pady=20)
+            k+=1
+'''
 
         isShow.pack()
+    def funcB(N,K):
+        N=Button(isShow, text=row[K][0], bg="white", height="3", width="15", font="20")
+        N.bind('<Button-1>', lambda event, frame=isShow, arg=row[K][0]: bord(row[K][0]))
+        N.grid(row=K, column=1, padx=30, pady=20)
+
+
     def mainpage():
 
         global mainframe,isShow
@@ -745,8 +670,8 @@ def account():
                                                                                           pady=10)
         Button(mainframe, text="Create a new board!", bg="white", font=fnt, command=newbord).grid(row=4, column=1,
                                                                                                   padx=300, pady=10)
-        Button(mainframe, text="An existing boards", bg="white", font=fnt,command=lambda:allboards()).grid(row=2, column=1, padx=200, pady=10)
-        Button(mainframe, text="Profile", bg="white", font=fnt).grid(row=0, column=1, padx=200, pady=20)
+        Button(mainframe, text="An existing boards", bg="white", font=fnt,command=allboards).grid(row=2, column=1, padx=200, pady=10)
+        #Button(mainframe, text="Profile", bg="white", font=fnt).grid(row=0, column=1, padx=200, pady=20)
         Button(mainframe, text="<- Back", bg="white", font=fnt).grid(row=8, column=1, padx=30, pady=20)
 
         mainframe.pack()
@@ -1001,6 +926,22 @@ def account():
         isShow.mainloop()
     f()
 
+'''
+    global isShow
+    isShow.forget()
+    isShow=Frame(frm)
+    cursor.execute("SELECT * FROM 'boards' WHERE name=?", ('last1',))
+    row= cursor.fetchall()
+    for i in row:
+        playsound(i[2])
+        Button(isShow, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25",
+               command=lambda: update_massage(text1, r.get())).grid(row=5, column=1, sticky=W, padx=30, pady=20)
+'''
+
+
+
+
+
 
 #cursor.execute("DELETE FROM boards WHERE name='shaa'")
 #conn.commit()
@@ -1192,7 +1133,7 @@ def page9():
     svrname = StringVar()
     svmail = StringVar()
     svphone = StringVar()
-    svprofile = StringVar()
+    #svprofile = StringVar()
     frame.config(bg="white")
     Label(frame, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0,pady=20)
     Label(frame, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,pady=20)
@@ -1409,6 +1350,5 @@ def page5_admin():
 
 
 
-
-#account()
+account()
 
