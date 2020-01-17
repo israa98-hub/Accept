@@ -2014,19 +2014,19 @@ def acceptHeb():
             isShow.forget()
             isShow = Frame(frm)
 
-            Button(isShow, text="Language", bg="white", height="6", width="30", font=fnt, command=lambda: lang()).grid(
+            Button(isShow, text="שפה", bg="white", height="6", width="30", font=fnt, command=lambda: lang()).grid(
                 row=4, column=1,
                 padx=100, pady=20)
-            Button(isShow, text="contact", bg="white", height="6", width="30", font=fnt, command=sendmess).grid(row=6,
+            Button(isShow, text="חיבור", bg="white", height="6", width="30", font=fnt, command=sendmess).grid(row=6,
                                                                                                                 column=1,
                                                                                                                 padx=100,
                                                                                                                 pady=20)
-            Button(isShow, text="Help!", bg="white", height="6", width="30", font="50", command=HelpFunc2).grid(row=2,
+            Button(isShow, text="עזרה!", bg="white", height="6", width="30", font="50", command=HelpFunc2).grid(row=2,
                                                                                                                 column=1,
                                                                                                                 padx=100,
                                                                                                                 pady=20)
             # Button(isShow, text="Edit Profile", bg="white", height="6", width="30", font="50",command=updatepro).grid(row=0, column=1, padx=100, pady=20)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).grid(
+            Button(isShow, text="<- חזרה", bg="white", height="3", width="10", font="10", command=mainpage).grid(
                 row=8, column=0, padx=5, pady=80)
 
             isShow.pack()
@@ -2037,16 +2037,16 @@ def acceptHeb():
             frame = Frame(frm, bg=bg)
             # Label(frame, text='User Data', bg='navy', fg='lightblue', font=fnt).pack(pady=pad)
 
-            Label(frame, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-            Label(frame, text='Autistic ID number:', bg=bg, fg=fg, font=fnt).grid(row=1, column=0)
-            Label(frame, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=2, column=0)
-            Label(frame, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0)
-            Label(frame, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=4, column=0)
-            Label(frame, text='The gender of the autistic: ', bg=bg, fg=fg, font=fnt).grid(row=5, column=0)
-            Label(frame, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
-            Label(frame, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
-            Label(frame, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
-            Label(frame, text='what your Primary School? ', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
+            Label(frame, text='שם משתמש:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+            Label(frame, text='מספר תעודת זהות של אוטיסטית:', bg=bg, fg=fg, font=fnt).grid(row=1, column=0)
+            Label(frame, text='שמו הפרטי של האוטיסט :', bg=bg, fg=fg, font=fnt).grid(row=2, column=0)
+            Label(frame, text='שם המשפחה של האוטיסט :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0)
+            Label(frame, text='הסיסמא:', bg=bg, fg=fg, font=fnt).grid(row=4, column=0)
+            Label(frame, text='מין האוטיסט: ', bg=bg, fg=fg, font=fnt).grid(row=5, column=0)
+            Label(frame, text='שם האחראי :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
+            Label(frame, text='הדואר האלקטרוני של האחראי :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
+            Label(frame, text='הטלפון המספרי של האחראי:', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
+            Label(frame, text='מה בית הספר היסודי שלך? ', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
 
             # Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
             # Label(top, image=im).pack()
@@ -2064,13 +2064,13 @@ def acceptHeb():
 
             btns = ttk.Style()
             btns.configure('TButton', font=fnt, pady=pad, padding=pad)
-            ttk.Button(frame, text='profile pic',
+            ttk.Button(frame, text='תמונת פרופיל',
                        command=lambda: saveprofile(filedialog.askopenfilename(filetypes=[("Image File", '.png')]))) \
                 .grid(row=10, column=0, pady=15)
             # ttk.Button(frame, text='Create new account', command=create).grid(row=11, column=1, pady=pad)
             # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
-            ttk.Button(frame, text='Back', command=f).grid(row=13, column=0, pady=8)
-            ttk.Button(frame, text='Next', command=pageif).grid(row=13, column=3, pady=8)
+            ttk.Button(frame, text='חזור', command=f).grid(row=13, column=0, pady=8)
+            ttk.Button(frame, text='המשך', command=pageif).grid(row=13, column=3, pady=8)
             txtuser.grid(row=0, column=1, pady=pad)
             txtid.grid(row=1, column=1, pady=pad)
             txtfname.grid(row=2, column=1, pady=pad)
@@ -2190,7 +2190,7 @@ def acceptHeb():
                                     t = Button(isShow2, height="300", width="300", image=photo1Dic[image6],
                                                command=lambda: choose('im' + str(num), image6))
                                     t.grid(row=2, column=2)
-                                Button(isShow2, text="<- Back", bg="white", height="3", width="10", font="10",
+                                Button(isShow2, text="<- חזור", bg="white", height="3", width="10", font="10",
                                        command=allcat).grid(
                                     row=3, column=0, padx=5, pady=80)
                                 # if name in tuple(cat1Dic):
@@ -2225,7 +2225,7 @@ def acceptHeb():
                             b.grid(row=k, column=1, padx=30, pady=20)
                             k+=1
                             '''
-                        Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10",
+                        Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10",
                                command=mainpage).grid(
                             row=k, column=0, padx=5, pady=80)
 
@@ -2247,11 +2247,11 @@ def acceptHeb():
                         isShow2.forget()
                         allcat()
 
-                    Button(isShow2, text="category", bg="white", height="5", width="20", font="25", command=cat).grid(
+                    Button(isShow2, text="קטגוריה", bg="white", height="5", width="20", font="25", command=cat).grid(
                         row=2, column=2, sticky=W, padx=30, pady=50)
-                    Button(isShow2, text="from computer", bg="white", height="5", width="20", font="25",
+                    Button(isShow2, text="ממחשב", bg="white", height="5", width="20", font="25",
                            command=comp).grid(row=3, column=2, sticky=W, padx=30, pady=50)
-                    Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10",
+                    Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10",
                            command=lambda: insertimag(num)).grid(
                         row=4, column=0, padx=5, pady=80)
                     isShow2.pack()
@@ -2304,25 +2304,25 @@ def acceptHeb():
                 global isShow
                 isShow.forget()
                 isShow = Frame(frm)
-                Label(isShow, text='name of image:', bg="white", fg=fg, font=" impact 25").grid(row=0, column=2)
-                lbl = ttk.Label(isShow, text='name of the pic?')
+                Label(isShow, text='שם התמונה:', bg="white", fg=fg, font=" impact 25").grid(row=0, column=2)
+                lbl = ttk.Label(isShow, text='שם התמונה?')
                 lbl.config(font=fnt)
                 nameim = ttk.Entry(isShow)
                 nameim.config(font=fnt)
                 nameim.grid(row=1, column=2)
 
-                Button(isShow, text="Add voice  ", bg="white", height="5", width="10", font="20",
+                Button(isShow, text="הוסף קול  ", bg="white", height="5", width="10", font="20",
                        command=lambda: funcVoice("x" + str(num) + txtbord.get() + ".wav")).grid(row=2,
                                                                                                 column=2,
                                                                                                 sticky=W,
                                                                                                 padx=90,
                                                                                                 pady=60)
 
-                Button(isShow, text="Add pic ", bg="white", height="5", width="10", font="20",
+                Button(isShow, text="הוסף תמונה ", bg="white", height="5", width="10", font="20",
                        command=lambda: choosepic(num)).grid(row=4, column=2, sticky=W, padx=90, pady=60)
-                ok = tk.Button(isShow, text=" save ", bg="white", height="3", width="5", font="20",
+                ok = tk.Button(isShow, text=" שמור ", bg="white", height="3", width="5", font="20",
                                command=saveimb).grid(row=5, column=1, sticky=W, padx=20, pady=20)
-                back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="5", font="20",
+                back = tk.Button(isShow, text=" <- חזור ", bg="white", height="3", width="5", font="20",
                                  command=newbord).grid(row=5,
                                                        column=0,
                                                        sticky=W,
@@ -2376,9 +2376,9 @@ def acceptHeb():
                        command=lambda: insertimag(3)).grid(row=2, column=1, sticky=W, padx=60, pady=50)
                 Button(isShow, text="+4", bg="white", height="10", width="20", font="100",
                        command=lambda: insertimag(4)).grid(row=2, column=4, sticky=W, padx=90, pady=100)
-                Button(isShow, text="Save", bg="white", height="3", width="10", font="100",
+                Button(isShow, text="שמור", bg="white", height="3", width="10", font="100",
                        command=lambda: adminoruser()).grid(row=3, column=4, sticky=W, padx=170, pady=20)
-                back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",
+                back = tk.Button(isShow, text=" <-חזור ", bg="white", height="3", width="10", font="100",
                                  command=namebord).grid(row=3, column=0, sticky=W, padx=20, pady=20)
 
                 isShow.pack()
@@ -2389,8 +2389,8 @@ def acceptHeb():
                 print(2)
                 print(3)
                 isShow = Frame(frm)
-                B = ttk.Button(isShow, text="Enter", command=save_B)
-                Label(isShow, text='board name:', font=fnt).pack()
+                B = ttk.Button(isShow, text="להיכנס", command=save_B)
+                Label(isShow, text='שם הלוח:', font=fnt).pack()
                 print(4)
                 txtbord = ttk.Entry(isShow)
                 txtbord.config(font=fnt)
@@ -2399,7 +2399,7 @@ def acceptHeb():
                 txtbord.pack()
                 B.pack()
 
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).pack()
+                Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=mainpage).pack()
                 isShow.pack()
                 # mainframe.pack()
 
@@ -2521,7 +2521,7 @@ def acceptHeb():
                     if image4:
                         t = Button(isShow, height="400", width="400", image=photoDic[image4], command=lambda: voice(4))
                         t.grid(row=2, column=1)
-                    Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10",
+                    Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10",
                            command=allboards).grid(
                         row=3, column=0, padx=5, pady=80)
                     if name in tuple(catDic):
@@ -2584,11 +2584,11 @@ def acceptHeb():
 
             Label(isShow, bg="white", font=fnt, height=200, width=200, image=convp()).grid(row=2, column=1, padx=300,
                                                                                            pady=10)
-            Button(isShow, text="Setting", bg="white", font=fnt, command=settingpage).grid(row=8, column=1, padx=300,
+            Button(isShow, text="הגדרות", bg="white", font=fnt, command=settingpage).grid(row=8, column=1, padx=300,
                                                                                            pady=10)
-            Button(isShow, text="Create a new board!", bg="white", font=fnt, command=newbord).grid(row=6, column=1,
+            Button(isShow, text="צור לוח חדש!", bg="white", font=fnt, command=newbord).grid(row=6, column=1,
                                                                                                    padx=300, pady=10)
-            Button(isShow, text="An existing boards", bg="white", font=fnt, command=allboards).grid(row=4, column=1,
+            Button(isShow, text="לוחות קיימים", bg="white", font=fnt, command=allboards).grid(row=4, column=1,
                                                                                                     padx=200, pady=10)
             # Button(mainframe, text="Profile", bg="white", font=fnt).grid(row=0, column=1, padx=200, pady=20)
 
@@ -2608,18 +2608,18 @@ def acceptHeb():
                     if txtnew.get() == txt2.get():
                         account()
                     else:
-                        messagebox.showinfo('', 'The passwords not matched!')
+                        messagebox.showinfo('', 'הסיסמאות לא תואמות!')
                         txtnew.focus()
                         txt2.focus()
 
-                Label(isShow, text='New Password', font='impact 25').pack()
+                Label(isShow, text='סיסמה חדשה', font='impact 25').pack()
 
-                lblnew = ttk.Label(isShow, text='Enter new password:')
+                lblnew = ttk.Label(isShow, text='הכנס סיסמה חדשה:')
                 txtnew = ttk.Entry(isShow)
-                lbl2 = ttk.Label(isShow, text='Enter the password one more time:')
+                lbl2 = ttk.Label(isShow, text='הזן את הסיסמה פעם נוספת:')
                 txt2 = ttk.Entry(isShow)
-                change = ttk.Button(isShow, text='change password', command=checkpass)
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=question).grid(
+                change = ttk.Button(isShow, text='שנה סיסמא', command=checkpass)
+                Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=question).grid(
                     row=4, column=0, padx=5, pady=80)
                 lblnew.config(font=fnt)
                 txtnew.config(font=fnt)
@@ -2647,10 +2647,10 @@ def acceptHeb():
                             returnpass()
                             print(txtanswer.get())
 
-                Label(isShow, text='Account security', font='impact 25').pack()
+                Label(isShow, text='אבטחת חשבון', font='impact 25').pack()
 
-                lbl1 = ttk.Label(isShow, text='your id:')
-                lbl = ttk.Label(isShow, text='what your primry school?')
+                lbl1 = ttk.Label(isShow, text='מספר תעודת זהות')
+                lbl = ttk.Label(isShow, text='מה בית הספר היסודי שלך?')
 
                 txtanswer = ttk.Entry(isShow)
                 txtanswer.config(font=fnt)
@@ -2658,7 +2658,7 @@ def acceptHeb():
                 txtid.config(font=fnt)
                 lbl1.config(font=fnt)
                 lbl.config(font=fnt)
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=login).grid(
+                Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=login).grid(
                     row=4, column=0, padx=5, pady=80)
                 ok = ttk.Button(isShow, text='OK', command=forgetpass)
 
@@ -2689,22 +2689,22 @@ def acceptHeb():
                     # page5_admin()
 
                 if checkuser(text) == False:
-                    messagebox.showinfo('', 'Not found user!')
+                    messagebox.showinfo('', 'משתמש לא נמצא!')
 
             isShow.forget()
             isShow = Frame(frm)
-            Label(isShow, text='Enter username you want to search:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1,
+            Label(isShow, text='הזן את שם המשתמש שאתה רוצה לחפש:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1,
                                                                                                   padx=30,
                                                                                                   pady=120)
             r = Entry(isShow, bg="white", fg=fg, font=fnt, textvariable=svuser)
             r.grid(row=10, column=2, padx=30, pady=120)
 
-            Button(isShow, text=" Search", bg="white", height="1", width="8", font="15", command=funAzr).grid(row=14,
+            Button(isShow, text=" חפש", bg="white", height="1", width="8", font="15", command=funAzr).grid(row=14,
                                                                                                               column=4,
                                                                                                               sticky=W,
                                                                                                               padx=30,
                                                                                                               pady=30)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<-חזור", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=14, column=0, padx=5, pady=80)
             isShow.mainloop()
 
@@ -2712,19 +2712,19 @@ def acceptHeb():
             global isShow
             isShow.forget()
             isShow = Frame(frm)
-            Button(isShow, text="add a new board", bg="white", height="5", width="20", font="25", command=newbord).grid(
+            Button(isShow, text="הוסף לוח חדש", bg="white", height="5", width="20", font="25", command=newbord).grid(
                 row=2,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="all boards", bg="white", height="5", width="20", font="25", command=allboards).grid(
+            Button(isShow, text="כל הלוחות", bg="white", height="5", width="20", font="25", command=allboards).grid(
                 row=3,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -2833,7 +2833,7 @@ def acceptHeb():
                 b.grid(row=k, column=1, padx=30, pady=20)
                 k+=1
                 '''
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=admincat).grid(
+            Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=admincat).grid(
                 row=k, column=0, padx=5, pady=80)
 
             isShow.pack()
@@ -2927,9 +2927,9 @@ def acceptHeb():
                                                        filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
                                                        4)).grid(row=2, column=5, sticky=W, padx=90, pady=100)
 
-                Button(isShow, text="Save", bg="white", height="3", width="10", font="100",
+                Button(isShow, text="שמור", bg="white", height="3", width="10", font="100",
                        command=lambda: page1_admin()).grid(row=3, column=4, sticky=W, padx=170, pady=20)
-                back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",
+                back = tk.Button(isShow, text=" <-חזור ", bg="white", height="3", width="10", font="100",
                                  command=namecat).grid(row=3, column=0, sticky=W, padx=20, pady=20)
 
                 isShow.pack()
@@ -2940,19 +2940,19 @@ def acceptHeb():
                 print(2)
                 print(3)
                 isShow = Frame(frm)
-                B = ttk.Button(isShow, text="Enter", command=save_C)
-                Label(isShow, text='catigoria name:', font=fnt).pack()
+                B = ttk.Button(isShow, text="הכניס", command=save_C)
+                Label(isShow, text='שם קטיגוריה:', font=fnt).pack()
                 print(4)
                 txtcat = ttk.Entry(isShow)
                 txtcat.config(font=fnt)
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=admincat()).grid(
+                Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=admincat()).grid(
                     row=4, column=0, padx=5, pady=80)
 
                 print(5)
                 txtcat.pack()
                 B.pack()
 
-                back = ttk.Button(isShow, text=" <- Back ")
+                back = ttk.Button(isShow, text=" <- חזור ")
                 back.pack()
                 isShow.pack()
                 # mainframe.pack()
@@ -2963,20 +2963,20 @@ def acceptHeb():
             global isShow
             isShow.forget()
             isShow = Frame(frm)
-            Button(isShow, text="add a new catigoria", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="הוסף קטיגוריה חדשה", bg="white", height="5", width="20", font="25",
                    command=newcat).grid(
                 row=2,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="all catigorias", bg="white", height="5", width="20", font="25", command=allcat).grid(
+            Button(isShow, text="כל הקטגוריות", bg="white", height="5", width="20", font="25", command=allcat).grid(
                 row=3,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<-חזור", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -2991,16 +2991,16 @@ def acceptHeb():
                 conn.commit()
                 page1_admin()
 
-            Label(isShow, text="Enter user name:", font=fnt).grid(row=1, column=1)
+            Label(isShow, text="הכנס שם משתמש:", font=fnt).grid(row=1, column=1)
             Entry(isShow, textvariable=svuser, font=fnt).grid(row=1, column=2)
-            Label(isShow, text="Enter password:", font=fnt).grid(row=2, column=1)
+            Label(isShow, text="הזן את הסיסמה:", font=fnt).grid(row=2, column=1)
             Entry(isShow, textvariable=svpass, font=fnt).grid(row=2, column=2)
-            Label(isShow, text="Enter first name:", font=fnt).grid(row=3, column=1)
+            Label(isShow, text="הזן שם פרטי:", font=fnt).grid(row=3, column=1)
             Entry(isShow, textvariable=svfname, font=fnt).grid(row=3, column=2)
-            Label(isShow, text="Enter last name:", font=fnt).grid(row=4, column=1)
+            Label(isShow, text="הזן שם משפחה:", font=fnt).grid(row=4, column=1)
             Entry(isShow, textvariable=svlname, font=fnt).grid(row=4, column=2)
-            Button(isShow, text="add", bg="white", font=1, command=add).grid(row=5, column=2, padx=10, pady=10)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="להוסיף", bg="white", font=1, command=add).grid(row=5, column=2, padx=10, pady=10)
+            Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=6, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -3009,26 +3009,26 @@ def acceptHeb():
             isShow.forget()
             isShow = Frame(frm)
 
-            Button(isShow, text="Search an User", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="חפש משתמש", bg="white", height="5", width="20", font="25",
                    command=page2_admin).grid(
                 row=2, column=1, sticky=W, padx=30, pady=50)
-            Button(isShow, text="boards", bg="white", height="5", width="20", font="25", command=adminbord).grid(row=2,
+            Button(isShow, text="לוחות", bg="white", height="5", width="20", font="25", command=adminbord).grid(row=2,
                                                                                                                  column=3,
                                                                                                                  sticky=W,
                                                                                                                  padx=30,
                                                                                                                  pady=50)
-            Button(isShow, text="Catigoria", bg="green", height="5", width="20", font="25", command=admincat).grid(
+            Button(isShow, text="קטיגוריה", bg="green", height="5", width="20", font="25", command=admincat).grid(
                 row=3, column=1,
                 sticky=W,
                 padx=30, pady=20)
-            Button(isShow, text="Update the page explain ", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="עדכן את הדף הסבר ", bg="white", height="5", width="20", font="25",
                    command=explain).grid(row=3, column=2, sticky=W, padx=30, pady=20)
             # Button(page3, text="Birthday", bg="green", height="5", width="20", font="25").grid(row=3, column=3, sticky=W, padx=30,pady=20)
             # Button(frm, text="Delete an user ", bg="green", height="5", width="20", font="25").grid(row=4, column=2, sticky=W, padx=30, pady=20)
-            Button(isShow, text="My design ", bg="green", height="5", width="20", font="25").grid(row=2, column=2,
+            Button(isShow, text="עיצוב שלי ", bg="green", height="5", width="20", font="25").grid(row=2, column=2,
                                                                                                   sticky=W,
                                                                                                   padx=30, pady=50)
-            Button(isShow, text="add admin ", bg="green", height="5", width="20", font="25", command=addadmin).grid(
+            Button(isShow, text="הוסף מנהל ", bg="green", height="5", width="20", font="25", command=addadmin).grid(
                 row=3, column=3, sticky=W,
                 padx=30, pady=50)
 
@@ -3038,13 +3038,13 @@ def acceptHeb():
             global isShow
             isShow.forget
             isShow = Frame(frm)
-            Label(isShow, text='enter your new explain', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+            Label(isShow, text='הזן את ההסבר החדש שלך', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
             m = Entry(isShow, bg="white", fg=fg, font=fnt)
             m.grid(row=10, column=2, padx=30, pady=120)
             Button(isShow, text="Ok", bg="green", height="5", width="20", font="25",
                    command=lambda: HelpFunc(m.get())).grid(row=2, column=2, sticky=W,
                                                            padx=30, pady=50)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<-חזור", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -3053,14 +3053,14 @@ def acceptHeb():
             isShow.forget()
             isShow = Frame(frm)
             text1 = "Happy Birthday ya qalbiy :) "
-            Button(isShow, text="Delete an user", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="מחק משתמש", bg="white", height="5", width="20", font="25",
                    command=lambda: delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
-            Button(isShow, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="מאחל יום הולדת שמח", bg="white", height="5", width="20", font="25",
                    command=lambda: update_massage(text1, r.get())).grid(row=5, column=1, sticky=W, padx=30, pady=20)
-            Button(isShow, text="Send A massage ", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="שלח הודעה ", bg="white", height="5", width="20", font="25",
                    command=page5_admin).grid(
                 row=7, column=1, sticky=W, padx=30, pady=20)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=7, column=0, padx=5, pady=80)
 
             page4.mainloop()
@@ -3069,16 +3069,16 @@ def acceptHeb():
             global isShow
             isShow.forget
             isShow = Frame(frm)
-            Label(isShow, text='Enter your massage thats you want to send to user ', bg=bg, fg=fg, font=fnt).grid(
+            Label(isShow, text='הזן את ההודעה שברצונך לשלוח למשתמש', bg=bg, fg=fg, font=fnt).grid(
                 row=10,
                 column=1,
                 padx=30,
                 pady=120)
             m = Entry(isShow, bg="white", fg=fg, font=fnt, textvariable=svmassage)
             m.grid(row=10, column=2, padx=30, pady=120)
-            Button(isShow, text="Send", bg="white", height="1", width="8", font="15",
+            Button(isShow, text="שלח", bg="white", height="1", width="8", font="15",
                    command=lambda: update_massage(m.get(), r.get())).grid(row=14, column=4, sticky=W, padx=30, pady=30)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page4_admin).grid(
+            Button(isShow, text="<-חזור", bg="white", height="3", width="10", font="10", command=page4_admin).grid(
                 row=14, column=0, padx=5, pady=80)
             # messagebox.showinfo('', 'The massage send!')
 
@@ -3112,9 +3112,9 @@ def acceptHeb():
                     isShow.forget()
                     mainpage()
 
-            Label(isShow, text="Enter user name:").grid(row=1, column=1)
+            Label(isShow, text="הכנס שם משתמש:").grid(row=1, column=1)
             Entry(isShow, textvariable=svuser).grid(row=2, column=1)
-            Label(isShow, text="Enter password:").grid(row=3, column=1)
+            Label(isShow, text="הזן את הסיסמה:").grid(row=3, column=1)
             Entry(isShow, textvariable=svpass).grid(row=4, column=1)
             '''
             lblname=ttk.Label(loginFrame,text='Enter username:').grid(row=1,column=2,padx=10,pady=10)
@@ -3122,10 +3122,10 @@ def acceptHeb():
             lblpass=ttk.Label(loginFrame,text='Enter the password:').grid(row=3,column=2,padx=10,pady=10)
             txtpass=ttk.Entry(loginFrame).grid(row=4,column=2,padx=10,pady=10)
     '''
-            Button(isShow, text='login', bg="white", font=5, command=check).grid(row=5, column=1, padx=10, pady=10)
-            Button(isShow, text="forget password", bg="white", font=1, command=forget).grid(row=5, column=2, padx=10,
+            Button(isShow, text='התחברות', bg="white", font=5, command=check).grid(row=5, column=1, padx=10, pady=10)
+            Button(isShow, text="שכח סיסמא ", bg="white", font=1, command=forget).grid(row=5, column=2, padx=10,
                                                                                             pady=10)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=f).grid(
+            Button(isShow, text="<- חזור", bg="white", height="3", width="10", font="10", command=f).grid(
                 row=5, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -3136,11 +3136,11 @@ def acceptHeb():
             if isShow:
                 isShow.forget()
             isShow = Frame(frm)
-            Label(isShow, text="Choose Login Or Register", bg="blue", width="300")
+            Label(isShow, text="בחר כניסה או הרשמה", bg="blue", width="300")
             Label(isShow, text="").pack()
-            Button(isShow, text="Login", height="2", width="30", command=login).pack()
+            Button(isShow, text="התחברות", height="2", width="30", command=login).pack()
             Label(isShow, text="").pack()
-            Button(isShow, text="Register", height="2", width="30", command=sign_up).pack()
+            Button(isShow, text="להירשם", height="2", width="30", command=sign_up).pack()
             Label(isShow, text="").pack()
             isShow.pack()
             isShow.mainloop()
@@ -3149,7 +3149,7 @@ def acceptHeb():
 
     account()
 def acceptEng():
-
+    i = IntVar()
 
     def Database():
         global conn, cursor
@@ -3338,6 +3338,7 @@ def acceptEng():
     isShow2 = None
 
     def account():
+        i = IntVar()
         global isShow
         isShow = Frame(frm)
 
@@ -3424,6 +3425,7 @@ def acceptEng():
             isShow.mainloop()
 
         def create():
+
             global i
             if i.get() == 0:
                 insert_user(txtfname.get(), txtlname.get(), txtid.get(), txtrname.get(), txtmail.get(), txtuser.get(),
@@ -3479,16 +3481,27 @@ def acceptEng():
             # elif svprofile.get().strip()=='':
             # messagebox.showinfo('', 'The profile is Empty!')
             else:
-                global isShow
-                isShow.forget()
-                isShow = Frame(frm)
+                i = IntVar()
+                fr = tk.Tk()
+                fnt = ('tahoma', 16)
+                bg = '#ffffff'
+                bgtxt = '#00ff00'
+                fg = '#000000'
+                fw = 700
+                fh = 600
+                x = (fr.winfo_screenwidth() - fw) / 2
+                y = (fr.winfo_screenheight() - fh) / 2 - 50
+                fr.geometry('%dx%d+%d+%d' % (fw, fh, x, y))
+                fr.title('add pic in new board')
+                fr.config(bg=bg)
+
                 ttt = 'the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.\n• The system should be used correctly.\n• Allow managers to control my account.\n• Confirmation of saving my personal information in the system'
 
-                Label(isShow, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-                c = Checkbutton(isShow, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
+                Label(fr, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+                c = Checkbutton(fr, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
                     row=11, column=0, pady=pad)
-                Button(isShow, text='Create', command=create).grid(row=13, column=3, pady=pad)
-                isShow.mainloop()
+                Button(fr, text='Create', command=create).grid(row=13, column=3, pady=pad)
+            fr.mainloop()
 
         def sendmess():
             global isShow
