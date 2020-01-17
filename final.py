@@ -524,16 +524,23 @@ def account():
         isShow.forget()
 
         def choosepic(num):
-            #coosframe = tk.Tk()
+            global  isShow
+            isShow.forget()
+            coosframe = Frame(frm)
 
 
-            #def comp():
+            def comp():
                 convertTbinary('im' + str(num), filedialog.askopenfilename(filetypes=[("Image File", '.png')]))
-                creatbord()
+                coosframe.forget()
+                insertimag(num)
+            def cat():
+                coosframe.forget()
+                allcat()
 
-            #Button(coosframe, text="category", bg="white", height="5", width="20", font="25", ).grid(row=2,column=2,sticky=W,padx=30,pady=50)
-            #Button(coosframe, text="from computer", bg="white", height="5", width="20", font="25",command=comp).grid(row=3,column=2,sticky=W,padx=30,pady=50)
-            #coosframe.pack()
+
+            Button(coosframe, text="category", bg="white", height="5", width="20", font="25",command= cat).grid(row=2,column=2,sticky=W,padx=30,pady=50)
+            Button(coosframe, text="from computer", bg="white", height="5", width="20", font="25",command=comp).grid(row=3,column=2,sticky=W,padx=30,pady=50)
+            coosframe.pack()
 
         def insertimag(num):
             def funcVoice(name):
@@ -1035,6 +1042,16 @@ def account():
                     imageNameInasert[
                         'im4name'] = None, None, None, None
 
+                def savetouser(name,image):
+                    print(name)
+                    print(image)
+                    cursor.execute("SELECT * FROM admins")
+                    x = cursor.fetchall()
+                    for i in x:
+                        return
+                    convertTbinary(name,image)
+                    isShow.forget()
+
                 def Fram(name, image1=None, image2=None, image3=None, image4=None,image5=None,image6=None):
 
                     global isShow, catDic
@@ -1044,22 +1061,22 @@ def account():
                     Label(isShow, text=name).grid(row=0, columnspan=2, pady=20)
                     print(photo1Dic)
                     if image1:
-                        b = Button(isShow, height="300", width="300", image=photo1Dic[image1])
+                        b = Button(isShow, height="300", width="300", image=photo1Dic[image1],command=savetouser(image1,photo1Dic[image1]))
                         b.grid(row=1, column=0)
                     if image2:
-                        c = Button(isShow, height="300", width="300", image=photo1Dic[image2])
+                        c = Button(isShow, height="300", width="300", image=photo1Dic[image2],command=savetouser(image2,photo1Dic[image2]))
                         c.grid(row=1, column=1)
                     if image3:
-                        d = Button(isShow, height="300", width="300", image=photo1Dic[image3])
+                        d = Button(isShow, height="300", width="300", image=photo1Dic[image3],command=savetouser(image3,photo1Dic[image3]))
                         d.grid(row=1, column=2)
                     if image4:
-                        t = Button(isShow,height="300", width="300", image=photo1Dic[image4])
+                        t = Button(isShow,height="300", width="300", image=photo1Dic[image4],command=savetouser(image4,photo1Dic[image4]))
                         t.grid(row=2, column=0)
                     if image5:
-                        t = Button(isShow,height="300", width="300", image=photo1Dic[image5])
+                        t = Button(isShow,height="300", width="300", image=photo1Dic[image5],command=savetouser(image5,photo1Dic[image5]))
                         t.grid(row=2, column=1)
                     if image6:
-                        t = Button(isShow,height="300", width="300", image=photo1Dic[image6])
+                        t = Button(isShow,height="300", width="300", image=photo1Dic[image6],command=savetouser(image6,photo1Dic[image6]))
                         t.grid(row=2, column=2)
                     if name in tuple(cat1Dic):
                         cat1Dic[name].append(isShow)
@@ -1146,7 +1163,7 @@ def account():
             conn.commit()
             creatcat()
 
-        def convertTbinary(key, name,num):
+        def convertTbinaryc(key, name,num):
             a = open(name, 'rb')
             imageNameInasertc[key + 'name'] = name
 
@@ -1161,23 +1178,23 @@ def account():
             # cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
             # conn.commit()
             Button(isShow, text="+1", bg="white", height="10", width="20", font="100",
-                   command=lambda: convertTbinary('im'+str(1),
+                   command=lambda: convertTbinaryc('im'+str(1),
                                                   filedialog.askopenfilename(filetypes=[("Image File", '.png')]),1)).grid(row=1, column=0, sticky=W, padx=60, pady=20)
             Button(isShow, text="+2", bg="white", height="10", width="20", font="100",
-                   command=lambda: convertTbinary('im'+str(2),
+                   command=lambda: convertTbinaryc('im'+str(2),
                                                   filedialog.askopenfilename(filetypes=[("Image File", '.png')]),2)).grid(row=1, column=3, sticky=W, padx=90, pady=20)
             Button(isShow, text="+3", bg="white", height="10", width="20", font="100",
-                   command=lambda: convertTbinary('im'+str(3),
+                   command=lambda: convertTbinaryc('im'+str(3),
                                                   filedialog.askopenfilename(filetypes=[("Image File", '.png')]),3)).grid(row=1, column=5, sticky=W, padx=60, pady=50)
             Button(isShow, text="+4", bg="white", height="10", width="20", font="100",
-                   command=lambda: convertTbinary('im'+str(4),
+                   command=lambda: convertTbinaryc('im'+str(4),
                                                   filedialog.askopenfilename(filetypes=[("Image File", '.png')]),4)).grid(row=2, column=0, sticky=W, padx=90, pady=100)
             Button(isShow, text="+5", bg="white", height="10", width="20", font="100",
-                   command=lambda: convertTbinary('im' + str(5),
+                   command=lambda: convertTbinaryc('im' + str(5),
                                                   filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
                                                   4)).grid(row=2, column=3, sticky=W, padx=90, pady=100)
             Button(isShow, text="+6", bg="white", height="10", width="20", font="100",
-                   command=lambda: convertTbinary('im' + str(6),
+                   command=lambda: convertTbinaryc('im' + str(6),
                                                   filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
                                                   4)).grid(row=2, column=5, sticky=W, padx=90, pady=100)
 
@@ -1791,7 +1808,7 @@ def page5_admin():
 
     page5.mainloop()'''
 
-delete_board('safaa')
-delete_board('shatha')
+delete_board('bord')
+delete_board('ss')
 
 account()
