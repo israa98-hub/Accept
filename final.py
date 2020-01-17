@@ -93,7 +93,7 @@ def Database():
     cursor.execute(
         "CREATE TABLE IF NOT EXISTS users (mem_id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, first_name TEXT, last_name TEXT, id TEXT,responsible_name TEXT,Email Text,user_name TEXT, password TEXT,phone TEXT,gander TEXT,massage TEXT,answer TEXT)")
     cursor.execute(
-        'CREATE TABLE IF NOT EXISTS boards(name text,nameim1 text,sound1 blob,image1 text,nameim2 text,sound2 blob,image2 text,nameim3 text,sound3 blob,image3 text,nameim4 text,sound4 blob,image4 text) ')
+        'CREATE TABLE IF NOT EXISTS boards(name text,nameim1 text,sound1 blob,image1 text,nameim2 text,sound2 blob,image2 text,nameim3 text,sound3 blob,image3 text,nameim4 text,sound4 blob,image4 text,username text) ')
     cursor.execute('CREATE TABLE IF NOT EXISTS category(name text,c1name text,image1 text,c2name text,image2 text,c3name text,image3 text,c4name text,image4 text,c5name text,image5 text,c6name text,image6 text) ')
     conn.commit()
 
@@ -264,7 +264,7 @@ def convertTbinary(key,name):
     imageToInsert[key]= a.read()
 
 
-
+isShow1=None
 
 def convertToimage(name, imager):
     if (name != None):
@@ -272,8 +272,7 @@ def convertToimage(name, imager):
         b.write(imager)
         photonameList.append(name)
         photoDic[name]=PhotoImage(file=name)
-
-
+isShow2=None
 
 def account():
     global isShow
@@ -523,26 +522,30 @@ def account():
         print(1)
         isShow.forget()
 
-        def choosepic(num):
-            global  isShow
-            isShow.forget()
-            coosframe = Frame(frm)
 
-
-            def comp():
-                convertTbinary('im' + str(num), filedialog.askopenfilename(filetypes=[("Image File", '.png')]))
-                coosframe.forget()
-                insertimag(num)
-            def cat():
-                coosframe.forget()
-                allcat()
-
-
-            Button(coosframe, text="category", bg="white", height="5", width="20", font="25",command= cat).grid(row=2,column=2,sticky=W,padx=30,pady=50)
-            Button(coosframe, text="from computer", bg="white", height="5", width="20", font="25",command=comp).grid(row=3,column=2,sticky=W,padx=30,pady=50)
-            coosframe.pack()
 
         def insertimag(num):
+            def choosepic(num):
+                global isShow2,isShow1
+                isShow1=tk.Tk()
+                isShow2 = Frame(isShow1)
+
+                def comp():
+                    global isShow2
+                    convertTbinary('im' + str(num), filedialog.askopenfilename(filetypes=[("Image File", '.png')]))
+                    isShow1.destroy()
+                    insertimag(num)
+
+                def cat():
+                    global  isShow2
+                    isShow2.forget()
+                    allcat()
+
+                Button(isShow2, text="category", bg="white", height="5", width="20", font="25", command=cat).grid(
+                    row=2, column=2, sticky=W, padx=30, pady=50)
+                Button(isShow2, text="from computer", bg="white", height="5", width="20", font="25",
+                       command=comp).grid(row=3, column=2, sticky=W, padx=30, pady=50)
+                isShow2.pack()
             def funcVoice(name):
 
                 fs = 44100  # Sample rate
@@ -556,7 +559,123 @@ def account():
                 vvo = file
                 # playsound(file)
 
+            def allcat():
 
+                def funcB(N, K):
+                    print(N)
+
+                    def lastFuncc():
+
+                        '''print(numImg)
+                        root = Tk()
+                        canvas = Canvas(root, width=300, height=300)
+                        canvas.pack()
+                        im = Image.open(numImg)
+                        resized = im.resize((200, 200), Image.ANTIALIAS)
+                        photo1 = ImageTk.PhotoImage(resized)
+                        myvar = tk.Button(root, image=photo1)
+                        myvar.image = photo1
+                        myvar.pack()
+                        root.mainloop()
+
+                        global isShow
+                        isShow=Frame(frm)
+                        isShow=imageToInsert['im1']
+                    '''
+
+                        def convertToimage(name, imager):
+                            if (name != None):
+                                b = open(name, 'wb')
+                                b.write(imager)
+                                photonameList1.append(name)
+                                photo1Dic[name] = PhotoImage(file=name)
+
+                        global imageNameInasertc
+                        cursor.execute("SELECT * FROM category WHERE name=?", (N,))
+                        y = cursor.fetchall()
+                        for n in y:
+                            for i in range(1, 13, 2):
+                                convertToimage(n[i], n[i + 1])
+                        print(photo1Dic)
+                        for i in y:
+                            print(i[0])
+                            Fram(N, i[1], i[3], i[5], i[7], i[9], i[11])
+                        imageNameInasert['im1name'], imageNameInasert['im2name'], imageNameInasert['im3name'], \
+                        imageNameInasert[
+                            'im4name'] = None, None, None, None
+
+                    def savetouser(name, image):
+                        print(name)
+                        print(image)
+                        convertTbinary(name, image)
+                        return
+
+                    def Fram(name, image1=None, image2=None, image3=None, image4=None, image5=None, image6=None):
+
+                        global isShow2, catDic
+                        isShow2.forget()
+                        isShow2 = Frame(isShow1)
+                        print(image1)
+                        Label(isShow2, text=name).grid(row=0, columnspan=2, pady=20)
+                        print(photo1Dic)
+                        #if image1:
+                            #b = Button(isShow2, height="300", width="300", image=photo1Dic[image1])#,command=lambda: savetouser(image1, photo1Dic[image1]))
+                            #b.grid(row=1, column=0)
+                        if image2:
+                            c = Button(isShow2, height="300", width="300", image=photo1Dic[image2],command=lambda :savetouser(image2, photo1Dic[image2]))
+                            c.grid(row=1, column=1)
+                        if image3:
+                            d = Button(isShow2, height="300", width="300", image=photo1Dic[image3],
+                                       command=lambda: savetouser(image3, photo1Dic[image3]))
+                            d.grid(row=1, column=2)
+                        if image4:
+                            t = Button(isShow2, height="300", width="300", image=photo1Dic[image4],
+                                       command=lambda: savetouser(image4, photo1Dic[image4]))
+                            t.grid(row=2, column=0)
+                        if image5:
+                            t = Button(isShow2, height="300", width="300", image=photo1Dic[image5],
+                                       command=lambda: savetouser(image5, photo1Dic[image5]))
+                            t.grid(row=2, column=1)
+                        if image6:
+                            t = Button(isShow2, height="300", width="300", image=photo1Dic[image6],
+                                       command=lambda: savetouser(image6, photo1Dic[image6]))
+                            t.grid(row=2, column=2)
+                        #if name in tuple(cat1Dic):
+                           # cat1Dic[name].append(isShow2)
+                            #### and insert to DB
+                        #else:
+                            #cat1Dic[name] = isShow2
+                        #isShow2 = cat1Dic[name]
+                       # print(cat1Dic)
+                        isShow2.pack()
+
+                    C = Button(isShow2, text=N, bg="white", height="3", width="15", font="20",
+                               command=lambda: lastFuncc())
+                    C.bind('<Button-1>', lambda event, frame=isShow2, arg=N: bord(N))
+                    C.grid(row=K, column=1, padx=30, pady=20)
+                    isShow2.pack()
+
+
+
+                global isShow2
+                isShow2 = Frame(isShow1)
+
+                cursor.execute("SELECT * FROM category")
+                row = cursor.fetchall()
+                k = 0
+
+                for i in row:
+                    funcB(i[0], k)
+                    k += 1
+                    '''
+                    b=Button(isShow, text=y, bg="white", height="3", width="15", font="20")
+                    b.bind('<Button-1>', lambda event, frame=isShow, arg=y: bord(y))
+                    b.grid(row=k, column=1, padx=30, pady=20)
+                    k+=1
+                    '''
+                return
+
+                isShow2.pack()
             def saveimb():
                 global isShow
 
@@ -609,8 +728,7 @@ def account():
                                                                                             pady=60)
 
             Button(isShow, text="Add pic ", bg="white", height="5", width="10", font="20",
-                   command=lambda: choosepic(num)).grid(
-                row=4, column=2, sticky=W, padx=90, pady=60)
+                   command=lambda: choosepic(num)).grid(row=4, column=2, sticky=W, padx=90, pady=60)
             ok = tk.Button(isShow, text=" save ", bg="white", height="3", width="5", font="20",
                            command=saveimb).grid(row=5, column=1, sticky=W, padx=20, pady=20)
             back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="5", font="20").grid(row=5,
@@ -629,8 +747,15 @@ def account():
             isShow.pack()
 
         def save_B():
-
-            cursor.execute("INSERT INTO boards (name) VALUES(?)", (txtbord.get(),))
+            cursor.execute("SELECT * FROM admins")
+            x = cursor.fetchall()
+            for i in x:
+                if svuser.get() == i[1]:
+                    cursor.execute("INSERT INTO boards (name,username) VALUES(?,?)", (txtbord.get(),"everyone"))
+                    conn.commit()
+                    creatbord()
+                    return
+            cursor.execute("INSERT INTO boards (name,username) VALUES(?,?)", (txtbord.get(),svuser.get()))
             conn.commit()
             creatbord()
 
@@ -829,8 +954,9 @@ def account():
         k = 0
 
         for i in row:
-            funcB(i[0], k)
-            k += 1
+            if i[13]==svuser.get() or i[13]=="everyone":
+                funcB(i[0], k)
+                k += 1
             '''
             b=Button(isShow, text=y, bg="white", height="3", width="15", font="20")
             b.bind('<Button-1>', lambda event, frame=isShow, arg=y: bord(y))
@@ -1043,14 +1169,11 @@ def account():
                         'im4name'] = None, None, None, None
 
                 def savetouser(name,image):
-                    print(name)
-                    print(image)
                     cursor.execute("SELECT * FROM admins")
                     x = cursor.fetchall()
                     for i in x:
                         return
                     convertTbinary(name,image)
-                    isShow.forget()
 
                 def Fram(name, image1=None, image2=None, image3=None, image4=None,image5=None,image6=None):
 
@@ -1808,7 +1931,7 @@ def page5_admin():
 
     page5.mainloop()'''
 
-delete_board('bord')
-delete_board('ss')
+delete_board('a')
+delete_board('c')
 
 account()
