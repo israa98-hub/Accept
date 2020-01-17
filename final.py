@@ -152,7 +152,7 @@ def acceptArab():
         if i.get()==0:
             insert_user(txtuser.get(), txtid.get(), txtfname.get(), txtlname.get(), txtpass.get(), txtgender.get(),txtrname.get(), txtmail.get(), txtphone.get(),txtanswer.get())
         else:
-            messagebox.showinfo('', "you want to agree the terms")
+            messagebox.showinfo('', "يجب عليك الموافقه على شروط البرمجه")
 
             '''
     '''svId.set('')
@@ -182,35 +182,35 @@ def acceptArab():
         frame = Frame(frm, bg=bg)
         # Label(frame, text='User Data', bg='navy', fg='lightblue', font=fnt).pack(pady=pad)
 
-        Label(frame, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-        Label(frame, text='Autistic ID number:', bg=bg, fg=fg, font=fnt).grid(row=1, column=0)
-        Label(frame, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=2, column=0)
-        Label(frame, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0)
-        Label(frame, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=4, column=0)
-        Label(frame, text='The gender of the autistic: ', bg=bg, fg=fg, font=fnt).grid(row=5, column=0)
-        Label(frame, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
-        Label(frame, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
-        Label(frame, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
+        Label(frame, text='اسم المستخدم:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+        Label(frame, text='نمرة هوية المتوحد:', bg=bg, fg=fg, font=fnt).grid(row=1, column=0)
+        Label(frame, text='الاسم الاول  :', bg=bg, fg=fg, font=fnt).grid(row=2, column=0)
+        Label(frame, text='الاسم الثاني :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0)
+        Label(frame, text='كلمة السر :', bg=bg, fg=fg, font=fnt).grid(row=4, column=0)
+        Label(frame, text='جنس المستخدم: ', bg=bg, fg=fg, font=fnt).grid(row=5, column=0)
+        Label(frame, text='اسم المسؤول  :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
+        Label(frame, text='ايميل المسؤول :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
+        Label(frame, text='رقم هاتف المسؤول :', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
 
-        #Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
+        #Label(frame, text='الصوره الشخصيه :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
         #Label(top, image=im).pack()
         txtuser = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svuser)
         txtid = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svId)
         txtfname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svfname)
         txtlname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svlname)
         txtpass = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svpass)
-        txtgender = ttk.Combobox(frame, values=('Male', 'Female'),textvariable=svgender, state='readonly')
+        txtgender = ttk.Combobox(frame, values=('ذكر', 'انثى'),textvariable=svgender, state='readonly')
         txtrname = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svrname)
         txtmail = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail)
         txtphone = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone)
         txtprofile=Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile)
         btns = ttk.Style()
         btns.configure('TButton', font=fnt, pady=pad, padding=pad)
-        #c = Checkbutton(frame, text="I accept the Terms of service ", variable="unchecked", onvalue="checked").grid(row=11, column=0, pady=pad)
+        #c = Checkbutton(frame, text="موافق ", variable="unchecked", onvalue="checked").grid(row=11, column=0, pady=pad)
         #ttk.Button(frame, text='Create', command=create).grid(row=13, column=3, pady=pad)
-        ttk.Button(frame, text='Back').grid(row=13, column=0, pady=8)
-        ttk.Button(frame, text='Next',command=pageif).grid(row=13, column=3, pady=8)
-        # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
+        ttk.Button(frame, text='رجوع').grid(row=13, column=0, pady=8)
+        ttk.Button(frame, text='استمر',command=pageif).grid(row=13, column=3, pady=8)
+        # ttk.Button(frm, text='الخروج', command=frm.destroy).grid(row=9, column=2, pady=pad)
 
         txtuser.grid(row=0, column=1, pady=pad)
         txtid.grid(row=1, column=1, pady=pad)
@@ -327,16 +327,16 @@ def acceptArab():
             # settingframe.forget()
             global isShow
             isShow = Frame(frm)
-            Label(isShow, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0, pady=20)
-            Label(isShow, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,
+            Label(isShow, text='اسم المستخدم:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0, pady=20)
+            Label(isShow, text='نمرة هوية المتوحد :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,
                                                                                                 pady=20)
-            Label(isShow, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=5, column=0,
+            Label(isShow, text='الاسم الاول :', bg=bg, fg=fg, font=fnt).grid(row=5, column=0,
                                                                                                pady=20)
-            Label(isShow, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0, pady=20)
-            Label(isShow, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0, pady=20)
-            Label(isShow, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=11, column=0,
+            Label(isShow, text='كلمة السر:', bg=bg, fg=fg, font=fnt).grid(row=7, column=0, pady=20)
+            Label(isShow, text='اسم السمؤول :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0, pady=20)
+            Label(isShow, text='البريد الالكتروني الخاص بالمسؤول :', bg=bg, fg=fg, font=fnt).grid(row=11, column=0,
                                                                                                pady=20)
-            Label(isShow, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=13, column=0,
+            Label(isShow, text='رقم الهاتف الخاص بالمسؤول :', bg=bg, fg=fg, font=fnt).grid(row=13, column=0,
                                                                                                      pady=20)
             # Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
             # Label(top, image=im).pack()
@@ -348,28 +348,28 @@ def acceptArab():
             Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail).grid(row=11, column=2)
             Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone).grid(row=13, column=2)
             # txtprofile = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile).grid(row=15,column=2)
-            Button(isShow, text='<-Back', bg="white", height="3", width="10", command=settingpage).grid(row=20,
+            Button(isShow, text='<-رجوع', bg="white", height="3", width="10", command=settingpage).grid(row=20,
                                                                                                         column=0,
                                                                                                         pady=20,
                                                                                                         padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,
+            Button(isShow, text='تحديث', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,
                                                                                                       pady=20, padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,
+            Button(isShow, text='تحديث', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,
                                                                                                    pady=20,
                                                                                                    padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,
+            Button(isShow, text='تحديث', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,
                                                                                                    pady=20,
                                                                                                    padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,
+            Button(isShow, text='تحديث', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,
                                                                                                   pady=20,
                                                                                                   padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,
+            Button(isShow, text='تحديث', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,
                                                                                                    pady=20,
                                                                                                    padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,
+            Button(isShow, text='تحديث', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,
                                                                                                   pady=20,
                                                                                                   padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
+            Button(isShow, text='تحديث', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
                                                                                                    pady=20, padx=10)
 
             isShow.grid()
@@ -381,7 +381,7 @@ def acceptArab():
                 insert_user(txtfname.get(), txtlname.get(), txtid.get(), txtrname.get(), txtmail.get(), txtuser.get(),
                             txtpass.get(), txtgender.get(), txtphone.get(), txtanswer.get(), np, dp)
             else:
-                messagebox.showinfo('', "you want to agree the terms")
+                messagebox.showinfo('', "يجب عليك الموافقه على شروط الاستخدام")
 
         def HelpFunc2():
             global isShow
@@ -395,38 +395,38 @@ def acceptArab():
             global isShow
             isShow.forget()
             isShow = Frame(frm)
-            Label(isShow, text='your explain is :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0, pady=20)
+            Label(isShow, text='الشرح الخاص بك هو :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0, pady=20)
             Label(isShow, text=exp, bg=bg, fg=fg, font=fnt).grid(row=5, column=0, pady=20)
 
             isShow.mainloop()
 
         def pageif():
             if svuser.get().strip() == '':
-                messagebox.showinfo('', 'The user name  is Empty!')
+                messagebox.showinfo('', 'اسم المستخدم فارغ')
                 txtuser.focus()
             elif svId.get().strip() == '':
-                messagebox.showinfo('', 'The number of id is Empty!')
+                messagebox.showinfo('', 'رقم الهويه فارغ!')
                 txtid.focus()
             elif svpass.get().strip() == '':
-                messagebox.showinfo('', 'The password Empty!')
+                messagebox.showinfo('', 'كلمة المرور فارغه!')
                 txtpass.focus()
             elif svfname.get().strip() == '':
-                messagebox.showinfo('', 'The first name of the autistic is Empty!')
+                messagebox.showinfo('', 'الاسم الاول فارغ!')
                 txtfname.focus()
             elif svlname.get().strip() == '':
-                messagebox.showinfo('', 'The last name of the autistic is Empty!')
+                messagebox.showinfo('', 'الاسم الثاني فارغ')
                 txtlname.focus()
             elif svgender.get() == '':
-                messagebox.showinfo('', 'the gender is Empty!')
+                messagebox.showinfo('', 'الجنس فارغ!')
                 txtgender.focus()
             elif svrname.get().strip() == '':
-                messagebox.showinfo('', 'The name of the responsible is Empty!')
+                messagebox.showinfo('', 'اسم المسؤول فارغ!')
                 txtrname.focus()
             elif svmail.get().strip() == '':
-                messagebox.showinfo('', 'The E-mail of the responsible is Empty!')
+                messagebox.showinfo('', 'البريد الالكتروني الخاص بالمسؤول فارغ!')
                 txtmail.focus()
             elif svphone.get().strip() == '':
-                messagebox.showinfo('', 'The number phone of the responsible is Empty!')
+                messagebox.showinfo('', 'رقم الهاتف الخاص بالمسؤول فارغ!')
                 txtphone.focus()
             # elif svprofile.get().strip()=='':
             # messagebox.showinfo('', 'The profile is Empty!')
@@ -437,9 +437,9 @@ def acceptArab():
                 ttt = 'the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.\n• The system should be used correctly.\n• Allow managers to control my account.\n• Confirmation of saving my personal information in the system'
 
                 Label(isShow, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-                c = Checkbutton(isShow, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
+                c = Checkbutton(isShow, text="اوافق ", variable=i, onvalue="checked").grid(
                     row=11, column=0, pady=pad)
-                Button(isShow, text='Create', command=create).grid(row=13, column=3, pady=pad)
+                Button(isShow, text='تسجيل', command=create).grid(row=13, column=3, pady=pad)
                 isShow.mainloop()
 
         def sendmess():
@@ -452,13 +452,13 @@ def acceptArab():
                 conn.commit()
                 mainpage()
 
-            Label(isShow, text="Type message:", font=fnt).grid(row=1, column=1)
+            Label(isShow, text="اكتب رساله:", font=fnt).grid(row=1, column=1)
             Entry(isShow, font=fnt, textvariable=svmassage).grid(row=2, column=1)
-            Button(isShow, text="send", bg="white", height="3", width="10", font=fnt, command=send).grid(row=4,
+            Button(isShow, text="ارسل", bg="white", height="3", width="10", font=fnt, command=send).grid(row=4,
                                                                                                          column=2,
                                                                                                          padx=100,
                                                                                                          pady=20)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=settingpage).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=settingpage).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -477,9 +477,9 @@ def acceptArab():
 
             txtlan = ttk.Combobox(isShow, values=('English', 'Arabic', 'Hebrew'), textvariable=svlan,
                                   state='readonly').grid(row=1, column=1, pady=pad)
-            Button(isShow, text="choose", bg="white", height="3", width="10", font="10", command=chooslan()).grid(
+            Button(isShow, text="اختار", bg="white", height="3", width="10", font="10", command=chooslan()).grid(
                 row=3, column=1, padx=5, pady=80)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=settingpage).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=settingpage).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -488,19 +488,19 @@ def acceptArab():
             isShow.forget()
             isShow = Frame(frm)
 
-            Button(isShow, text="Language", bg="white", height="6", width="30", font=fnt, command=lambda: lang()).grid(
+            Button(isShow, text="لغه", bg="white", height="6", width="30", font=fnt, command=lambda: lang()).grid(
                 row=4, column=1,
                 padx=100, pady=20)
-            Button(isShow, text="contact", bg="white", height="6", width="30", font=fnt, command=sendmess).grid(row=6,
+            Button(isShow, text="اتصل", bg="white", height="6", width="30", font=fnt, command=sendmess).grid(row=6,
                                                                                                                 column=1,
                                                                                                                 padx=100,
                                                                                                                 pady=20)
-            Button(isShow, text="Help!", bg="white", height="6", width="30", font="50", command=HelpFunc2).grid(row=2,
+            Button(isShow, text="مساعده!", bg="white", height="6", width="30", font="50", command=HelpFunc2).grid(row=2,
                                                                                                                 column=1,
                                                                                                                 padx=100,
                                                                                                                 pady=20)
             # Button(isShow, text="Edit Profile", bg="white", height="6", width="30", font="50",command=updatepro).grid(row=0, column=1, padx=100, pady=20)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=mainpage).grid(
                 row=8, column=0, padx=5, pady=80)
 
             isShow.pack()
@@ -511,16 +511,16 @@ def acceptArab():
             frame = Frame(frm, bg=bg)
             # Label(frame, text='User Data', bg='navy', fg='lightblue', font=fnt).pack(pady=pad)
 
-            Label(frame, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-            Label(frame, text='Autistic ID number:', bg=bg, fg=fg, font=fnt).grid(row=1, column=0)
-            Label(frame, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=2, column=0)
-            Label(frame, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0)
-            Label(frame, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=4, column=0)
-            Label(frame, text='The gender of the autistic: ', bg=bg, fg=fg, font=fnt).grid(row=5, column=0)
-            Label(frame, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
-            Label(frame, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
-            Label(frame, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
-            Label(frame, text='what your Primary School? ', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
+            Label(frame, text='اسم المستخدم:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+            Label(frame, text='رقم هوية الستخدم:', bg=bg, fg=fg, font=fnt).grid(row=1, column=0)
+            Label(frame, text='الاسم الاول :', bg=bg, fg=fg, font=fnt).grid(row=2, column=0)
+            Label(frame, text='الاسم الثاني :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0)
+            Label(frame, text='كلمة المرور :', bg=bg, fg=fg, font=fnt).grid(row=4, column=0)
+            Label(frame, text='جنس المستخدم: ', bg=bg, fg=fg, font=fnt).grid(row=5, column=0)
+            Label(frame, text='اسم المسؤول :', bg=bg, fg=fg, font=fnt).grid(row=6, column=0)
+            Label(frame, text='البريد الالكتروتي الخاص بالمسؤول :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0)
+            Label(frame, text='رقم الهاتف الخاص بالمسؤول :', bg=bg, fg=fg, font=fnt).grid(row=8, column=0)
+            Label(frame, text='اسم مدرستك الابتدائيه? ', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
 
             # Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
             # Label(top, image=im).pack()
@@ -538,13 +538,13 @@ def acceptArab():
 
             btns = ttk.Style()
             btns.configure('TButton', font=fnt, pady=pad, padding=pad)
-            ttk.Button(frame, text='profile pic',
+            ttk.Button(frame, text='الصوره الشخصيه',
                        command=lambda: saveprofile(filedialog.askopenfilename(filetypes=[("Image File", '.png')]))) \
                 .grid(row=10, column=0, pady=15)
             # ttk.Button(frame, text='Create new account', command=create).grid(row=11, column=1, pady=pad)
             # ttk.Button(frm, text='Exit Now', command=frm.destroy).grid(row=9, column=2, pady=pad)
-            ttk.Button(frame, text='Back', command=f).grid(row=13, column=0, pady=8)
-            ttk.Button(frame, text='Next', command=pageif).grid(row=13, column=3, pady=8)
+            ttk.Button(frame, text='الرجوع', command=f).grid(row=13, column=0, pady=8)
+            ttk.Button(frame, text='استمر', command=pageif).grid(row=13, column=3, pady=8)
             txtuser.grid(row=0, column=1, pady=pad)
             txtid.grid(row=1, column=1, pady=pad)
             txtfname.grid(row=2, column=1, pady=pad)
@@ -664,7 +664,7 @@ def acceptArab():
                                     t = Button(isShow2, height="300", width="300", image=photo1Dic[image6],
                                                command=lambda: choose('im' + str(num), image6))
                                     t.grid(row=2, column=2)
-                                Button(isShow2, text="<- Back", bg="white", height="3", width="10", font="10",
+                                Button(isShow2, text="<- رجوع", bg="white", height="3", width="10", font="10",
                                        command=allcat).grid(
                                     row=3, column=0, padx=5, pady=80)
                                 # if name in tuple(cat1Dic):
@@ -699,7 +699,7 @@ def acceptArab():
                             b.grid(row=k, column=1, padx=30, pady=20)
                             k+=1
                             '''
-                        Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10",
+                        Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10",
                                command=mainpage).grid(
                             row=k, column=0, padx=5, pady=80)
 
@@ -721,11 +721,11 @@ def acceptArab():
                         isShow2.forget()
                         allcat()
 
-                    Button(isShow2, text="category", bg="white", height="5", width="20", font="25", command=cat).grid(
+                    Button(isShow2, text="فئات", bg="white", height="5", width="20", font="25", command=cat).grid(
                         row=2, column=2, sticky=W, padx=30, pady=50)
-                    Button(isShow2, text="from computer", bg="white", height="5", width="20", font="25",
+                    Button(isShow2, text="من الحاسوب", bg="white", height="5", width="20", font="25",
                            command=comp).grid(row=3, column=2, sticky=W, padx=30, pady=50)
-                    Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10",
+                    Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10",
                            command=lambda: insertimag(num)).grid(
                         row=4, column=0, padx=5, pady=80)
                     isShow2.pack()
@@ -778,25 +778,26 @@ def acceptArab():
                 global isShow
                 isShow.forget()
                 isShow = Frame(frm)
-                Label(isShow, text='name of image:', bg="white", fg=fg, font=" impact 25").grid(row=0, column=2)
-                lbl = ttk.Label(isShow, text='name of the pic?')
+                Label(isShow, text='اسم الصوره:', bg="white", fg=fg, font=" impact 25").grid(row=0, column=2)
+                lbl = ttk.Label(isShow, text='اسم الصوره?')
                 lbl.config(font=fnt)
                 nameim = ttk.Entry(isShow)
                 nameim.config(font=fnt)
                 nameim.grid(row=1, column=2)
 
-                Button(isShow, text="Add voice  ", bg="white", height="5", width="10", font="20",
+                Button(isShow, text="اضف صوت ", bg="white", height="5", width="10", font="20",
                        command=lambda: funcVoice("x" + str(num) + txtbord.get() + ".wav")).grid(row=2,
                                                                                                 column=2,
                                                                                                 sticky=W,
                                                                                                 padx=90,
                                                                                                 pady=60)
 
-                Button(isShow, text="Add pic ", bg="white", height="5", width="10", font="20",
+                Button(isShow, text="سجل صوت ", bg="white", height="5", width="10", font="20",
                        command=lambda: choosepic(num)).grid(row=4, column=2, sticky=W, padx=90, pady=60)
-                ok = tk.Button(isShow, text=" save ", bg="white", height="3", width="5", font="20",
+                ok = tk.Button(isShow, text=" حفظ"
+                                            " ", bg="white", height="3", width="5", font="20",
                                command=saveimb).grid(row=5, column=1, sticky=W, padx=20, pady=20)
-                back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="5", font="20",
+                back = tk.Button(isShow, text=" <- رجوع ", bg="white", height="3", width="5", font="20",
                                  command=newbord).grid(row=5,
                                                        column=0,
                                                        sticky=W,
@@ -863,8 +864,8 @@ def acceptArab():
                 print(2)
                 print(3)
                 isShow = Frame(frm)
-                B = ttk.Button(isShow, text="Enter", command=save_B)
-                Label(isShow, text='board name:', font=fnt).pack()
+                B = ttk.Button(isShow, text="ادخل", command=save_B)
+                Label(isShow, text='اسم اللوح:', font=fnt).pack()
                 print(4)
                 txtbord = ttk.Entry(isShow)
                 txtbord.config(font=fnt)
@@ -873,7 +874,7 @@ def acceptArab():
                 txtbord.pack()
                 B.pack()
 
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).pack()
+                Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=mainpage).pack()
                 isShow.pack()
                 # mainframe.pack()
 
@@ -995,7 +996,7 @@ def acceptArab():
                     if image4:
                         t = Button(isShow, height="400", width="400", image=photoDic[image4], command=lambda: voice(4))
                         t.grid(row=2, column=1)
-                    Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10",
+                    Button(isShow, text="<-رجوع", bg="white", height="3", width="10", font="10",
                            command=allboards).grid(
                         row=3, column=0, padx=5, pady=80)
                     if name in tuple(catDic):
@@ -1030,7 +1031,7 @@ def acceptArab():
                 b.grid(row=k, column=1, padx=30, pady=20)
                 k+=1
                 '''
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=mainpage).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=mainpage).grid(
                 row=k, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -1058,11 +1059,11 @@ def acceptArab():
 
             Label(isShow, bg="white", font=fnt, height=200, width=200, image=convp()).grid(row=2, column=1, padx=300,
                                                                                            pady=10)
-            Button(isShow, text="Setting", bg="white", font=fnt, command=settingpage).grid(row=8, column=1, padx=300,
+            Button(isShow, text="اعدادات", bg="white", font=fnt, command=settingpage).grid(row=8, column=1, padx=300,
                                                                                            pady=10)
-            Button(isShow, text="Create a new board!", bg="white", font=fnt, command=newbord).grid(row=6, column=1,
+            Button(isShow, text="اصنع لوح جديد!", bg="white", font=fnt, command=newbord).grid(row=6, column=1,
                                                                                                    padx=300, pady=10)
-            Button(isShow, text="An existing boards", bg="white", font=fnt, command=allboards).grid(row=4, column=1,
+            Button(isShow, text="الالواح الموجوده", bg="white", font=fnt, command=allboards).grid(row=4, column=1,
                                                                                                     padx=200, pady=10)
             # Button(mainframe, text="Profile", bg="white", font=fnt).grid(row=0, column=1, padx=200, pady=20)
 
@@ -1082,18 +1083,18 @@ def acceptArab():
                     if txtnew.get() == txt2.get():
                         account()
                     else:
-                        messagebox.showinfo('', 'The passwords not matched!')
+                        messagebox.showinfo('', 'كلمة المرور غير صحيحه!')
                         txtnew.focus()
                         txt2.focus()
 
-                Label(isShow, text='New Password', font='impact 25').pack()
+                Label(isShow, text='كلمة مرور جديده', font='impact 25').pack()
 
-                lblnew = ttk.Label(isShow, text='Enter new password:')
+                lblnew = ttk.Label(isShow, text='ادخل كلمة مرور جديده:')
                 txtnew = ttk.Entry(isShow)
-                lbl2 = ttk.Label(isShow, text='Enter the password one more time:')
+                lbl2 = ttk.Label(isShow, text='ادخل كلمة مرور للتاكير:')
                 txt2 = ttk.Entry(isShow)
-                change = ttk.Button(isShow, text='change password', command=checkpass)
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=question).grid(
+                change = ttk.Button(isShow, text='تبديل كلمة المرور', command=checkpass)
+                Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=question).grid(
                     row=4, column=0, padx=5, pady=80)
                 lblnew.config(font=fnt)
                 txtnew.config(font=fnt)
@@ -1121,10 +1122,10 @@ def acceptArab():
                             returnpass()
                             print(txtanswer.get())
 
-                Label(isShow, text='Account security', font='impact 25').pack()
+                Label(isShow, text='امن الحساب', font='impact 25').pack()
 
-                lbl1 = ttk.Label(isShow, text='your id:')
-                lbl = ttk.Label(isShow, text='what your primry school?')
+                lbl1 = ttk.Label(isShow, text='رقم هويتك:')
+                lbl = ttk.Label(isShow, text='ما هي مدرستك الابتدائيه?')
 
                 txtanswer = ttk.Entry(isShow)
                 txtanswer.config(font=fnt)
@@ -1132,7 +1133,7 @@ def acceptArab():
                 txtid.config(font=fnt)
                 lbl1.config(font=fnt)
                 lbl.config(font=fnt)
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=login).grid(
+                Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=login).grid(
                     row=4, column=0, padx=5, pady=80)
                 ok = ttk.Button(isShow, text='OK', command=forgetpass)
 
@@ -1163,22 +1164,22 @@ def acceptArab():
                     # page5_admin()
 
                 if checkuser(text) == False:
-                    messagebox.showinfo('', 'Not found user!')
+                    messagebox.showinfo('', 'اسم المستخدم غير موجود!')
 
             isShow.forget()
             isShow = Frame(frm)
-            Label(isShow, text='Enter username you want to search:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1,
+            Label(isShow, text='ادخل اسم المستخدم اللذي تريد البجث عنه:', bg=bg, fg=fg, font=fnt).grid(row=10, column=1,
                                                                                                   padx=30,
                                                                                                   pady=120)
             r = Entry(isShow, bg="white", fg=fg, font=fnt, textvariable=svuser)
             r.grid(row=10, column=2, padx=30, pady=120)
 
-            Button(isShow, text=" Search", bg="white", height="1", width="8", font="15", command=funAzr).grid(row=14,
+            Button(isShow, text=" ابحث", bg="white", height="1", width="8", font="15", command=funAzr).grid(row=14,
                                                                                                               column=4,
                                                                                                               sticky=W,
                                                                                                               padx=30,
                                                                                                               pady=30)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=14, column=0, padx=5, pady=80)
             isShow.mainloop()
 
@@ -1186,19 +1187,19 @@ def acceptArab():
             global isShow
             isShow.forget()
             isShow = Frame(frm)
-            Button(isShow, text="add a new board", bg="white", height="5", width="20", font="25", command=newbord).grid(
+            Button(isShow, text="اظافة لوح جديد", bg="white", height="5", width="20", font="25", command=newbord).grid(
                 row=2,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="all boards", bg="white", height="5", width="20", font="25", command=allboards).grid(
+            Button(isShow, text="كل الالواح", bg="white", height="5", width="20", font="25", command=allboards).grid(
                 row=3,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -1273,7 +1274,7 @@ def acceptArab():
                     if image6:
                         t = Button(isShow, height="300", width="300", image=photo1Dic[image6])
                         t.grid(row=2, column=2)
-                    Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10",
+                    Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10",
                            command=allcat).grid(
                         row=3, column=0, padx=5, pady=80)
                     if name in tuple(cat1Dic):
@@ -1307,7 +1308,7 @@ def acceptArab():
                 b.grid(row=k, column=1, padx=30, pady=20)
                 k+=1
                 '''
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=admincat).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=admincat).grid(
                 row=k, column=0, padx=5, pady=80)
 
             isShow.pack()
@@ -1401,9 +1402,9 @@ def acceptArab():
                                                        filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
                                                        4)).grid(row=2, column=5, sticky=W, padx=90, pady=100)
 
-                Button(isShow, text="Save", bg="white", height="3", width="10", font="100",
+                Button(isShow, text="حفظ", bg="white", height="3", width="10", font="100",
                        command=lambda: page1_admin()).grid(row=3, column=4, sticky=W, padx=170, pady=20)
-                back = tk.Button(isShow, text=" <- Back ", bg="white", height="3", width="10", font="100",
+                back = tk.Button(isShow, text=" <- رجوع ", bg="white", height="3", width="10", font="100",
                                  command=namecat).grid(row=3, column=0, sticky=W, padx=20, pady=20)
 
                 isShow.pack()
@@ -1414,12 +1415,12 @@ def acceptArab():
                 print(2)
                 print(3)
                 isShow = Frame(frm)
-                B = ttk.Button(isShow, text="Enter", command=save_C)
-                Label(isShow, text='catigoria name:', font=fnt).pack()
+                B = ttk.Button(isShow, text="ادخل", command=save_C)
+                Label(isShow, text='اسم الفئه:', font=fnt).pack()
                 print(4)
                 txtcat = ttk.Entry(isShow)
                 txtcat.config(font=fnt)
-                Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=admincat()).grid(
+                Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=admincat()).grid(
                     row=4, column=0, padx=5, pady=80)
 
                 print(5)
@@ -1437,20 +1438,20 @@ def acceptArab():
             global isShow
             isShow.forget()
             isShow = Frame(frm)
-            Button(isShow, text="add a new catigoria", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="اظافة فئه جديده", bg="white", height="5", width="20", font="25",
                    command=newcat).grid(
                 row=2,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="all catigorias", bg="white", height="5", width="20", font="25", command=allcat).grid(
+            Button(isShow, text="كل الفئات ", bg="white", height="5", width="20", font="25", command=allcat).grid(
                 row=3,
                 column=2,
                 sticky=W,
                 padx=30,
                 pady=50)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -1465,16 +1466,16 @@ def acceptArab():
                 conn.commit()
                 page1_admin()
 
-            Label(isShow, text="Enter user name:", font=fnt).grid(row=1, column=1)
+            Label(isShow, text="ادخل اسم المستخدم:", font=fnt).grid(row=1, column=1)
             Entry(isShow, textvariable=svuser, font=fnt).grid(row=1, column=2)
-            Label(isShow, text="Enter password:", font=fnt).grid(row=2, column=1)
+            Label(isShow, text="ادخل كلمة المرور:", font=fnt).grid(row=2, column=1)
             Entry(isShow, textvariable=svpass, font=fnt).grid(row=2, column=2)
-            Label(isShow, text="Enter first name:", font=fnt).grid(row=3, column=1)
+            Label(isShow, text="ادخل الاسم الاول:", font=fnt).grid(row=3, column=1)
             Entry(isShow, textvariable=svfname, font=fnt).grid(row=3, column=2)
-            Label(isShow, text="Enter last name:", font=fnt).grid(row=4, column=1)
+            Label(isShow, text="ادخل الاسم الثاني:", font=fnt).grid(row=4, column=1)
             Entry(isShow, textvariable=svlname, font=fnt).grid(row=4, column=2)
-            Button(isShow, text="add", bg="white", font=1, command=add).grid(row=5, column=2, padx=10, pady=10)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="اضف", bg="white", font=1, command=add).grid(row=5, column=2, padx=10, pady=10)
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=6, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -1483,26 +1484,26 @@ def acceptArab():
             isShow.forget()
             isShow = Frame(frm)
 
-            Button(isShow, text="Search an User", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="ابحث عن مستخدم", bg="white", height="5", width="20", font="25",
                    command=page2_admin).grid(
                 row=2, column=1, sticky=W, padx=30, pady=50)
-            Button(isShow, text="boards", bg="white", height="5", width="20", font="25", command=adminbord).grid(row=2,
+            Button(isShow, text="الواح", bg="white", height="5", width="20", font="25", command=adminbord).grid(row=2,
                                                                                                                  column=3,
                                                                                                                  sticky=W,
                                                                                                                  padx=30,
                                                                                                                  pady=50)
-            Button(isShow, text="Catigoria", bg="green", height="5", width="20", font="25", command=admincat).grid(
+            Button(isShow, text="فئات", bg="green", height="5", width="20", font="25", command=admincat).grid(
                 row=3, column=1,
                 sticky=W,
                 padx=30, pady=20)
-            Button(isShow, text="Update the page explain ", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="جدث صفحة الشرح  ", bg="white", height="5", width="20", font="25",
                    command=explain).grid(row=3, column=2, sticky=W, padx=30, pady=20)
             # Button(page3, text="Birthday", bg="green", height="5", width="20", font="25").grid(row=3, column=3, sticky=W, padx=30,pady=20)
             # Button(frm, text="Delete an user ", bg="green", height="5", width="20", font="25").grid(row=4, column=2, sticky=W, padx=30, pady=20)
-            Button(isShow, text="My design ", bg="green", height="5", width="20", font="25").grid(row=2, column=2,
+            Button(isShow, text="تصميمي ", bg="green", height="5", width="20", font="25").grid(row=2, column=2,
                                                                                                   sticky=W,
                                                                                                   padx=30, pady=50)
-            Button(isShow, text="add admin ", bg="green", height="5", width="20", font="25", command=addadmin).grid(
+            Button(isShow, text="اضافة مشرف", bg="green", height="5", width="20", font="25", command=addadmin).grid(
                 row=3, column=3, sticky=W,
                 padx=30, pady=50)
 
@@ -1512,13 +1513,13 @@ def acceptArab():
             global isShow
             isShow.forget
             isShow = Frame(frm)
-            Label(isShow, text='enter your new explain', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
+            Label(isShow, text='ادخل شرحك', bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
             m = Entry(isShow, bg="white", fg=fg, font=fnt)
             m.grid(row=10, column=2, padx=30, pady=120)
             Button(isShow, text="Ok", bg="green", height="5", width="20", font="25",
                    command=lambda: HelpFunc(m.get())).grid(row=2, column=2, sticky=W,
                                                            padx=30, pady=50)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -1527,14 +1528,14 @@ def acceptArab():
             isShow.forget()
             isShow = Frame(frm)
             text1 = "Happy Birthday ya qalbiy :) "
-            Button(isShow, text="Delete an user", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="حذف مستخدم", bg="white", height="5", width="20", font="25",
                    command=lambda: delete_user(r.get())).grid(row=3, column=1, sticky=W, padx=30, pady=20)
-            Button(isShow, text="Wish a Happy Birthday", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="Happy Birthday", bg="white", height="5", width="20", font="25",
                    command=lambda: update_massage(text1, r.get())).grid(row=5, column=1, sticky=W, padx=30, pady=20)
-            Button(isShow, text="Send A massage ", bg="white", height="5", width="20", font="25",
+            Button(isShow, text="ارسال رساله ", bg="white", height="5", width="20", font="25",
                    command=page5_admin).grid(
                 row=7, column=1, sticky=W, padx=30, pady=20)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=page1_admin).grid(
                 row=7, column=0, padx=5, pady=80)
 
             page4.mainloop()
@@ -1543,16 +1544,16 @@ def acceptArab():
             global isShow
             isShow.forget
             isShow = Frame(frm)
-            Label(isShow, text='Enter your massage thats you want to send to user ', bg=bg, fg=fg, font=fnt).grid(
+            Label(isShow, text='ادخل الرساله التي تريد ارسالها الى المستخدم ', bg=bg, fg=fg, font=fnt).grid(
                 row=10,
                 column=1,
                 padx=30,
                 pady=120)
             m = Entry(isShow, bg="white", fg=fg, font=fnt, textvariable=svmassage)
             m.grid(row=10, column=2, padx=30, pady=120)
-            Button(isShow, text="Send", bg="white", height="1", width="8", font="15",
+            Button(isShow, text="ارسل", bg="white", height="1", width="8", font="15",
                    command=lambda: update_massage(m.get(), r.get())).grid(row=14, column=4, sticky=W, padx=30, pady=30)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=page4_admin).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=page4_admin).grid(
                 row=14, column=0, padx=5, pady=80)
             # messagebox.showinfo('', 'The massage send!')
 
@@ -1586,9 +1587,9 @@ def acceptArab():
                     isShow.forget()
                     mainpage()
 
-            Label(isShow, text="Enter user name:").grid(row=1, column=1)
+            Label(isShow, text="ادخل اسم المستخدم:").grid(row=1, column=1)
             Entry(isShow, textvariable=svuser).grid(row=2, column=1)
-            Label(isShow, text="Enter password:").grid(row=3, column=1)
+            Label(isShow, text="ادخل كلمة المرور:").grid(row=3, column=1)
             Entry(isShow, textvariable=svpass).grid(row=4, column=1)
             '''
             lblname=ttk.Label(loginFrame,text='Enter username:').grid(row=1,column=2,padx=10,pady=10)
@@ -1596,10 +1597,10 @@ def acceptArab():
             lblpass=ttk.Label(loginFrame,text='Enter the password:').grid(row=3,column=2,padx=10,pady=10)
             txtpass=ttk.Entry(loginFrame).grid(row=4,column=2,padx=10,pady=10)
     '''
-            Button(isShow, text='login', bg="white", font=5, command=check).grid(row=5, column=1, padx=10, pady=10)
-            Button(isShow, text="forget password", bg="white", font=1, command=forget).grid(row=5, column=2, padx=10,
+            Button(isShow, text='دخول', bg="white", font=5, command=check).grid(row=5, column=1, padx=10, pady=10)
+            Button(isShow, text="نسيت كلمة المرور", bg="white", font=1, command=forget).grid(row=5, column=2, padx=10,
                                                                                             pady=10)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=f).grid(
+            Button(isShow, text="<- رجوع", bg="white", height="3", width="10", font="10", command=f).grid(
                 row=5, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -1614,7 +1615,7 @@ def acceptArab():
             Label(isShow, text="").pack()
             Button(isShow, text="دخول", height="2", width="30", command=login).pack()
             Label(isShow, text="").pack()
-            Button(isShow, text="Register", height="2", width="30", command=sign_up).pack()
+            Button(isShow, text="تسجيل", height="2", width="30", command=sign_up).pack()
             Label(isShow, text="").pack()
             isShow.pack()
             isShow.mainloop()
@@ -1848,16 +1849,16 @@ def acceptHeb():
             # settingframe.forget()
             global isShow
             isShow = Frame(frm)
-            Label(isShow, text='user name:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0, pady=20)
-            Label(isShow, text='The first name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,
+            Label(isShow, text='שם המשתמש:', bg=bg, fg=fg, font=fnt).grid(row=0, column=0, pady=20)
+            Label(isShow, text='השם הראשון של האוטיסט :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0,
                                                                                                 pady=20)
-            Label(isShow, text='The last name of the autistic :', bg=bg, fg=fg, font=fnt).grid(row=5, column=0,
+            Label(isShow, text='שם המשפחה:', bg=bg, fg=fg, font=fnt).grid(row=5, column=0,
                                                                                                pady=20)
-            Label(isShow, text='The password :', bg=bg, fg=fg, font=fnt).grid(row=7, column=0, pady=20)
-            Label(isShow, text='The name of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0, pady=20)
-            Label(isShow, text='The E-mail of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=11, column=0,
+            Label(isShow, text='הסיסמה:', bg=bg, fg=fg, font=fnt).grid(row=7, column=0, pady=20)
+            Label(isShow, text='שם האחראי :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0, pady=20)
+            Label(isShow, text='אימל האחראי:', bg=bg, fg=fg, font=fnt).grid(row=11, column=0,
                                                                                                pady=20)
-            Label(isShow, text='The number phone of the responsible :', bg=bg, fg=fg, font=fnt).grid(row=13, column=0,
+            Label(isShow, text='מספר הטילפון של האחראי:', bg=bg, fg=fg, font=fnt).grid(row=13, column=0,
                                                                                                      pady=20)
             # Label(frame, text='The profile of the Autistic :', bg=bg, fg=fg, font=fnt).grid(row=9, column=0)
             # Label(top, image=im).pack()
@@ -1869,28 +1870,28 @@ def acceptHeb():
             Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svmail).grid(row=11, column=2)
             Entry(isShow, bg=bgtxt, fg=fg, font=fnt, textvariable=svphone).grid(row=13, column=2)
             # txtprofile = Entry(frame, bg=bgtxt, fg=fg, font=fnt, textvariable=svprofile).grid(row=15,column=2)
-            Button(isShow, text='<-Back', bg="white", height="3", width="10", command=settingpage).grid(row=20,
+            Button(isShow, text='<-חזרה', bg="white", height="3", width="10", command=settingpage).grid(row=20,
                                                                                                         column=0,
                                                                                                         pady=20,
                                                                                                         padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,
+            Button(isShow, text='עידכון', bg="white", height="1", width="5", command=upusername).grid(row=0, column=4,
                                                                                                       pady=20, padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,
+            Button(isShow, text='עידכון', bg="white", height="1", width="5", command=upfname).grid(row=3, column=4,
                                                                                                    pady=20,
                                                                                                    padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,
+            Button(isShow, text='עידכון', bg="white", height="1", width="5", command=uplname).grid(row=5, column=4,
                                                                                                    pady=20,
                                                                                                    padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,
+            Button(isShow, text='עידכון', bg="white", height="1", width="5", command=uppass).grid(row=7, column=4,
                                                                                                   pady=20,
                                                                                                   padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,
+            Button(isShow, text='עידכון', bg="white", height="1", width="5", command=uprname).grid(row=9, column=4,
                                                                                                    pady=20,
                                                                                                    padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,
+            Button(isShow, text='עידכון', bg="white", height="1", width="5", command=upmail).grid(row=11, column=4,
                                                                                                   pady=20,
                                                                                                   padx=10)
-            Button(isShow, text='update', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
+            Button(isShow, text='עידכון', bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
                                                                                                    pady=20, padx=10)
 
             isShow.grid()
@@ -1902,7 +1903,7 @@ def acceptHeb():
                 insert_user(txtfname.get(), txtlname.get(), txtid.get(), txtrname.get(), txtmail.get(), txtuser.get(),
                             txtpass.get(), txtgender.get(), txtphone.get(), txtanswer.get(), np, dp)
             else:
-                messagebox.showinfo('', "you want to agree the terms")
+                messagebox.showinfo('', "אתה חייב להסכים על התנאים")
 
         def HelpFunc2():
             global isShow
@@ -1916,38 +1917,38 @@ def acceptHeb():
             global isShow
             isShow.forget()
             isShow = Frame(frm)
-            Label(isShow, text='your explain is :', bg=bg, fg=fg, font=fnt).grid(row=3, column=0, pady=20)
+            Label(isShow, text='ההסבר שלך:', bg=bg, fg=fg, font=fnt).grid(row=3, column=0, pady=20)
             Label(isShow, text=exp, bg=bg, fg=fg, font=fnt).grid(row=5, column=0, pady=20)
 
             isShow.mainloop()
 
         def pageif():
             if svuser.get().strip() == '':
-                messagebox.showinfo('', 'The user name  is Empty!')
+                messagebox.showinfo('', 'שם המשתמש ריק!')
                 txtuser.focus()
             elif svId.get().strip() == '':
-                messagebox.showinfo('', 'The number of id is Empty!')
+                messagebox.showinfo('', 'מספר תעודת הזהות ריק!')
                 txtid.focus()
             elif svpass.get().strip() == '':
-                messagebox.showinfo('', 'The password Empty!')
+                messagebox.showinfo('', 'הסיסמה ריק!')
                 txtpass.focus()
             elif svfname.get().strip() == '':
-                messagebox.showinfo('', 'The first name of the autistic is Empty!')
+                messagebox.showinfo('', 'השם ריק')
                 txtfname.focus()
             elif svlname.get().strip() == '':
-                messagebox.showinfo('', 'The last name of the autistic is Empty!')
+                messagebox.showinfo('', 'השם השני ריק')
                 txtlname.focus()
             elif svgender.get() == '':
-                messagebox.showinfo('', 'the gender is Empty!')
+                messagebox.showinfo('', 'מין ריק!')
                 txtgender.focus()
             elif svrname.get().strip() == '':
-                messagebox.showinfo('', 'The name of the responsible is Empty!')
+                messagebox.showinfo('', 'שם האחראי ריק')
                 txtrname.focus()
             elif svmail.get().strip() == '':
-                messagebox.showinfo('', 'The E-mail of the responsible is Empty!')
+                messagebox.showinfo('', 'ה אימיל ריק')
                 txtmail.focus()
             elif svphone.get().strip() == '':
-                messagebox.showinfo('', 'The number phone of the responsible is Empty!')
+                messagebox.showinfo('', 'מספר הטלפון ריק!')
                 txtphone.focus()
             # elif svprofile.get().strip()=='':
             # messagebox.showinfo('', 'The profile is Empty!')
@@ -1958,9 +1959,9 @@ def acceptHeb():
                 ttt = 'the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.\n• The system should be used correctly.\n• Allow managers to control my account.\n• Confirmation of saving my personal information in the system'
 
                 Label(isShow, text=ttt, bg=bg, fg=fg, font=fnt).grid(row=0, column=0)
-                c = Checkbutton(isShow, text="I accept the Terms of service ", variable=i, onvalue="checked").grid(
+                c = Checkbutton(isShow, text="אני מסכים  ", variable=i, onvalue="checked").grid(
                     row=11, column=0, pady=pad)
-                Button(isShow, text='Create', command=create).grid(row=13, column=3, pady=pad)
+                Button(isShow, text='לצור', command=create).grid(row=13, column=3, pady=pad)
                 isShow.mainloop()
 
         def sendmess():
@@ -1973,13 +1974,13 @@ def acceptHeb():
                 conn.commit()
                 mainpage()
 
-            Label(isShow, text="Type message:", font=fnt).grid(row=1, column=1)
+            Label(isShow, text="הקלד הודעה :", font=fnt).grid(row=1, column=1)
             Entry(isShow, font=fnt, textvariable=svmassage).grid(row=2, column=1)
-            Button(isShow, text="send", bg="white", height="3", width="10", font=fnt, command=send).grid(row=4,
+            Button(isShow, text="שלח", bg="white", height="3", width="10", font=fnt, command=send).grid(row=4,
                                                                                                          column=2,
                                                                                                          padx=100,
                                                                                                          pady=20)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=settingpage).grid(
+            Button(isShow, text="<- חזרה", bg="white", height="3", width="10", font="10", command=settingpage).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
@@ -2002,9 +2003,9 @@ def acceptHeb():
 
             txtlan = ttk.Combobox(isShow, values=('English', 'Arabic', 'Hebrew'), textvariable=svlan,
                                   state='readonly').grid(row=1, column=1, pady=pad)
-            Button(isShow, text="choose", bg="white", height="3", width="10", font="10", command=chooslan()).grid(
+            Button(isShow, text="בחור", bg="white", height="3", width="10", font="10", command=chooslan()).grid(
                 row=3, column=1, padx=5, pady=80)
-            Button(isShow, text="<- Back", bg="white", height="3", width="10", font="10", command=settingpage).grid(
+            Button(isShow, text="<- חזרה", bg="white", height="3", width="10", font="10", command=settingpage).grid(
                 row=4, column=0, padx=5, pady=80)
             isShow.pack()
 
