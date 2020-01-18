@@ -74,5 +74,10 @@ ooo="forget password"
 ppp="Choose Login Or Register"
 qqq="Login"
 rrr="Register"
+mainpage='main page'
 
 logout="logout"
+
+tt='the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.' \
+'\n• The system should be used correctly.\n• Allow managers to control my account.\n• ' \
+'Confirmation of saving my personal information in the system'
