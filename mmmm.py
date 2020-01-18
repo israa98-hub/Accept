@@ -417,7 +417,7 @@ def account():
     def acceptArab():
         global lang
         import Arabic as lang
-        account()
+        settingpage()
 
     def acceptHeb():
         global lang
