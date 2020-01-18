@@ -185,7 +185,8 @@ def convertToimage(name, imager):
 
 
 isShow2 = None
-
+dp=None
+np=None
 import English as lang
 def account():
 
@@ -273,7 +274,10 @@ def account():
                                                                                               padx=10)
         Button(isShow, text=lang.update, bg="white", height="1", width="5", command=upphone).grid(row=13, column=4,
                                                                                                pady=20, padx=10)
-
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", command=mainpage).grid(row=24,
+                                                                                                     column=0,
+                                                                                                     pady=20,
+                                                                                                     padx=0)
         isShow.pack()
         isShow.mainloop()
 
@@ -295,6 +299,10 @@ def account():
         Label(isShow, text=exp, bg=bg, fg=fg, font=fnt).grid(row=2, column=2)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=settingpage).grid(
             row=4, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", command=mainpage).grid(row=24,
+                                                                                                     column=0,
+                                                                                                     pady=20,
+                                                                                                     padx=0)
 
         isShow.pack()
 
@@ -379,6 +387,10 @@ def account():
                                                                                                      pady=20)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=settingpage).grid(
             row=4, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", command=mainpage).grid(row=6,
+                                                                                                     column=0,
+                                                                                                     pady=5,
+                                                                                                     padx=80)
         isShow.pack()
 
     def lang1():
@@ -407,6 +419,8 @@ def account():
             row=3, column=1, padx=5, pady=80)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=settingpage).grid(
             row=4, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=mainpage).grid(
+            row=6, column=0, padx=5, pady=80)
         isShow.pack()
 
     def acceptEng():
@@ -450,6 +464,8 @@ def account():
         # Button(isShow, text="Edit Profile", bg="white", height="6", width="30", font="50",command=updatepro).grid(row=0, column=1, padx=100, pady=20)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=mainpage).grid(
             row=10, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=mainpage).grid(
+            row=13, column=0, padx=5, pady=80)
 
         isShow.pack()
 
@@ -590,6 +606,8 @@ def account():
                             Button(isShow2, text=lang.back, bg="white", height="3", width="10", font="10",
                                    command=allcat).grid(
                                 row=3, column=0, padx=5, pady=80)
+                            Button(isShow2, text=lang.Home, bg="white", height="3", width="10", font="10",
+                                   command=mainpage).grid(row=3, column=0, padx=5, pady=80)
                             isShow2.pack()
 
                         C = Button(isShow2, text=N, bg="white", height="3", width="15", font="20",
@@ -612,6 +630,7 @@ def account():
                     Button(isShow2, text=lang.back, bg="white", height="3", width="10", font="10",
                            command=mainpage).grid(
                         row=k, column=0, padx=5, pady=80)
+
 
                     isShow2.pack()
 
@@ -637,6 +656,8 @@ def account():
                        command=comp).grid(row=3, column=2, sticky=W, padx=30, pady=50)
                 Button(isShow2, text=lang.back, bg="white", height="3", width="10", font="10",
                        command=lambda: insertimag(num)).grid(row=4, column=0, padx=5, pady=80)
+                Button(isShow2, text=lang.Home, bg="white", height="3", width="10", font="10",
+                       command=mainpage).grid(row=6, column=0, padx=5, pady=80)
                 isShow2.pack()
 
             def funcVoice(name):
@@ -706,6 +727,12 @@ def account():
                                                    sticky=W,
                                                    padx=20,
                                                    pady=20)
+            Button(isShow, text=lang.Home, bg="white", height="3", width="5", font="20",
+                   command=mainpage).grid(row=7,
+                                         column=0,
+                                         sticky=W,
+                                         padx=20,
+                                         pady=20)
 
             isShow.pack()
 
@@ -772,6 +799,8 @@ def account():
             txtbord.grid(row=4,column=1)
 
             Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=mainpage).grid(row=8, column=0)
+            Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=mainpage).grid(row=10,
+                                                                                                                 column=0)
             isShow.pack()
             # mainframe.pack()
 
@@ -851,10 +880,12 @@ def account():
                     t.grid(row=2, column=1)
                 Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10",command=allboards).grid(
                     row=3, column=0, padx=5, pady=10)
+                Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=mainpage).grid(row=6, column=0, padx=5, pady=10)
                 isShow.pack()
             C = Button(isShow, text=N, bg="white", height="3", width="50", font='tahoma 10', command=lambda: lastFunc())
             C.bind('<Button-1>', lambda event, frame=isShow, arg=N: bord(N))
-            C.grid(row=K, column=1, padx=5, pady=5)
+            C.grid(row=K, column=2, padx=5, pady=5)
+            Button(isShow,text=lang.DeBo,bg="white",height="3",width="50",font="tahoma 10",command=funcDeleteBoard).grid(row=0,column=0)
         global isShow, row
         isShow.forget()
         isShow = Frame(frm)
@@ -868,6 +899,12 @@ def account():
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=mainpage).grid(
             row=k, column=0, padx=5, pady=80)
         isShow.pack()
+
+    def funcDeleteBoard():
+        Label(isShow, text=lang.ddd, font=fnt).grid(row=2, column=1)
+        r = Entry(isShow, bg="white", fg=fg, font=fnt, textvariable=svuser)
+        Button(isShow, text=lang.DeBo, bg="white", height="3", width="10", font="10", command=lambda :delete_board(r.get())).grid(
+            row=4,column=5 )
 
     def mainpage():
         global isShow,lann
@@ -1006,6 +1043,8 @@ def account():
             pady=50)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
             row=4, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            row=7, column=0, padx=5, pady=80)
         isShow.pack()
 
     def allcat():
@@ -1082,6 +1121,9 @@ def account():
                 Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10",
                        command=allcat).grid(
                     row=3, column=0, padx=5, pady=80)
+                Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10",
+                       command=page1_admin).grid(
+                    row=6, column=0, padx=5, pady=80)
                 if name in tuple(cat1Dic):
                     cat1Dic[name].append(isShow)
                     #### and insert to DB
@@ -1114,6 +1156,8 @@ def account():
             k+=1
             '''
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=admincat).grid(
+            row=k, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
             row=k, column=0, padx=5, pady=80)
 
         isShow.pack()
@@ -1202,6 +1246,8 @@ def account():
                    command=lambda: page1_admin()).grid(row=3, column=4, sticky=W, padx=170, pady=20)
             back = tk.Button(isShow, text=lang.back, bg="white", height="3", width="10", font="100",
                              command=namecat).grid(row=3, column=0, sticky=W, padx=20, pady=20)
+            Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="100",
+                             command=page1_admin).grid(row=6, column=0, sticky=W, padx=20, pady=20)
             isShow.pack()
         def namecat():
             global isShow, txtcat
@@ -1212,8 +1258,10 @@ def account():
             print(4)
             txtcat = ttk.Entry(isShow)
             txtcat.config(font=fnt)
-            Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=admincat()).grid(
+            Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=admincat).grid(
                 row=4, column=0, padx=5, pady=80)
+            Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=admincat).grid(
+                row=7, column=0, padx=5, pady=80)
             txtcat.pack()
             B.pack()
             back = ttk.Button(isShow, text=lang.back)
@@ -1263,6 +1311,8 @@ def account():
         Entry(isShow, textvariable=svlname, font=fnt).grid(row=4, column=2)
         Button(isShow, text=lang.ww, bg="white", font=1, command=add).grid(row=5, column=2, padx=10, pady=10)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            row=6, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
             row=6, column=0, padx=5, pady=80)
         isShow.pack()
 
@@ -1342,6 +1392,8 @@ def account():
                command=lambda: update_massage(m.get(), r.get())).grid(row=14, column=4, sticky=W, padx=30, pady=30)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=page4_admin).grid(
             row=14, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            row=18, column=0, padx=5, pady=80)
         # messagebox.showinfo('', 'The massage send!')
 
     def login():
@@ -1388,6 +1440,8 @@ def account():
                                                                                         pady=10)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font='tahoma 30', command=f).grid(
             row=5, column=0, padx=5, pady=80)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font='tahoma 30', command=page1_admin).grid(
+            row=8, column=0, padx=5, pady=80)
         isShow.pack()
 
     def f():
