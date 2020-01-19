@@ -104,8 +104,9 @@ def Database():
 Database()
 #cursor.execute("DROP TABLE admins;")
 
-cursor.execute("INSERT INTO admins (username,password,first_name,last_name) VALUES(?,?,?,?)",('safaa',1234,'safaa','azbarqa'))
-conn.commit()
+
+#cursor.execute("INSERT INTO admins (username,password,first_name,last_name) VALUES(?,?,?,?)",('safaa',1234,'safaa','azbarqa'))
+#conn.commit()
 
 
 def insert_board(name, id):
@@ -354,7 +355,7 @@ def account():
         # messagebox.showinfo('', 'The profile is Empty!')
         else:
             global fr
-            ttt =lang.tt
+            ttt =lang.ttt
             fr = tk.Tk()
             fnt = ('tahoma', 12)
             bg = 'white'
@@ -1110,7 +1111,7 @@ def account():
                 isShow.forget()
                 isShow = Frame(frm)
                 print(image1)
-                Label(isShow, text=name, height="10", width="20", ).grid(row=0, columnspan=2, pady=20)
+                Label(isShow, text=name,font='tahoma 20' ).grid(row=0, columnspan=2, pady=10)
                 print(photo1Dic)
                 if image1:
                     b = Button(isShow, height="300", width="300", image=photo1Dic[image1])
@@ -1132,10 +1133,10 @@ def account():
                     t.grid(row=2, column=2)
                 Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10",
                        command=allcat).grid(
-                    row=3, column=0, padx=5, pady=80)
+                    row=3, column=0, padx=5, pady=10)
                 Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10",
                        command=page1_admin).grid(
-                    row=6, column=0, padx=5, pady=80)
+                    row=6, column=0, padx=5, pady=10)
                 if name in tuple(cat1Dic):
                     cat1Dic[name].append(isShow)
                     #### and insert to DB
@@ -1248,11 +1249,11 @@ def account():
             Button(isShow, text="+5", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(5),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   4)).grid(row=2, column=1, sticky=W, padx=10, pady=10)
+                                                   5)).grid(row=2, column=1, sticky=W, padx=10, pady=10)
             Button(isShow, text="+6", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(6),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   4)).grid(row=2, column=2, sticky=W, padx=10, pady=10)
+                                                   6)).grid(row=2, column=2, sticky=W, padx=10, pady=10)
             Button(isShow, text=lang.x, bg="white", height="3", width="10", font="100",
                    command=lambda: page1_admin()).grid(row=3, column=4, sticky=W, padx=10, pady=10)
             back = tk.Button(isShow, text=lang.back, bg="white", height="3", width="10", font="100",
@@ -1332,14 +1333,14 @@ def account():
             conn.commit()
             page1_admin()
 
-        Label(isShow, text=lang.ss, font=fnt).grid(row=1, column=1)
-        Entry(isShow, textvariable=svuser, font=fnt).grid(row=1, column=2)
-        Label(isShow, text=lang.tt, font=fnt).grid(row=2, column=1)
-        Entry(isShow, textvariable=svpass, font=fnt).grid(row=2, column=2)
-        Label(isShow, text=lang.uu, font=fnt).grid(row=3, column=1)
-        Entry(isShow, textvariable=svfname, font=fnt).grid(row=3, column=2)
-        Label(isShow, text=lang.vv, font=fnt).grid(row=4, column=1)
-        Entry(isShow, textvariable=svlname, font=fnt).grid(row=4, column=2)
+        Label(isShow, text=lang.ss, font='tahoma 20').grid(row=1, column=1)
+        Entry(isShow, textvariable=svuser, font='tahoma 20').grid(row=1, column=2)
+        Label(isShow, text=lang.tt, font='tahoma 20').grid(row=2, column=1)
+        Entry(isShow, textvariable=svpass, font='tahoma 20').grid(row=2, column=2)
+        Label(isShow, text=lang.uu, font='tahoma 20').grid(row=3, column=1)
+        Entry(isShow, textvariable=svfname, font='tahoma 20').grid(row=3, column=2)
+        Label(isShow, text=lang.vv, font='tahoma 20').grid(row=4, column=1)
+        Entry(isShow, textvariable=svlname, font='tahoma 20').grid(row=4, column=2)
         Button(isShow, text=lang.ww, bg="white", font=1, command=add).grid(row=5, column=2, padx=10, pady=10)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
             row=6, column=0, padx=5, pady=80)
@@ -1374,6 +1375,8 @@ def account():
         Button(isShow, text=lang.ccc, bg="green", height="5", width="20", font="25", command=addadmin).grid(
             row=3, column=3, sticky=W,
             padx=30, pady=50)
+        Button(isShow, text=lang.logout, bg="white", height="2", width="10", font="10",
+               command=lambda:logout(frm)).grid(row=4, column=2, sticky=W, padx=30, pady=20)
 
         isShow.pack()
 
