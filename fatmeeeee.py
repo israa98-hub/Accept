@@ -81,6 +81,8 @@ svbord=StringVar()
 svanswer = StringVar()
 svmassage = StringVar()
 svlan = StringVar()
+svcat=StringVar()
+
 
 
 def Database():
@@ -100,7 +102,10 @@ def Database():
 
 
 Database()
-#cursor.execute("DROP TABLE users;")
+#cursor.execute("DROP TABLE admins;")
+
+cursor.execute("INSERT INTO admins (username,password,first_name,last_name) VALUES(?,?,?,?)",('safaa',1234,'safaa','azbarqa'))
+conn.commit()
 
 
 def insert_board(name, id):
@@ -427,17 +432,17 @@ def account():
     def acceptEng():
         global lang
         import English as lang
-        settingpage()
+        login()
 
     def acceptArab():
         global lang
         import Arabic as lang
-        settingpage()
+        login()
 
     def acceptHeb():
         global lang
         import Hebrew as lang
-        settingpage()
+        login()
 
 
 
@@ -578,30 +583,30 @@ def account():
                             isShow2.forget()
                             isShow2 = Frame(isShow1)
                             print(image1)
-                            Label(isShow2, text=name).grid(row=0, columnspan=2, pady=20)
+                            Label(isShow2, text=name,font='tahoma 10').grid(row=0, pady=5)
                             print(photo1Dic)
                             if image1:
-                                b = Button(isShow2, height="300", width="300", image=photo1Dic[image1],
+                                b = Button(isShow2, height="200", width="200", image=photo1Dic[image1],
                                            command=lambda: choose('im' + str(num), image1))
                                 b.grid(row=1, column=0)
                             if image2:
-                                c = Button(isShow2, height="300", width="300", image=photo1Dic[image2],
+                                c = Button(isShow2, height="200", width="200", image=photo1Dic[image2],
                                            command=lambda: choose('im' + str(num), image2))
                                 c.grid(row=1, column=1)
                             if image3:
-                                d = Button(isShow2, height="300", width="300", image=photo1Dic[image3],
+                                d = Button(isShow2, height="200", width="200", image=photo1Dic[image3],
                                            command=lambda: choose('im' + str(num), image3))
                                 d.grid(row=1, column=2)
                             if image4:
-                                t = Button(isShow2, height="300", width="300", image=photo1Dic[image4],
+                                t = Button(isShow2, height="200", width="200", image=photo1Dic[image4],
                                            command=lambda: choose('im' + str(num), image4))
                                 t.grid(row=2, column=0)
                             if image5:
-                                t = Button(isShow2, height="300", width="300", image=photo1Dic[image5],
+                                t = Button(isShow2, height="200", width="200", image=photo1Dic[image5],
                                            command=lambda: choose('im' + str(num), image5))
                                 t.grid(row=2, column=1)
                             if image6:
-                                t = Button(isShow2, height="300", width="300", image=photo1Dic[image6],
+                                t = Button(isShow2, height="200", width="200", image=photo1Dic[image6],
                                            command=lambda: choose('im' + str(num), image6))
                                 t.grid(row=2, column=2)
                             Button(isShow2, text=lang.back, bg="white", height="3", width="10", font="10",
@@ -1174,29 +1179,28 @@ def account():
         def saveimc(num):
             if num == 1:
                 cursor.execute("UPDATE 'category' SET c1name=?,image1=? WHERE name=? ",
-                               (imageNameInasertc['im1name'], imageToInsertc['im1'], txtcat.get()))
+                               (imageNameInasertc['im1name'], imageToInsertc['im1'],svcat.get()))
                 conn.commit()
             elif num == 2:
                 cursor.execute("UPDATE 'category' SET c2name=?,image2=? WHERE name=? ",
-                               (imageNameInasertc['im2name'], imageToInsertc['im2'], txtcat.get()))
+                               (imageNameInasertc['im2name'], imageToInsertc['im2'], svcat.get()))
                 conn.commit()
             elif num == 3:
                 cursor.execute("UPDATE 'category' SET c3name=?,image3=? WHERE name=? ",
-                               (imageNameInasertc['im3name'], imageToInsertc['im3'], txtcat.get()))
+                               (imageNameInasertc['im3name'], imageToInsertc['im3'], svcat.get()))
                 conn.commit()
             elif num == 4:
                 cursor.execute("UPDATE 'category' SET c4name=?,image4=? WHERE name=? ",
-                               (imageNameInasertc['im4name'], imageToInsertc['im4'], txtcat.get()))
+                               (imageNameInasertc['im4name'], imageToInsertc['im4'], svcat.get()))
                 conn.commit()
             elif num == 5:
                 cursor.execute("UPDATE 'category' SET c5name=?,image5=? WHERE name=? ",
-                               (imageNameInasertc['im5name'], imageToInsertc['im5'], txtcat.get()))
+                               (imageNameInasertc['im5name'], imageToInsertc['im5'], svcat.get()))
                 conn.commit()
             elif num == 6:
                 cursor.execute("UPDATE 'category' SET c6name=?,image6=? WHERE name=? ",
-                               (imageNameInasertc['im6name'], imageToInsertc['im6'], txtcat.get()))
+                               (imageNameInasertc['im6name'], imageToInsertc['im6'], svcat.get()))
                 conn.commit()
-
         def setImage(im, namecat):
             global imi, isShow
             counter = 0
@@ -1207,7 +1211,7 @@ def account():
 
         def save_C():
 
-            cursor.execute("INSERT INTO category (name) VALUES(?)", (txtcat.get(),))
+            cursor.execute("INSERT INTO category (name) VALUES(?)", (svcat.get(),))
             conn.commit()
             creatcat()
 
@@ -1228,54 +1232,68 @@ def account():
             Button(isShow, text="+1", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(1),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   1)).grid(row=1, column=0, sticky=W, padx=60, pady=20)
+                                                   1)).grid(row=1, column=0, sticky=W, padx=10, pady=10)
             Button(isShow, text="+2", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(2),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   2)).grid(row=1, column=3, sticky=W, padx=90, pady=20)
+                                                   2)).grid(row=1, column=1, sticky=W, padx=10, pady=10)
             Button(isShow, text="+3", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(3),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   3)).grid(row=1, column=5, sticky=W, padx=60, pady=50)
+                                                   3)).grid(row=1, column=2, sticky=W, padx=10, pady=10)
             Button(isShow, text="+4", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(4),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   4)).grid(row=2, column=0, sticky=W, padx=90, pady=100)
+                                                   4)).grid(row=2, column=0, sticky=W, padx=10, pady=10)
             Button(isShow, text="+5", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(5),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   4)).grid(row=2, column=3, sticky=W, padx=90, pady=100)
+                                                   4)).grid(row=2, column=1, sticky=W, padx=10, pady=10)
             Button(isShow, text="+6", bg="white", height="10", width="20", font="100",
                    command=lambda: convertTbinaryc('im' + str(6),
                                                    filedialog.askopenfilename(filetypes=[("Image File", '.png')]),
-                                                   4)).grid(row=2, column=5, sticky=W, padx=90, pady=100)
+                                                   4)).grid(row=2, column=2, sticky=W, padx=10, pady=10)
             Button(isShow, text=lang.x, bg="white", height="3", width="10", font="100",
-                   command=lambda: page1_admin()).grid(row=3, column=4, sticky=W, padx=170, pady=20)
+                   command=lambda: page1_admin()).grid(row=3, column=4, sticky=W, padx=10, pady=10)
             back = tk.Button(isShow, text=lang.back, bg="white", height="3", width="10", font="100",
-                             command=namecat).grid(row=3, column=0, sticky=W, padx=20, pady=20)
+                             command=namecat).grid(row=3, column=0, sticky=W, padx=10, pady=10)
             Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="100",
-                             command=page1_admin).grid(row=6, column=0, sticky=W, padx=20, pady=20)
+                             command=page1_admin).grid(row=6, column=0, sticky=W, padx=10, pady=10)
             isShow.pack()
         def namecat():
             global isShow, txtcat
             isShow.forget()
             isShow = Frame(frm)
-            B = ttk.Button(isShow, text=lang.y, command=save_C)
-            Label(isShow, text=lang.pp, font=fnt).pack()
+            B = ttk.Button(isShow, text=lang.y, command=save_C).grid(row=3, column=0, padx=5, pady=10)
+            Label(isShow, text=lang.pp, font=fnt).grid(row=1, column=0, padx=5, pady=80)
             print(4)
-            txtcat = ttk.Entry(isShow)
-            txtcat.config(font=fnt)
+            Entry(isShow,font=fnt,textvariable=svcat).grid(row=2, column=0, padx=5, pady=10)
             Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=admincat).grid(
-                row=4, column=0, padx=5, pady=80)
-            Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=admincat).grid(
-                row=7, column=0, padx=5, pady=80)
-            txtcat.pack()
-            B.pack()
-            back = ttk.Button(isShow, text=lang.back)
-            back.pack()
+                row=4, column=0, padx=5, pady=10)
+            Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+                row=7, column=0, padx=5, pady=10)
+
             isShow.pack()
         namecat()
 
+    def deletecat():
+        def ddc():
+            cursor.execute("DELETE FROM 'category' WHERE name=?", (svcat.get(),))
+            conn.commit()
+            allcat()
+        global isShow, txtcat
+        isShow.forget()
+        isShow = Frame(frm)
+        Button(isShow, text=lang.dcc,font='tahoma 20', command=ddc).grid(row=3, column=0, padx=5, pady=10)
+        Label(isShow, text=lang.pp, font=fnt).grid(row=1, column=0, padx=5, pady=80)
+        print(4)
+        Entry(isShow, font=fnt, textvariable=svcat).grid(row=2, column=0, padx=5, pady=10)
+        Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=admincat).grid(
+            row=4, column=0, padx=5, pady=10)
+        Button(isShow, text=lang.Home, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
+            row=7, column=0, padx=5, pady=10)
+
+        isShow.pack()
     def admincat():
         global isShow
         isShow.forget()
@@ -1286,15 +1304,21 @@ def account():
             column=2,
             sticky=W,
             padx=30,
-            pady=50)
+            pady=20)
         Button(isShow, text=lang.rr, bg="white", height="5", width="20", font="25", command=allcat).grid(
             row=3,
             column=2,
             sticky=W,
             padx=30,
-            pady=50)
+            pady=20)
+        Button(isShow, text=lang.dcc, bg="white", height="5", width="20", font="25", command=deletecat).grid(
+            row=4,
+            column=2,
+            sticky=W,
+            padx=30,
+            pady=20)
         Button(isShow, text=lang.back, bg="white", height="3", width="10", font="10", command=page1_admin).grid(
-            row=4, column=0, padx=5, pady=80)
+            row=5, column=0, padx=5, pady=20)
         isShow.pack()
 
     def addadmin():

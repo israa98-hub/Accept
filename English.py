@@ -75,11 +75,14 @@ ppp="Choose Login Or Register"
 qqq="Login"
 rrr="Register"
 mainpage='main page'
-Home="Home"
-logout="logout"
-DeBo="Delete board"
-ddd="Enter name the board ,you want to delete:"
 
+logout="logout"
+Home="home"
 tt='the Termos:\n • Not allowed > upload disturbing images\n •Not allowed to extract audio > that has unsuitable words.' \
 '\n• The system should be used correctly.\n• Allow managers to control my account.\n• ' \
 'Confirmation of saving my personal information in the system'
+
+DeBo="delete board"
+dddd="tybe name of bord"
+
+dcc="delete category"
